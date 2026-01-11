@@ -684,11 +684,16 @@ function setupEventListeners() {
             // Load quiz resources (js-yaml + sunscreen data)
             await loadQuizResources();
 
+            // Debug: Check data loaded
+            console.log(`Quiz resources loaded. Total sunscreens: ${appState.sunscreens.length}`);
+
             // Determine first question dynamically
             const firstQuestion = determineNextQuestion();
+            console.log(`First question determined: ${firstQuestion}`);
+
             if (firstQuestion) {
                 appState.currentQuestionKey = firstQuestion;
-                appState.questionHistory = [firstQuestion];
+                appState.questionHistory = []; // Empty history for first question
             }
 
             showView('questions');
