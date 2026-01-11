@@ -209,6 +209,16 @@ function validateSunscreensData(data) {
             ingredientList.forEach(ing => allIngredients.add(ing));
         }
 
+        // Validate specialFeatures - forbid redundant features
+        if (sunscreen.specialFeatures && Array.isArray(sunscreen.specialFeatures)) {
+            const forbiddenFeatures = ['oil-control', 'hydrating'];
+            sunscreen.specialFeatures.forEach(feature => {
+                if (forbiddenFeatures.includes(feature)) {
+                    addError(`${sunscreenLabel}: Feature "${feature}" is not allowed in specialFeatures. This is redundant with skin type selection (oily/dry).`);
+                }
+            });
+        }
+
         // Validate ingredient classifications if present
         if (sunscreen.ingredientClassifications) {
             const validClassifications = ['superstar', 'goodie', 'icky'];
