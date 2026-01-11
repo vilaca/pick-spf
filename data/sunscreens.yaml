@@ -43,7 +43,7 @@ sunscreens:
 
   # La Roche-Posay Anthelios UVMune 400 Fluido Antimanchas
   - id: 2
-    name: "Anthelios UVMune 400 Fluido Antimanchas SPF 50+"
+    name: "Anthelios UVMune 400 Anti-Dark Spots Fluid SPF 50+"
     brand: "La Roche-Posay"
     spf: "50+"
     isFragranceFree: true  # No PARFUM in ingredient list
@@ -75,7 +75,7 @@ sunscreens:
 
   # La Roche-Posay Anthelios UVMune 400 Dermo-Pediatrics Spray
   - id: 3
-    name: "Anthelios UVMune 400 Dermo-Pediatrics Spray Invisível SPF 50+"
+    name: "Anthelios UVMune 400 Dermo-Pediatrics Invisible Spray SPF 50+"
     brand: "La Roche-Posay"
     spf: "50+"
     isFragranceFree: true  # No PARFUM in ingredient list
@@ -106,7 +106,7 @@ sunscreens:
 
   # La Roche-Posay Anthelios UVMune 400 Oil Control Gel-Creme
   - id: 4
-    name: "Anthelios UVMune 400 Oil Control Gel-Creme SPF 50+"
+    name: "Anthelios UVMune 400 Oil Control Gel-Cream SPF 50+"
     brand: "La Roche-Posay"
     spf: "50+"
     isFragranceFree: true  # Sem perfume
@@ -136,7 +136,7 @@ sunscreens:
 
   # La Roche-Posay Anthelios UVMune 400 Oil Control Gel-Creme (Tinted)
   - id: 5
-    name: "Anthelios UVMune 400 Oil Control Gel-Creme SPF 50+ (com cor)"
+    name: "Anthelios UVMune 400 Oil Control Gel-Cream SPF 50+ (Tinted)"
     brand: "La Roche-Posay"
     spf: "50+"
     isFragranceFree: false  # Contains PARFUM / FRAGRANCE
@@ -169,7 +169,7 @@ sunscreens:
 
   # La Roche-Posay Anthelios UVMune 400 Dermo-Pediatrics Fluido Invisível
   - id: 6
-    name: "Anthelios UVMune 400 Dermo-Pediatrics Fluido Invisível SPF 50+"
+    name: "Anthelios UVMune 400 Dermo-Pediatrics Invisible Fluid SPF 50+"
     brand: "La Roche-Posay"
     spf: "50+"
     isFragranceFree: true  # No PARFUM in ingredient list
@@ -200,7 +200,7 @@ sunscreens:
 
   # La Roche-Posay Anthelios UVMune 400 Dermo-Pediatrics Loção Hidratante
   - id: 7
-    name: "Anthelios UVMune 400 Dermo-Pediatrics Loção Hidratante SPF 50+"
+    name: "Anthelios UVMune 400 Dermo-Pediatrics Hydrating Lotion SPF 50+"
     brand: "La Roche-Posay"
     spf: "50+"
     isFragranceFree: true  # No PARFUM in ingredient list
@@ -231,7 +231,7 @@ sunscreens:
 
   # La Roche-Posay Anthelios UVMune 400 Oil Control Fluido
   - id: 8
-    name: "Anthelios UVMune 400 Oil Control Fluido SPF 50+"
+    name: "Anthelios UVMune 400 Oil Control Fluid SPF 50+"
     brand: "La Roche-Posay"
     spf: "50+"
     isFragranceFree: false  # Contains PARFUM / FRAGRANCE
@@ -261,7 +261,7 @@ sunscreens:
 
   # La Roche-Posay Anthelios UVMune 400 Oil Control Fluido (Tinted)
   - id: 9
-    name: "Anthelios UVMune 400 Oil Control Fluido SPF 50+ (com cor)"
+    name: "Anthelios UVMune 400 Oil Control Fluid SPF 50+ (Tinted)"
     brand: "La Roche-Posay"
     spf: "50+"
     isFragranceFree: false  # Contains PARFUM / FRAGRANCE
@@ -293,7 +293,7 @@ sunscreens:
 
   # La Roche-Posay Anthelios UVMune 400 Fluido Invisível (sem perfume)
   - id: 10
-    name: "Anthelios UVMune 400 Fluido Invisível SPF 50+ (sem perfume)"
+    name: "Anthelios UVMune 400 Invisible Fluid SPF 50+ (Fragrance-Free)"
     brand: "La Roche-Posay"
     spf: "50+"
     isFragranceFree: true  # Sem perfume
@@ -324,7 +324,7 @@ sunscreens:
 
   # La Roche-Posay Anthelios UVMune 400 Fluido Invisível (Tinted)
   - id: 11
-    name: "Anthelios UVMune 400 Fluido Invisível SPF 50+ (com cor)"
+    name: "Anthelios UVMune 400 Invisible Fluid SPF 50+ (Tinted)"
     brand: "La Roche-Posay"
     spf: "50+"
     isFragranceFree: false  # Contains PARFUM / FRAGRANCE
@@ -357,7 +357,7 @@ sunscreens:
 
   # La Roche-Posay Anthelios UVMune 400 Creme Hidratante
   - id: 12
-    name: "Anthelios UVMune 400 Creme Hidratante SPF 50+"
+    name: "Anthelios UVMune 400 Hydrating Cream SPF 50+"
     brand: "La Roche-Posay"
     spf: "50+"
     isFragranceFree: false  # Contains PARFUM / FRAGRANCE
@@ -387,7 +387,7 @@ sunscreens:
 
   # La Roche-Posay Anthelios UVMune 400 Creme Hidratante (Tinted)
   - id: 13
-    name: "Anthelios UVMune 400 Creme Hidratante SPF 50+ (com cor)"
+    name: "Anthelios UVMune 400 Hydrating Cream SPF 50+ (Tinted)"
     brand: "La Roche-Posay"
     spf: "50+"
     isFragranceFree: false  # Contains PARFUM / FRAGRANCE
@@ -485,7 +485,7 @@ sunscreens:
 
   # La Roche-Posay Anthelios Age Correct (Tinted)
   - id: 16
-    name: "Anthelios Age Correct SPF 50 (com cor)"
+    name: "Anthelios Age Correct SPF 50 (Tinted)"
     brand: "La Roche-Posay"
     spf: "50"
     isFragranceFree: false  # Contains PARFUM / FRAGRANCE
@@ -518,7 +518,7 @@ sunscreens:
 
   # La Roche-Posay Anthelios Bruma Invisível Anti-Brilho
   - id: 17
-    name: "Anthelios Bruma Invisível Anti-Brilho SPF 50"
+    name: "Anthelios Invisible Mist Anti-Shine SPF 50"
     brand: "La Roche-Posay"
     spf: "50"
     isFragranceFree: false  # Contains PARFUM / FRAGRANCE
@@ -581,7 +581,7 @@ sunscreens:
 
   # La Roche-Posay Anthelios Bruma Invisível Corpo
   - id: 19
-    name: "Anthelios Bruma Invisível SPF 50+ Corpo"
+    name: "Anthelios Invisible Mist SPF 50+ Body"
     brand: "La Roche-Posay"
     spf: "50+"
     isFragranceFree: false  # Contains PARFUM / FRAGRANCE
@@ -609,7 +609,7 @@ sunscreens:
 
   # La Roche-Posay Anthelios Spray Invisível SPF 30
   - id: 20
-    name: "Anthelios Spray Invisível SPF 30"
+    name: "Anthelios Invisible Spray SPF 30"
     brand: "La Roche-Posay"
     spf: "30"
     isFragranceFree: false  # Contains PARFUM / FRAGRANCE
@@ -641,7 +641,7 @@ sunscreens:
 
   # La Roche-Posay Anthelios Spray Invisível SPF 50+
   - id: 21
-    name: "Anthelios Spray Invisível SPF 50+"
+    name: "Anthelios Invisible Spray SPF 50+"
     brand: "La Roche-Posay"
     spf: "50+"
     isFragranceFree: false  # Contains PARFUM / FRAGRANCE
@@ -676,7 +676,7 @@ sunscreens:
 
   # La Roche-Posay Anthelios Stick para Zonas Sensíveis
   - id: 22
-    name: "Anthelios Stick para Zonas Sensíveis SPF 50+"
+    name: "Anthelios Stick for Sun-Sensitive Areas SPF 50+"
     brand: "La Roche-Posay"
     spf: "50+"
     isFragranceFree: true  # No PARFUM in ingredient list
@@ -703,7 +703,7 @@ sunscreens:
 
   # La Roche-Posay Anthelios Leite Bebé Dermo-Pediatrics
   - id: 23
-    name: "Anthelios Leite Bebé Dermo-Pediatrics SPF 50+"
+    name: "Anthelios Baby Lotion Dermo-Pediatrics SPF 50+"
     brand: "La Roche-Posay"
     spf: "50+"
     isFragranceFree: true  # No PARFUM in ingredient list
@@ -793,308 +793,3 @@ sunscreens:
       "GLYCERIN": "superstar"
       "PHENYLBENZIMIDAZOLE SULFONIC ACID": "goodie"
       "TOCOPHEROL": "goodie"
-
-  # # Neutrogena Ultra Sheer
-  # - id: 1
-  #   name: "Ultra Sheer Dry-Touch Sunscreen SPF 55"
-  #   brand: "Neutrogena"
-  #   spf: 55
-  #   isFragranceFree: false
-  #   skinTypes:
-  #     - oily
-  #     - combination
-  #   forKids: false
-  #   formFactors:
-  #     - lotion
-  #   waterResistant: true
-  #   price: "$"
-  #   availableIn:
-  #     - US
-  #     - Canada
-  #     - Global
-  #   url: "https://www.neutrogena.com"
-
-  # # CeraVe Mineral
-  # - id: 2
-  #   name: "Hydrating Mineral Sunscreen SPF 50"
-  #   brand: "CeraVe"
-  #   spf: 50
-  #   isFragranceFree: true
-  #   skinTypes:
-  #     - dry
-  #     - sensitive
-  #   forKids: false
-  #   formFactors:
-  #     - lotion
-  #     - cream
-  #   waterResistant: false
-  #   price: "$"
-  #   availableIn:
-  #     - US
-  #     - Canada
-  #     - Global
-  #   url: "https://www.cerave.com"
-
-  # # La Roche-Posay Anthelios
-  # - id: 3
-  #   name: "Anthelios Melt-In Milk Sunscreen SPF 60"
-  #   brand: "La Roche-Posay"
-  #   spf: 60
-  #   isFragranceFree: true
-  #   skinTypes:
-  #     - all
-  #     - sensitive
-  #   forKids: false
-  #   formFactors:
-  #     - lotion
-  #   waterResistant: true
-  #   price: "$$"
-  #   availableIn:
-  #     - US
-  #     - EU
-  #     - UK
-  #     - Canada
-  #     - Australia
-  #     - Global
-  #   url: "https://www.laroche-posay.us"
-
-  # # Coppertone Kids
-  # - id: 4
-  #   name: "Kids Sunscreen Spray SPF 50"
-  #   brand: "Coppertone"
-  #   spf: 50
-  #   isFragranceFree: false
-  #   skinTypes:
-  #     - all
-  #   forKids: true
-  #   formFactors:
-  #     - spray
-  #   waterResistant: true
-  #   price: "$"
-  #   availableIn:
-  #     - US
-  #     - Canada
-  #   url: "https://www.coppertone.com"
-
-  # # EltaMD UV Clear
-  # - id: 5
-  #   name: "UV Clear Facial Sunscreen SPF 46"
-  #   brand: "EltaMD"
-  #   spf: 46
-  #   isFragranceFree: true
-  #   skinTypes:
-  #     - oily
-  #     - combination
-  #     - sensitive
-  #   forKids: false
-  #   formFactors:
-  #     - cream
-  #   waterResistant: false
-  #   price: "$$$"
-  #   availableIn:
-  #     - US
-  #     - Global
-  #   url: "https://eltamd.com"
-
-  # # Banana Boat Kids
-  # - id: 6
-  #   name: "Kids Mineral Sunscreen Lotion SPF 50"
-  #   brand: "Banana Boat"
-  #   spf: 50
-  #   isFragranceFree: true
-  #   skinTypes:
-  #     - all
-  #     - sensitive
-  #   forKids: true
-  #   formFactors:
-  #     - lotion
-  #   waterResistant: true
-  #   price: "$"
-  #   availableIn:
-  #     - US
-  #     - Canada
-  #     - Australia
-  #   url: "https://www.bananaboat.com"
-
-  # # Supergoop! Unseen
-  # - id: 7
-  #   name: "Unseen Sunscreen SPF 40"
-  #   brand: "Supergoop!"
-  #   spf: 40
-  #   isFragranceFree: true
-  #   skinTypes:
-  #     - oily
-  #     - combination
-  #   forKids: false
-  #   formFactors:
-  #     - gel
-  #   waterResistant: false
-  #   price: "$$$"
-  #   availableIn:
-  #     - US
-  #     - UK
-  #     - Canada
-  #     - Global
-  #   url: "https://supergoop.com"
-
-  # # Sun Bum Original
-  # - id: 8
-  #   name: "Original Sunscreen Spray SPF 50"
-  #   brand: "Sun Bum"
-  #   spf: 50
-  #   isFragranceFree: false
-  #   skinTypes:
-  #     - all
-  #   forKids: false
-  #   formFactors:
-  #     - spray
-  #   waterResistant: true
-  #   price: "$$"
-  #   availableIn:
-  #     - US
-  #     - Canada
-  #     - Australia
-  #     - Global
-  #   url: "https://www.sunbum.com"
-
-  # # Eucerin Daily Hydration
-  # - id: 9
-  #   name: "Daily Hydration Cream SPF 30"
-  #   brand: "Eucerin"
-  #   spf: 30
-  #   isFragranceFree: true
-  #   skinTypes:
-  #     - dry
-  #     - sensitive
-  #   forKids: false
-  #   formFactors:
-  #     - cream
-  #   waterResistant: false
-  #   price: "$"
-  #   availableIn:
-  #     - US
-  #     - EU
-  #     - UK
-  #     - Canada
-  #     - Global
-  #   url: "https://www.eucerinus.com"
-
-  # # Neutrogena Sport
-  # - id: 10
-  #   name: "CoolDry Sport Sunscreen Stick SPF 50"
-  #   brand: "Neutrogena"
-  #   spf: 50
-  #   isFragranceFree: false
-  #   skinTypes:
-  #     - all
-  #   forKids: false
-  #   formFactors:
-  #     - stick
-  #   waterResistant: true
-  #   price: "$"
-  #   availableIn:
-  #     - US
-  #     - Canada
-  #     - Global
-  #   url: "https://www.neutrogena.com"
-
-  # # Blue Lizard Baby
-  # - id: 11
-  #   name: "Baby Mineral Sunscreen SPF 50+"
-  #   brand: "Blue Lizard"
-  #   spf: 50
-  #   isFragranceFree: true
-  #   skinTypes:
-  #     - all
-  #     - sensitive
-  #   forKids: true
-  #   formFactors:
-  #     - cream
-  #     - lotion
-  #   waterResistant: true
-  #   price: "$$"
-  #   availableIn:
-  #     - US
-  #     - Australia
-  #   url: "https://www.bluelizard.net"
-
-  # # Aveeno Protect + Hydrate
-  # - id: 12
-  #   name: "Protect + Hydrate Moisturizing Sunscreen SPF 50"
-  #   brand: "Aveeno"
-  #   spf: 50
-  #   isFragranceFree: true
-  #   skinTypes:
-  #     - dry
-  #     - combination
-  #   forKids: false
-  #   formFactors:
-  #     - lotion
-  #   waterResistant: true
-  #   price: "$"
-  #   availableIn:
-  #     - US
-  #     - Canada
-  #     - Global
-  #   url: "https://www.aveeno.com"
-
-  # # Hawaiian Tropic Silk Hydration
-  # - id: 13
-  #   name: "Silk Hydration Weightless Sunscreen SPF 30"
-  #   brand: "Hawaiian Tropic"
-  #   spf: 30
-  #   isFragranceFree: false
-  #   skinTypes:
-  #     - all
-  #     - dry
-  #   forKids: false
-  #   formFactors:
-  #     - lotion
-  #   waterResistant: true
-  #   price: "$"
-  #   availableIn:
-  #     - US
-  #     - Canada
-  #     - EU
-  #     - Australia
-  #     - Global
-  #   url: "https://www.hawaiiantropic.com"
-
-  # # Thinkbaby Safe Sunscreen
-  # - id: 14
-  #   name: "Safe Sunscreen SPF 50+"
-  #   brand: "Thinkbaby"
-  #   spf: 50
-  #   isFragranceFree: true
-  #   skinTypes:
-  #     - all
-  #     - sensitive
-  #   forKids: true
-  #   formFactors:
-  #     - cream
-  #   waterResistant: true
-  #   price: "$$"
-  #   availableIn:
-  #     - US
-  #     - Canada
-  #     - Global
-  #   url: "https://www.thinkbaby.com"
-
-  # # Vanicream Facial Moisturizer
-  # - id: 15
-  #   name: "Facial Moisturizer SPF 30"
-  #   brand: "Vanicream"
-  #   spf: 30
-  #   isFragranceFree: true
-  #   skinTypes:
-  #     - dry
-  #     - sensitive
-  #   forKids: false
-  #   formFactors:
-  #     - cream
-  #   waterResistant: false
-  #   price: "$$"
-  #   availableIn:
-  #     - US
-  #     - Canada
-  #   url: "https://www.vanicream.com"
