@@ -66,5 +66,7 @@ yarn-error.log*
 
 # Optional: local testing
 node_modules/
+coverage/
+package-lock.json
 .env
 .env.local

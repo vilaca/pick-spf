@@ -1,0 +1,42 @@
+{
+  "name": "sunscreen-chooser",
+  "version": "1.0.0",
+  "description": "Find your perfect sunscreen based on your preferences",
+  "main": "script.js",
+  "scripts": {
+    "test": "jest",
+    "test:watch": "jest --watch",
+    "test:coverage": "jest --coverage"
+  },
+  "keywords": [
+    "sunscreen",
+    "spf",
+    "skincare",
+    "sun-protection"
+  ],
+  "author": "Joao Vilaca",
+  "license": "MIT",
+  "devDependencies": {
+    "jest": "^29.7.0",
+    "jest-environment-jsdom": "^29.7.0"
+  },
+  "jest": {
+    "testEnvironment": "jsdom",
+    "testMatch": [
+      "**/tests/**/*.spec.js",
+      "**/tests/**/*.test.js"
+    ],
+    "collectCoverageFrom": [
+      "script.js",
+      "!node_modules/**"
+    ],
+    "coverageThreshold": {
+      "global": {
+        "branches": 80,
+        "functions": 80,
+        "lines": 80,
+        "statements": 80
+      }
+    }
+  }
+}

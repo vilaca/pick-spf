@@ -1,4 +1,62 @@
 // ===================================
+// Security Utilities
+// ===================================
+
+/**
+ * Escape HTML to prevent XSS attacks
+ * @param {string} str - String to escape
+ * @returns {string} Escaped string safe for HTML
+ */
+function escapeHTML(str) {
+    if (!str) return '';
+    const div = document.createElement('div');
+    div.textContent = str;
+    return div.innerHTML;
+}
+
+/**
+ * Sanitize URL to prevent XSS
+ * @param {string} url - URL to sanitize
+ * @returns {string} Safe URL or empty string
+ */
+function sanitizeURL(url) {
+    if (!url) return '';
+    try {
+        const parsed = new URL(url);
+        // Only allow http and https protocols
+        if (parsed.protocol === 'http:' || parsed.protocol === 'https:') {
+            return url;
+        }
+    } catch (e) {
+        console.warn('Invalid URL:', url);
+    }
+    return '';
+}
+
+/**
+ * Validate URL parameter against allowed values
+ * @param {string} param - Parameter name
+ * @param {string} value - Parameter value
+ * @returns {string|null} Valid value or null
+ */
+function validateURLParam(param, value) {
+    const allowedValues = {
+        location: ['US', 'EU', 'UK', 'Canada', 'Australia', 'Japan', 'Global'],
+        skin: ['oily', 'dry', 'combination', 'sensitive', 'all'],
+        fragrance: ['true', 'false', 'any'],
+        kids: ['true', 'false', 'any'],
+        form: ['cream', 'lotion', 'spray', 'stick', 'gel', 'any'],
+        water: ['true', 'false', 'any']
+    };
+
+    if (allowedValues[param] && allowedValues[param].includes(value)) {
+        return value;
+    }
+    console.warn(`Invalid URL parameter: ${param}=${value}`);
+    return null;
+}
+
+// ===================================
 // State Management
 // ===================================
 
@@ -272,18 +330,102 @@ async function initializeLanguage() {
 // Data Loading
 // ===================================
 
+/**
+ * Validate sunscreen data structure
+ * @param {Object} data - Parsed YAML data
+ * @throws {Error} If validation fails
+ */
+function validateSunscreenData(data) {
+    if (!data || typeof data !== 'object') {
+        throw new Error('Invalid data: must be an object');
+    }
+
+    if (!Array.isArray(data.sunscreens)) {
+        throw new Error('Invalid data: sunscreens must be an array');
+    }
+
+    if (data.sunscreens.length === 0) {
+        throw new Error('Invalid data: sunscreens array is empty');
+    }
+
+    // Validate each sunscreen entry
+    data.sunscreens.forEach((sunscreen, index) => {
+        const required = ['id', 'name', 'brand', 'spf', 'skinTypes', 'formFactors', 'availableIn'];
+        required.forEach(field => {
+            if (!(field in sunscreen)) {
+                throw new Error(`Invalid sunscreen at index ${index}: missing required field '${field}'`);
+            }
+        });
+
+        // Validate types
+        if (typeof sunscreen.id !== 'number') {
+            throw new Error(`Invalid sunscreen at index ${index}: 'id' must be a number`);
+        }
+        if (typeof sunscreen.name !== 'string' || sunscreen.name.length === 0) {
+            throw new Error(`Invalid sunscreen at index ${index}: 'name' must be a non-empty string`);
+        }
+        if (typeof sunscreen.brand !== 'string' || sunscreen.brand.length === 0) {
+            throw new Error(`Invalid sunscreen at index ${index}: 'brand' must be a non-empty string`);
+        }
+        if (typeof sunscreen.spf !== 'number' || sunscreen.spf < 0 || sunscreen.spf > 100) {
+            throw new Error(`Invalid sunscreen at index ${index}: 'spf' must be a number between 0-100`);
+        }
+        if (!Array.isArray(sunscreen.skinTypes) || sunscreen.skinTypes.length === 0) {
+            throw new Error(`Invalid sunscreen at index ${index}: 'skinTypes' must be a non-empty array`);
+        }
+        if (!Array.isArray(sunscreen.formFactors) || sunscreen.formFactors.length === 0) {
+            throw new Error(`Invalid sunscreen at index ${index}: 'formFactors' must be a non-empty array`);
+        }
+        if (!Array.isArray(sunscreen.availableIn) || sunscreen.availableIn.length === 0) {
+            throw new Error(`Invalid sunscreen at index ${index}: 'availableIn' must be a non-empty array`);
+        }
+        if (typeof sunscreen.isFragranceFree !== 'boolean') {
+            throw new Error(`Invalid sunscreen at index ${index}: 'isFragranceFree' must be a boolean`);
+        }
+        if (typeof sunscreen.forKids !== 'boolean') {
+            throw new Error(`Invalid sunscreen at index ${index}: 'forKids' must be a boolean`);
+        }
+        if (typeof sunscreen.waterResistant !== 'boolean') {
+            throw new Error(`Invalid sunscreen at index ${index}: 'waterResistant' must be a boolean`);
+        }
+
+        // Validate URL if present
+        if (sunscreen.url && typeof sunscreen.url !== 'string') {
+            throw new Error(`Invalid sunscreen at index ${index}: 'url' must be a string`);
+        }
+    });
+
+    console.log(`✓ Validated ${data.sunscreens.length} sunscreens`);
+}
+
 async function loadSunscreenData() {
     try {
         const response = await fetch('data/sunscreens.yaml');
+
+        if (!response.ok) {
+            throw new Error(`Failed to load sunscreen data: ${response.status} ${response.statusText}`);
+        }
+
         const yamlText = await response.text();
         const data = jsyaml.load(yamlText);
+
+        // Validate data structure
+        validateSunscreenData(data);
+
         appState.sunscreens = data.sunscreens;
-        console.log(`Loaded ${appState.sunscreens.length} sunscreens`);
+        console.log(`✓ Loaded ${appState.sunscreens.length} sunscreens`);
 
         // Filter region options based on available products
         filterAvailableRegions();
     } catch (error) {
-        console.error('Error loading YAML:', error);
+        console.error('Error loading sunscreen data:', error);
+        // Show user-friendly error message
+        const loadingOverlay = document.getElementById('loading-overlay');
+        if (loadingOverlay) {
+            loadingOverlay.querySelector('.loading-text').textContent =
+                'Failed to load sunscreen data. Please refresh the page or try again later.';
+            loadingOverlay.querySelector('.spinner').style.display = 'none';
+        }
         throw error;
     }
 }
@@ -328,35 +470,54 @@ function checkURLParameters() {
     const params = new URLSearchParams(window.location.search);
     let hasParams = false;
 
+    // Validate and sanitize URL parameters
     if (params.has('location')) {
-        appState.selections.location = params.get('location');
-        selectRadioByValue('location', appState.selections.location);
-        hasParams = true;
+        const value = validateURLParam('location', params.get('location'));
+        if (value) {
+            appState.selections.location = value;
+            selectRadioByValue('location', value);
+            hasParams = true;
+        }
     }
     if (params.has('skin')) {
-        appState.selections.skinType = params.get('skin');
-        selectRadioByValue('skinType', appState.selections.skinType);
-        hasParams = true;
+        const value = validateURLParam('skin', params.get('skin'));
+        if (value) {
+            appState.selections.skinType = value;
+            selectRadioByValue('skinType', value);
+            hasParams = true;
+        }
     }
     if (params.has('fragrance')) {
-        appState.selections.fragranceFree = params.get('fragrance');
-        selectRadioByValue('fragranceFree', appState.selections.fragranceFree);
-        hasParams = true;
+        const value = validateURLParam('fragrance', params.get('fragrance'));
+        if (value) {
+            appState.selections.fragranceFree = value;
+            selectRadioByValue('fragranceFree', value);
+            hasParams = true;
+        }
     }
     if (params.has('kids')) {
-        appState.selections.forKids = params.get('kids');
-        selectRadioByValue('forKids', appState.selections.forKids);
-        hasParams = true;
+        const value = validateURLParam('kids', params.get('kids'));
+        if (value) {
+            appState.selections.forKids = value;
+            selectRadioByValue('forKids', value);
+            hasParams = true;
+        }
     }
     if (params.has('form')) {
-        appState.selections.formFactor = params.get('form');
-        selectRadioByValue('formFactor', appState.selections.formFactor);
-        hasParams = true;
+        const value = validateURLParam('form', params.get('form'));
+        if (value) {
+            appState.selections.formFactor = value;
+            selectRadioByValue('formFactor', value);
+            hasParams = true;
+        }
     }
     if (params.has('water')) {
-        appState.selections.waterResistant = params.get('water');
-        selectRadioByValue('waterResistant', appState.selections.waterResistant);
-        hasParams = true;
+        const value = validateURLParam('water', params.get('water'));
+        if (value) {
+            appState.selections.waterResistant = value;
+            selectRadioByValue('waterResistant', value);
+            hasParams = true;
+        }
     }
 
     // If any params exist, show results directly
@@ -831,6 +992,17 @@ function filterSunscreens() {
  * Higher score = better discrimination
  */
 function calculateDiscriminatingPower(questionKey, currentProducts) {
+    // Validate question key
+    if (!questionMetadata[questionKey]) {
+        console.error(`Invalid question key: ${questionKey}`);
+        return 0;
+    }
+
+    // Validate products array
+    if (!Array.isArray(currentProducts) || currentProducts.length === 0) {
+        return 0;
+    }
+
     const metadata = questionMetadata[questionKey];
 
     // Get all possible values for this question from remaining products
@@ -1009,47 +1181,70 @@ function renderResults(results) {
                     <div class="suggestions">
                         <h4>Try adjusting:</h4>
                         <ul>
-                            ${suggestions.map(s => `<li>${s}</li>`).join('')}
+                            ${suggestions.map(s => `<li>${escapeHTML(s)}</li>`).join('')}
                         </ul>
                     </div>
                 ` : ''}
                 <div class="no-results-actions">
-                    <button onclick="goBackToQuestions('${firstSuggestionQuestionKey}')" class="btn btn-secondary">← Adjust Filters</button>
-                    <button onclick="document.getElementById('restart-btn').click()" class="btn btn-primary">Start Over</button>
+                    <button id="adjust-filters-btn" data-question="${firstSuggestionQuestionKey || ''}" class="btn btn-secondary">← Adjust Filters</button>
+                    <button id="no-results-restart-btn" class="btn btn-primary">Start Over</button>
                 </div>
             </div>
         `;
+
+        // Attach event listeners (safer than inline onclick)
+        const adjustBtn = document.getElementById('adjust-filters-btn');
+        if (adjustBtn) {
+            adjustBtn.addEventListener('click', () => {
+                const questionKey = adjustBtn.dataset.question;
+                goBackToQuestions(questionKey || null);
+            });
+        }
+
+        const noResultsRestartBtn = document.getElementById('no-results-restart-btn');
+        if (noResultsRestartBtn) {
+            noResultsRestartBtn.addEventListener('click', restart);
+        }
     } else {
         elements.resultsContainer.innerHTML = results.map(renderResultCard).join('');
     }
 }
 
 function renderResultCard(sunscreen) {
-    const formFactorsList = sunscreen.formFactors.map(f =>
-        f.charAt(0).toUpperCase() + f.slice(1)
-    ).join(', ');
+    // Escape all user-controlled data to prevent XSS
+    const name = escapeHTML(sunscreen.name);
+    const brand = escapeHTML(sunscreen.brand);
+    const spf = parseInt(sunscreen.spf, 10) || 0; // Ensure number
+    const price = escapeHTML(sunscreen.price);
 
-    const priceDisplay = sunscreen.price;
+    const formFactorsList = sunscreen.formFactors
+        .map(f => escapeHTML(f.charAt(0).toUpperCase() + f.slice(1)))
+        .join(', ');
+
+    const skinTypesList = sunscreen.skinTypes
+        .map(t => escapeHTML(t.charAt(0).toUpperCase() + t.slice(1)))
+        .join(', ');
+
+    // Sanitize URL - only allow http/https
+    const safeURL = sanitizeURL(sunscreen.url);
 
     return `
-        <article class="result-card" aria-label="${sunscreen.name} by ${sunscreen.brand}">
-            <h3>${sunscreen.name}</h3>
-            <p class="brand">${sunscreen.brand}</p>
+        <article class="result-card" aria-label="${name} by ${brand}">
+            <h3>${name}</h3>
+            <p class="brand">${brand}</p>
 
             <div class="result-details">
-                <span class="detail-badge">SPF ${sunscreen.spf}</span>
+                <span class="detail-badge">SPF ${spf}</span>
                 <span class="detail-badge">${formFactorsList}</span>
                 ${sunscreen.isFragranceFree ? '<span class="detail-badge">Fragrance-Free</span>' : ''}
                 ${sunscreen.waterResistant ? '<span class="detail-badge">Water Resistant</span>' : ''}
                 ${sunscreen.forKids ? '<span class="detail-badge">For Kids</span>' : ''}
-                <span class="detail-badge">${priceDisplay}</span>
+                <span class="detail-badge">${price}</span>
             </div>
 
-            <p><strong>Skin Types:</strong> ${sunscreen.skinTypes.map(t =>
-                t.charAt(0).toUpperCase() + t.slice(1)
-            ).join(', ')}</p>
+            <p><strong>Skin Types:</strong> ${skinTypesList}</p>
 
-            ${sunscreen.url ? `<a href="${sunscreen.url}" target="_blank" rel="noopener noreferrer">Learn More →</a>` : ''}
+            ${safeURL ? `<a href="${safeURL}" target="_blank" rel="noopener noreferrer">Learn More →</a>` : ''}
         </article>
     `;
 }

@@ -1,4 +1,6 @@
+# Allow all crawlers
 User-agent: *
 Allow: /
 
-Sitemap: https://alwaysuse.com/sitemap.xml
+# Sitemap
+Sitemap: https://vilaca.github.io/pick-spf/sitemap.xml

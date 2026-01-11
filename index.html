@@ -4,28 +4,54 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+    <!-- Security Headers -->
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self' data:; connect-src 'self'; frame-ancestors 'none'; base-uri 'self'; form-action 'self';">
+    <meta http-equiv="X-Content-Type-Options" content="nosniff">
+    <meta http-equiv="X-Frame-Options" content="DENY">
+    <meta http-equiv="Referrer-Policy" content="strict-origin-when-cross-origin">
+    <meta http-equiv="Permissions-Policy" content="geolocation=(), microphone=(), camera=()">
+
+    <!-- Theme & Mobile -->
+    <meta name="theme-color" content="#FF6B35">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+    <!-- Author & Robots -->
+    <meta name="author" content="Joao Vilaca">
+    <meta name="robots" content="index, follow, max-image-preview:large">
+
     <!-- SEO Meta Tags -->
     <title>Always Use - Find Your Perfect Sunscreen</title>
     <meta name="description" content="Answer a few questions to find the perfect sunscreen for your skin type and needs. Free, fast, and personalized recommendations.">
     <meta name="keywords" content="sunscreen, sun protection, SPF, skin care, sunscreen finder, personalized recommendations, always use sunscreen">
-    <link rel="canonical" href="https://alwaysuse.com/">
+    <link rel="canonical" href="https://vilaca.github.io/pick-spf/">
 
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
-    <meta property="og:url" content="https://alwaysuse.com/">
+    <meta property="og:url" content="https://vilaca.github.io/pick-spf/">
     <meta property="og:title" content="Always Use - Find Your Perfect Sunscreen">
     <meta property="og:description" content="Answer a few questions to find the perfect sunscreen for your skin type and needs.">
-    <meta property="og:image" content="https://alwaysuse.com/images/og-image.png">
+    <meta property="og:image" content="https://vilaca.github.io/pick-spf/images/og-image.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:alt" content="Find Your Perfect Sunscreen">
+    <meta property="og:site_name" content="PickSPF">
+    <meta property="og:locale" content="en_US">
 
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image">
-    <meta property="twitter:url" content="https://alwaysuse.com/">
+    <meta property="twitter:url" content="https://vilaca.github.io/pick-spf/">
     <meta property="twitter:title" content="Always Use - Find Your Perfect Sunscreen">
     <meta property="twitter:description" content="Answer a few questions to find the perfect sunscreen for your skin type and needs.">
-    <meta property="twitter:image" content="https://alwaysuse.com/images/og-image.png">
+    <meta property="twitter:image" content="https://vilaca.github.io/pick-spf/images/og-image.png">
 
-    <!-- Favicon -->
+    <!-- Favicon & App Icons -->
+    <link rel="icon" type="image/svg+xml" href="/images/favicon.svg">
     <link rel="icon" type="image/x-icon" href="/images/favicon.ico">
+    <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+
+    <!-- PWA Manifest -->
+    <link rel="manifest" href="/manifest.json">
 
     <!-- Structured Data (JSON-LD) -->
     <script type="application/ld+json">
@@ -34,7 +60,7 @@
       "@type": "WebApplication",
       "name": "Always Use",
       "description": "Find your perfect sunscreen based on your skin type and preferences",
-      "url": "https://alwaysuse.com/",
+      "url": "https://vilaca.github.io/pick-spf/",
       "applicationCategory": "HealthApplication",
       "offers": {
         "@type": "Offer",
@@ -44,11 +70,16 @@
     }
     </script>
 
+    <!-- Preload critical resources for faster loading -->
+    <link rel="preload" href="styles.css" as="style">
+    <link rel="preload" href="lib/js-yaml.min.js" as="script">
+    <link rel="preload" href="data/sunscreens.yaml" as="fetch" crossorigin>
+
     <!-- Styles -->
     <link rel="stylesheet" href="styles.css">
 
-    <!-- YAML Parser -->
-    <script src="https://cdn.jsdelivr.net/npm/js-yaml@4.1.0/dist/js-yaml.min.js"></script>
+    <!-- YAML Parser (hosted locally) -->
+    <script src="lib/js-yaml.min.js"></script>
 </head>
 <body>
     <!-- Loading Overlay -->
@@ -382,9 +413,9 @@
 
     <!-- Footer -->
     <footer role="contentinfo">
-        <p data-i18n="footer.madeWith">Made with ☀️ for better sun protection</p>
+        <p data-i18n="footer.madeWith">☀️ SPF and Smile ☺️</p>
         <p class="privacy-footer" data-i18n="privacy.footer">🔒 No cookies • No tracking • 100% private • Open source</p>
-        <p><a href="https://github.com/YOUR_USERNAME/alwaysuse" target="_blank" rel="noopener noreferrer" data-i18n="footer.github">View on GitHub</a> | <a href="LICENSE" data-i18n="footer.license">MIT License</a></p>
+        <p><a href="https://github.com/vilaca/pick-spf" target="_blank" rel="noopener noreferrer" data-i18n="footer.github">View on GitHub</a> | <a href="LICENSE" data-i18n="footer.license">MIT License</a></p>
     </footer>
 
     <!-- JavaScript -->

@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OG Image Template</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background: #f5f5f5;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+        }
+
+        .og-image {
+            width: 1200px;
+            height: 630px;
+            background: linear-gradient(135deg, #FF6B35 0%, #FF8E53 50%, #FFB88C 100%);
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 80px;
+        }
+
+        /* Decorative circles */
+        .og-image::before {
+            content: '';
+            position: absolute;
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.15) 0%, transparent 70%);
+            border-radius: 50%;
+            top: -100px;
+            right: -100px;
+        }
+
+        .og-image::after {
+            content: '';
+            position: absolute;
+            width: 300px;
+            height: 300px;
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, transparent 70%);
+            border-radius: 50%;
+            bottom: -80px;
+            left: -80px;
+        }
+
+        .content {
+            position: relative;
+            z-index: 1;
+            text-align: center;
+            color: white;
+        }
+
+        .sun-icon {
+            font-size: 120px;
+            margin-bottom: 30px;
+            filter: drop-shadow(0 8px 16px rgba(0, 0, 0, 0.2));
+            animation: gentle-pulse 3s ease-in-out infinite;
+        }
+
+        @keyframes gentle-pulse {
+            0%, 100% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.05);
+            }
+        }
+
+        .title {
+            font-size: 72px;
+            font-weight: 800;
+            margin-bottom: 20px;
+            text-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+            line-height: 1.2;
+        }
+
+        .subtitle {
+            font-size: 36px;
+            font-weight: 400;
+            margin-bottom: 40px;
+            opacity: 0.95;
+            text-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+        }
+
+        .domain {
+            font-size: 32px;
+            font-weight: 600;
+            background: rgba(255, 255, 255, 0.25);
+            padding: 16px 40px;
+            border-radius: 50px;
+            backdrop-filter: blur(10px);
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Instructions (won't appear in screenshot) */
+        .instructions {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            background: white;
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+            max-width: 400px;
+            z-index: 1000;
+        }
+
+        .instructions h3 {
+            margin-bottom: 10px;
+            color: #FF6B35;
+        }
+
+        .instructions ol {
+            margin-left: 20px;
+        }
+
+        .instructions li {
+            margin: 8px 0;
+            color: #333;
+        }
+
+        .hide-instructions {
+            background: #FF6B35;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 8px;
+            cursor: pointer;
+            margin-top: 15px;
+            font-weight: 600;
+        }
+    </style>
+</head>
+<body>
+    <div class="instructions" id="instructions">
+        <h3>📸 Screenshot Instructions</h3>
+        <ol>
+            <li>Click "Hide Instructions" below</li>
+            <li>Take a screenshot of the 1200x630px card</li>
+            <li>Save as <code>og-image.png</code></li>
+            <li>Replace the placeholder in your images folder</li>
+        </ol>
+        <button class="hide-instructions" onclick="document.getElementById('instructions').style.display='none'">
+            Hide Instructions
+        </button>
+    </div>
+
+    <div class="og-image">
+        <div class="content">
+            <div class="sun-icon">☀️</div>
+            <div class="title">Find Your Perfect<br>Sunscreen</div>
+            <div class="subtitle">Free personalized recommendations</div>
+            <div class="domain">pickspf.com</div>
+        </div>
+    </div>
+
+    <script>
+        // Auto-hide instructions after 3 seconds
+        setTimeout(() => {
+            const instructions = document.getElementById('instructions');
+            if (instructions) {
+                instructions.style.opacity = '0.7';
+            }
+        }, 3000);
+    </script>
+</body>
+</html>
