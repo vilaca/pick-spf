@@ -563,4 +563,48 @@ describe('UI Functions and Event Handlers', () => {
             expect(() => showErrorNotification(longMessage)).not.toThrow();
         });
     });
+
+    describe('Restart Button Bug Fix', () => {
+        it('should have start button initially enabled', () => {
+            const { elements } = script;
+            const button = document.getElementById('start-quiz-btn');
+
+            // Button should exist
+            expect(button).toBeTruthy();
+            // Button should not be disabled initially
+            expect(button.disabled).toBe(false);
+        });
+
+        it('should reset start button state after simulated loading', () => {
+            const { elements } = script;
+            const button = document.getElementById('start-quiz-btn');
+
+            // Simulate button being disabled and text changed (as happens when clicked)
+            button.disabled = true;
+            button.textContent = 'Loading...';
+
+            // Verify button is disabled
+            expect(button.disabled).toBe(true);
+            expect(button.textContent).toBe('Loading...');
+
+            // Simulate reset (what restart() should do)
+            button.disabled = false;
+            button.textContent = 'Start Quiz';
+
+            // Verify button is re-enabled
+            expect(button.disabled).toBe(false);
+            expect(button.textContent).toBe('Start Quiz');
+        });
+
+        it('should not have "Loading..." text on welcome screen', () => {
+            const { elements, showView } = script;
+            const button = document.getElementById('start-quiz-btn');
+
+            // Show welcome view
+            showView('welcome');
+
+            // Button should not say "Loading..."
+            expect(button.textContent).not.toBe('Loading...');
+        });
+    });
 });

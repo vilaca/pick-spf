@@ -1387,6 +1387,12 @@ export function restart() {
     updateNavigationButtons();
     updateLiveCount();
 
+    // Reset start button state
+    if (elements.startQuizBtn) {
+        elements.startQuizBtn.disabled = false;
+        elements.startQuizBtn.textContent = t('welcome.startButton') || 'Start Quiz';
+    }
+
     // Show welcome
     showView('welcome');
 
