@@ -451,12 +451,12 @@ function filterAvailableRegions() {
         if (!availableRegions.has(regionValue) && regionValue !== 'Global') {
             // Hide this region option
             if (optionContainer) {
-                optionContainer.style.display = 'none';
+                optionContainer.classList.add('hidden');
             }
         } else {
             // Make sure it's visible
             if (optionContainer) {
-                optionContainer.style.display = '';
+                optionContainer.classList.remove('hidden');
             }
         }
     });
@@ -680,8 +680,8 @@ function toggleMode() {
         appState.mode = 'viewall';
         document.body.classList.remove('wizard-mode');
         elements.modeText.textContent = t('questions.toggleModeWizard');
-        elements.prevBtn.style.display = 'none';
-        elements.nextBtn.style.display = 'none';
+        elements.prevBtn.classList.add('hidden');
+        elements.nextBtn.classList.add('hidden');
         elements.showResultsBtn.classList.remove('hidden');
 
         // Show all questions
@@ -824,14 +824,18 @@ function checkCurrentQuestionAnswered() {
 }
 
 function updateNavigationButtons() {
-    elements.prevBtn.style.display = appState.questionHistory.length === 0 ? 'none' : 'inline-block';
+    if (appState.questionHistory.length === 0) {
+        elements.prevBtn.classList.add('hidden');
+    } else {
+        elements.prevBtn.classList.remove('hidden');
+    }
 
     // Check if we're at the end (should show results)
     if (shouldShowResults()) {
-        elements.nextBtn.style.display = 'none';
+        elements.nextBtn.classList.add('hidden');
         elements.showResultsBtn.classList.remove('hidden');
     } else {
-        elements.nextBtn.style.display = 'inline-block';
+        elements.nextBtn.classList.remove('hidden');
         elements.showResultsBtn.classList.add('hidden');
     }
 }

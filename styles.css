@@ -1102,42 +1102,32 @@ body.wizard-mode .question.active {
     align-items: center;
     justify-content: center;
     gap: var(--spacing-xs);
+    color: white;
+    background: var(--btn-bg);
+}
+
+.btn-share:hover:not(:disabled) {
+    background: var(--btn-hover);
 }
 
 .btn-whatsapp {
-    background: #25D366;
-    color: white;
-}
-
-.btn-whatsapp:hover {
-    background: #20BA5A;
+    --btn-bg: #25D366;
+    --btn-hover: #20BA5A;
 }
 
 .btn-facebook {
-    background: #1877F2;
-    color: white;
-}
-
-.btn-facebook:hover {
-    background: #145DBF;
+    --btn-bg: #1877F2;
+    --btn-hover: #145DBF;
 }
 
 .btn-twitter {
-    background: #1DA1F2;
-    color: white;
-}
-
-.btn-twitter:hover {
-    background: #1A8CD8;
+    --btn-bg: #1DA1F2;
+    --btn-hover: #1A8CD8;
 }
 
 .btn-copy {
-    background: var(--color-secondary);
-    color: white;
-}
-
-.btn-copy:hover {
-    background: var(--color-secondary-dark);
+    --btn-bg: var(--color-secondary);
+    --btn-hover: var(--color-secondary-dark);
 }
 
 .share-icon {
