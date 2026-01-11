@@ -899,8 +899,12 @@ body.wizard-mode .question.active {
 .navigation-buttons {
     display: flex;
     gap: var(--spacing-sm);
-    justify-content: space-between;
+    justify-content: flex-end;
     margin-top: var(--spacing-lg);
+}
+
+.navigation-buttons #prev-btn {
+    margin-right: auto;
 }
 
 /* ===================================
