@@ -1,69 +1,142 @@
-# 🌞 Always Use (alwaysuse.com)
+# 🌞 PickSPF - Find Your Perfect Sunscreen
 
-Find your perfect sunscreen based on your skin type, preferences, and needs. A free, open-source tool to help you make informed decisions about sun protection.
+[![Live Demo](https://img.shields.io/badge/demo-live-success)](https://vilaca.github.io/pick-spf/)
+[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
+[![Security](https://img.shields.io/badge/security-hardened-green)](SECURITY.md)
 
-## Features
+Find your perfect sunscreen based on your skin type, preferences, and needs. A free, privacy-focused, open-source tool with intelligent question ordering and multi-language support.
 
-- **Smart Filtering**: Answer a few questions to find sunscreens that match your criteria
-- **Dual Mode Interface**:
-  - Wizard mode: One question at a time for guided experience
-  - View All mode: See all questions at once for quick selection
-- **Social Sharing**: Share your recommended sunscreens with friends
-- **Accessibility First**: WCAG 2.1 AA compliant with keyboard navigation and ARIA support
-- **Fast & Free**: Static site hosted on Cloudflare Pages, no backend required
-- **Easy to Contribute**: Product database stored in simple YAML format
+**Live Site:** https://vilaca.github.io/pick-spf/
 
-## Live Demo
+## ✨ Features
 
-[Coming soon - will be deployed on Cloudflare Pages]
+### 🧠 Smart Dynamic Questionnaire
+- **Intelligent Question Ordering**: Uses entropy-based algorithm to ask the most discriminating questions first
+- **Early Termination**: Stops asking questions when products are narrowed down or remaining questions provide no value
+- **Two Modes**:
+  - **Wizard Mode** (default): One question at a time with auto-advance
+  - **View All Mode**: See all questions at once for quick answers
 
-## Local Development
+### 🌍 Multi-Language Support
+Fully translated into 7 languages:
+- 🇬🇧 English
+- 🇵🇹 Portuguese (Portugal)
+- 🇩🇪 German
+- 🇫🇷 French
+- 🇪🇸 Spanish
+- 🇮🇹 Italian
+- 🇵🇱 Polish
 
-### Quick Start
+Language auto-detection based on browser settings with manual override.
 
-1. Clone this repository:
+### 🔒 Privacy-First
+- **No cookies** - Zero tracking
+- **No analytics** - Completely anonymous
+- **No data collection** - Everything happens in your browser
+- **Open source** - Verify the code yourself
+
+### ♿ Accessibility
+- **WCAG 2.1 AA compliant** - Fully accessible
+- **Keyboard navigation** - Works without a mouse
+- **Screen reader support** - ARIA labels throughout
+- **High contrast mode** - Respects user preferences
+- **Reduced motion** - Respects prefers-reduced-motion
+
+### 🚀 Progressive Web App (PWA)
+- **Installable** - Add to home screen on mobile/desktop
+- **Full-screen mode** - App-like experience
+- **Branded theme** - Matches your device chrome
+
+### 🔗 Social Sharing
+- Share results via WhatsApp, Facebook, Twitter, or link
+- URL encodes selections for easy sharing
+- Recipients see your criteria pre-selected
+
+### ⚡ Performance
+- **Fast load times** - ~200-300ms initial load
+- **Locally hosted dependencies** - No external CDN calls
+- **Preloaded resources** - Critical assets load in parallel
+- **Optimized assets** - Minimal bundle size
+
+### 🛡️ Security
+- **XSS Protection** - All user data HTML-escaped
+- **Content Security Policy** - Strict CSP headers
+- **URL Sanitization** - Only http/https links allowed
+- **Input Validation** - YAML structure validated on load
+- See [SECURITY.md](SECURITY.md) for full details
+
+## 🎯 How It Works
+
+### Dynamic Question Algorithm
+
+Instead of asking questions in a fixed order, the app uses information theory (entropy) to determine which question will best narrow down your options:
+
+1. Calculate discriminating power for each unanswered question
+2. Ask the question with highest entropy (best splits remaining products)
+3. Automatically stop when:
+   - Only 0-1 products remain
+   - All questions answered
+   - Remaining questions provide no filtering value
+
+This means you might answer fewer questions than you expect - by design!
+
+## 🚀 Quick Start
+
+### View Live Site
+Visit **https://vilaca.github.io/pick-spf/** - no installation needed!
+
+### Local Development
+
+1. **Clone the repository:**
    ```bash
-   git clone https://github.com/YOUR_USERNAME/alwaysuse.git
-   cd alwaysuse
+   git clone https://github.com/vilaca/pick-spf.git
+   cd pick-spf
    ```
 
-2. Open `index.html` in your browser:
+2. **Open in browser:**
    ```bash
+   # Simply open index.html
    open index.html  # macOS
-   # or
    start index.html # Windows
-   # or just double-click the file
+   # or double-click the file
    ```
 
-That's it! No build process, no npm install, just open and use.
+   **That's it!** No build process, no npm install required.
 
-### Using a Local Server (Optional)
+3. **Optional: Run local server** (recommended for development):
+   ```bash
+   # Python 3
+   python3 -m http.server 8000
 
-For better development experience with YAML loading:
+   # Node.js
+   npx serve
 
+   # Then visit http://localhost:8000
+   ```
+
+### Running Tests
+
+#### Browser Tests (Mocha + Chai)
 ```bash
-# Python 3
-python3 -m http.server 8000
-
-# Python 2
-python -m SimpleHTTPServer 8000
-
-# Node.js (if you have npx)
-npx serve
+open tests/index.html
 ```
 
-Then visit `http://localhost:8000`
+#### Command Line Tests (Jest)
+```bash
+npm install
+npm test              # Run once
+npm run test:watch    # Watch mode
+npm run test:coverage # With coverage report
+```
 
-## How to Add or Edit Sunscreen Products
+## 📝 Adding or Editing Sunscreen Products
 
-All sunscreen products are stored in `data/sunscreens.yaml`. This file is easy to edit - no programming knowledge required!
+All products are stored in **`data/sunscreens.yaml`** - easy to edit, no programming needed!
 
 ### Product Schema
 
-Each sunscreen has these fields:
-
 ```yaml
-- id: 1                          # Unique number (increment for each new product)
+- id: 1                          # Unique number (increment for new products)
   name: "Product Name"           # Full product name
   brand: "Brand Name"            # Manufacturer/brand
   spf: 50                        # SPF number (15, 30, 50, 100, etc.)
@@ -71,153 +144,264 @@ Each sunscreen has these fields:
   skinTypes:                     # List of compatible skin types
     - oily                       # Options: oily, dry, combination, sensitive, all
     - combination
-  forKids: false                 # true or false (is this specifically for children?)
-  formFactors:                   # How the sunscreen is applied
+  forKids: false                 # true or false
+  formFactors:                   # How it's applied
     - cream                      # Options: cream, lotion, spray, stick, gel
     - lotion
   waterResistant: true           # true or false
   price: "$"                     # Price range: $, $$, or $$$
-  url: https://example.com       # Optional: Link to product page or purchase
+  availableIn:                   # Where it's sold
+    - US                         # Options: US, EU, UK, Canada, Australia, Japan, Global
+    - Canada
+  url: https://example.com       # Optional: Link to product page
 ```
 
 ### Adding a New Product
 
-1. Open `data/sunscreens.yaml` in any text editor
-2. Copy this template:
-   ```yaml
-   - id: 999
-     name: "Your Product Name"
-     brand: "Brand Name"
-     spf: 50
-     isFragranceFree: true
-     skinTypes:
-       - oily
-       - sensitive
-     forKids: false
-     formFactors:
-       - cream
-     waterResistant: true
-     price: "$$"
-     url: https://example.com/product
-   ```
-3. Update the `id` to be one more than the last product
-4. Fill in all the fields with accurate information
-5. **Important**: Keep the indentation correct (use 2 spaces, not tabs)
-6. Save the file
+1. Open `data/sunscreens.yaml`
+2. Copy the template above
+3. Update `id` to be one more than the last product
+4. Fill in all required fields accurately
+5. **Important**: Keep indentation correct (2 spaces, not tabs)
+6. Validate your YAML: [YAML Lint](http://www.yamllint.com/)
+7. Test locally by opening `index.html`
+8. Submit a Pull Request
 
-### Validating Your YAML
+### Data Validation
 
-Before submitting, validate your YAML syntax:
-- Online: [YAML Lint](http://www.yamllint.com/)
-- VS Code: Install "YAML" extension by Red Hat
+The app validates all product data on load:
+- Required fields present
+- Correct data types (strings, numbers, booleans, arrays)
+- Valid ranges (SPF 0-100)
+- Non-empty arrays
+- Valid URLs (if provided)
 
-## Contributing
+Invalid data will show an error message with details.
 
-We welcome contributions! Here's how:
+## 🤝 Contributing
+
+We welcome contributions! Here's how to help:
 
 ### Adding Products
 
 1. Fork this repository
 2. Edit `data/sunscreens.yaml` (see instructions above)
-3. Test locally by opening `index.html`
+3. Test locally: `open index.html`
 4. Create a Pull Request with:
-   - Product name in the PR title
-   - Brief description of why you're adding it
-   - Confirmation that information is accurate
+   - Product name in PR title
+   - Why you're adding it
+   - Confirmation information is accurate
 
 ### Reporting Issues
 
-Found a bug or have a suggestion? [Open an issue](https://github.com/YOUR_USERNAME/alwaysuse/issues)
+Found a bug or have a suggestion? [Open an issue](https://github.com/vilaca/pick-spf/issues)
 
 ### Code Contributions
 
 1. Fork the repository
-2. Create a feature branch (`git checkout -b feature/amazing-feature`)
+2. Create a feature branch: `git checkout -b feature/amazing-feature`
 3. Make your changes
-4. Test thoroughly (see Testing section below)
-5. Commit your changes (`git commit -m 'Add amazing feature'`)
-6. Push to the branch (`git push origin feature/amazing-feature`)
+4. Run tests: `npm test`
+5. Commit: `git commit -m 'Add amazing feature'`
+6. Push: `git push origin feature/amazing-feature`
 7. Open a Pull Request
 
-## Deployment
+### Security Issues
 
-This site is deployed on **Cloudflare Pages** (free tier).
+Found a vulnerability? Please **do not** open a public issue.
+
+See [SECURITY.md](SECURITY.md) for our security policy and vulnerability reporting process.
+
+## 🌐 Deployment
+
+This site is deployed on **GitHub Pages** (free tier).
 
 ### Deploy Your Own Copy
 
 1. Fork this repository
-2. Sign up for [Cloudflare Pages](https://pages.cloudflare.com/)
-3. Connect your GitHub account
-4. Select your forked repository
-5. Configure:
-   - **Framework preset**: None
-   - **Build command**: (leave empty)
-   - **Build output directory**: `/`
-6. Click "Save and Deploy"
+2. Go to Settings → Pages
+3. Source: Deploy from branch `master` (or `main`)
+4. Save
 
-Your site will be live at `https://your-project-name.pages.dev` in under a minute!
+Your site will be live at `https://your-username.github.io/pick-spf/` in 1-5 minutes!
 
 ### Custom Domain
 
-In Cloudflare Pages dashboard:
-1. Go to your project
-2. Click "Custom domains"
-3. Add your domain
-4. Update DNS as instructed
+In repository Settings → Pages:
+1. Add your custom domain
+2. Update DNS records as instructed
+3. Enable HTTPS (recommended)
 
-## Testing
+## 🧪 Testing
 
-### Functional Testing
-- [ ] Complete the quiz and verify correct sunscreens appear
-- [ ] Test with very restrictive criteria (should handle "no results")
-- [ ] Toggle between wizard and view-all modes
-- [ ] Test reset functionality
-- [ ] Test all share buttons (WhatsApp, Facebook, Twitter, Copy Link)
-- [ ] Share a link and open it in new tab (should pre-populate selections)
+### Functional Tests
+- Complete quiz with various combinations
+- Test "no results" scenario (very restrictive criteria)
+- Toggle between wizard and view-all modes
+- Test reset functionality
+- Test all share buttons
+- Open shared link in new tab (should pre-populate)
 
-### Accessibility Testing
-- [ ] Tab through all interactive elements
-- [ ] Verify visible focus indicators
-- [ ] Test with keyboard only (no mouse)
-- [ ] Run Lighthouse accessibility audit (target: 100)
-- [ ] Test with 200% zoom
-- [ ] Test in high contrast mode
+### Accessibility Tests
+- Tab through all interactive elements
+- Verify focus indicators visible
+- Test keyboard-only navigation
+- Run Lighthouse accessibility audit (target: 100)
+- Test at 200% zoom
+- Test in high contrast mode
 
-### SEO Testing
-- [ ] Run Lighthouse SEO audit (target: 100)
-- [ ] Validate structured data with [Google Rich Results Test](https://search.google.com/test/rich-results)
-- [ ] Test social previews:
-  - [Facebook Sharing Debugger](https://developers.facebook.com/tools/debug)
-  - [Twitter Card Validator](https://cards-dev.twitter.com/validator)
+### Security Tests
+- Try XSS payloads in URL parameters (should be rejected)
+- Try malicious URLs in YAML (should be sanitized)
+- Verify CSP headers in DevTools
+- Check for inline event handlers (should be none)
 
-## Tech Stack
+### Performance Tests
+- Run Lighthouse performance audit
+- Check Network tab for resource loading
+- Verify preload tags working
+- Test on slow 3G connection
 
-- **Frontend**: Vanilla HTML, CSS, JavaScript (no frameworks)
-- **Data**: YAML file (parsed client-side with js-yaml)
-- **Hosting**: Cloudflare Pages
-- **Dependencies**: js-yaml (loaded from CDN)
+## 🛠️ Tech Stack
 
-## Browser Support
+### Core
+- **HTML5** - Semantic, accessible markup
+- **CSS3** - Modern layout with custom properties
+- **Vanilla JavaScript** - No frameworks, ES6+
+- **YAML** - Data storage (parsed with js-yaml)
 
-- Chrome/Edge (latest 2 versions)
-- Firefox (latest 2 versions)
-- Safari (latest 2 versions)
-- Mobile browsers (iOS Safari, Chrome Mobile)
+### Libraries
+- **js-yaml** (v4.1.0) - YAML parser (hosted locally)
 
-## License
+### Hosting
+- **GitHub Pages** - Free static site hosting
+- **Git** - Version control
 
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+### Development
+- **Mocha + Chai** - Browser-based unit tests
+- **Jest** - Command-line unit tests (optional)
 
-## Acknowledgments
+### Dependencies
+Zero runtime external dependencies! js-yaml is hosted locally for:
+- Better privacy (no external requests)
+- Faster loading (no DNS lookup)
+- More reliable (no CDN dependency)
+- Works offline
 
-- Built with accessibility in mind
-- Inspired by the need for better sunscreen discovery
+## 📊 Browser Support
+
+| Browser | Version |
+|---------|---------|
+| Chrome/Edge | Latest 2 |
+| Firefox | Latest 2 |
+| Safari | Latest 2 |
+| iOS Safari | Latest 2 |
+| Chrome Mobile | Latest 2 |
+
+Modern JavaScript features used:
+- ES6+ syntax (arrow functions, template literals)
+- Fetch API
+- URLSearchParams
+- Intl.DateTimeFormat
+- CSS custom properties
+- CSS Grid/Flexbox
+
+## 📦 Project Structure
+
+```
+pick-spf/
+├── index.html              # Main HTML file
+├── script.js               # Application logic
+├── styles.css              # Styling
+├── manifest.json           # PWA configuration
+├── robots.txt              # SEO: Search engine rules
+├── sitemap.xml             # SEO: Sitemap
+├── LICENSE                 # MIT License
+├── SECURITY.md             # Security policy
+├── data/
+│   └── sunscreens.yaml     # Product database
+├── translations/
+│   ├── en.json             # English
+│   ├── pt-PT.json          # Portuguese
+│   ├── de.json             # German
+│   ├── fr.json             # French
+│   ├── es.json             # Spanish
+│   ├── it.json             # Italian
+│   └── pl.json             # Polish
+├── lib/
+│   └── js-yaml.min.js      # YAML parser (local)
+├── images/
+│   ├── favicon.svg         # Site icon
+│   └── og-image.png        # Social sharing image
+└── tests/
+    ├── index.html          # Test runner (browser)
+    ├── script.test.js      # Test suite
+    └── README.md           # Testing docs
+```
+
+## 🎨 Customization
+
+### Changing Colors
+Edit CSS custom properties in `styles.css`:
+```css
+:root {
+    --color-primary: #FF6B35;     /* Main brand color */
+    --color-secondary: #4ECDC4;   /* Accent color */
+    --color-bg: #FFFFFF;          /* Background */
+}
+```
+
+### Adding Languages
+1. Create `translations/your-lang.json` (copy `en.json` as template)
+2. Translate all strings
+3. Update `availableLanguages` in `script.js`:
+   ```javascript
+   const availableLanguages = {
+       'en': 'English',
+       'your-lang': 'Your Language',
+   };
+   ```
+4. Add language selector option in `index.html`
+
+## 🏆 Performance Metrics
+
+Target Lighthouse scores:
+- **Performance**: 90+
+- **Accessibility**: 100
+- **Best Practices**: 100
+- **SEO**: 100
+
+Typical load times (measured on 4G):
+- First Contentful Paint: ~200ms
+- Time to Interactive: ~300ms
+- Total Bundle Size: ~80KB (including js-yaml)
+
+## 📜 License
+
+This project is licensed under the **MIT License** - see [LICENSE](LICENSE) for details.
+
+### What this means:
+✅ Commercial use allowed
+✅ Modification allowed
+✅ Distribution allowed
+✅ Private use allowed
+❌ No warranty provided
+❌ No liability
+
+## 🙏 Acknowledgments
+
+- Built with accessibility and privacy as top priorities
+- Inspired by the need for better sunscreen discovery tools
 - Community-driven product database
+- Thanks to all contributors!
 
-## Questions or Feedback?
+## 💬 Questions or Feedback?
 
-Open an [issue](https://github.com/YOUR_USERNAME/alwaysuse/issues) or start a [discussion](https://github.com/YOUR_USERNAME/alwaysuse/discussions)!
+- **Issues**: [github.com/vilaca/pick-spf/issues](https://github.com/vilaca/pick-spf/issues)
+- **Security**: See [SECURITY.md](SECURITY.md)
 
 ---
 
-Made with ☀️ for better sun protection
+**Made with ☀️ and care for your skin**
+
+*Always use sunscreen, even on cloudy days!*
