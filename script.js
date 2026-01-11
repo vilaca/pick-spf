@@ -236,6 +236,7 @@ const elements = {
     nextBtn: document.getElementById('next-btn'),
     showResultsBtn: document.getElementById('show-results-btn'),
     restartBtn: document.getElementById('restart-btn'),
+    restartBtnQuestions: document.getElementById('restart-btn-questions'),
 
     // Share buttons
     shareWhatsApp: document.getElementById('share-whatsapp'),
@@ -279,15 +280,22 @@ async function init() {
         // Detect and load language
         await initializeLanguage();
 
-        // Load sunscreen data
-        await loadSunscreenData();
+        // Note: Sunscreen data is now loaded lazily when user clicks "Start Quiz"
 
         // Hide loading overlay
         loadingOverlay.classList.add('hidden');
         setTimeout(() => loadingOverlay.style.display = 'none', 300);
 
         // Check for URL parameters and pre-populate
-        checkURLParameters();
+        // If has params, need to load data immediately
+        const urlParams = new URLSearchParams(window.location.search);
+        const hasQuizParams = ['location', 'skin', 'fragrance', 'kids', 'form', 'water', 'features']
+            .some(param => urlParams.has(param));
+
+        if (hasQuizParams) {
+            await loadQuizResources();
+            checkURLParameters();
+        }
 
         // Setup event listeners
         setupEventListeners();
@@ -297,7 +305,10 @@ async function init() {
 
         // Set initial progress and live count
         updateProgress();
-        updateLiveCount();
+        if (hasQuizParams) {
+            updateLiveCount();
+            updateRestartButtonVisibility();
+        }
     } catch (error) {
         console.error('Initialization error:', error);
         const loadingOverlay = document.getElementById('loading-overlay');
@@ -400,6 +411,35 @@ function validateSunscreenData(data) {
     });
 
     console.log(`✓ Validated ${data.sunscreens.length} sunscreens`);
+}
+
+// Track if resources are loaded
+let quizResourcesLoaded = false;
+
+async function loadQuizResources() {
+    if (quizResourcesLoaded) {
+        return; // Already loaded
+    }
+
+    // Load js-yaml library first
+    if (typeof jsyaml === 'undefined') {
+        await loadScript('lib/js-yaml.min.js');
+    }
+
+    // Then load sunscreen data
+    await loadSunscreenData();
+
+    quizResourcesLoaded = true;
+}
+
+function loadScript(src) {
+    return new Promise((resolve, reject) => {
+        const script = document.createElement('script');
+        script.src = src;
+        script.onload = () => resolve();
+        script.onerror = () => reject(new Error(`Failed to load script: ${src}`));
+        document.head.appendChild(script);
+    });
 }
 
 async function loadSunscreenData() {
@@ -635,18 +675,32 @@ function setupEventListeners() {
     });
 
     // Start quiz
-    elements.startQuizBtn.addEventListener('click', () => {
-        // Determine first question dynamically
-        const firstQuestion = determineNextQuestion();
-        if (firstQuestion) {
-            appState.currentQuestionKey = firstQuestion;
-            appState.questionHistory = [firstQuestion];
-        }
+    elements.startQuizBtn.addEventListener('click', async () => {
+        // Disable button to prevent double-click
+        elements.startQuizBtn.disabled = true;
+        elements.startQuizBtn.textContent = t('loading.text') || 'Loading...';
 
-        showView('questions');
-        updateQuestionDisplay();
-        updateNavigationButtons();
-        checkCurrentQuestionAnswered();
+        try {
+            // Load quiz resources (js-yaml + sunscreen data)
+            await loadQuizResources();
+
+            // Determine first question dynamically
+            const firstQuestion = determineNextQuestion();
+            if (firstQuestion) {
+                appState.currentQuestionKey = firstQuestion;
+                appState.questionHistory = [firstQuestion];
+            }
+
+            showView('questions');
+            updateQuestionDisplay();
+            updateNavigationButtons();
+            checkCurrentQuestionAnswered();
+        } catch (error) {
+            console.error('Error loading quiz resources:', error);
+            alert(t('loading.error') || 'Failed to load quiz. Please refresh and try again.');
+            elements.startQuizBtn.disabled = false;
+            elements.startQuizBtn.textContent = t('welcome.startButton') || 'Start Quiz';
+        }
     });
 
     // Toggle mode
@@ -659,6 +713,7 @@ function setupEventListeners() {
 
     // Restart
     elements.restartBtn.addEventListener('click', restart);
+    elements.restartBtnQuestions.addEventListener('click', restart);
 
     // Form inputs
     elements.questionsForm.addEventListener('change', handleFormChange);
@@ -879,6 +934,27 @@ function updateNavigationButtons() {
         elements.nextBtn.classList.remove('hidden');
         elements.showResultsBtn.classList.add('hidden');
     }
+
+    // Update restart button visibility
+    updateRestartButtonVisibility();
+}
+
+function updateRestartButtonVisibility() {
+    // Check if any selections have been made
+    const hasSelections = Object.values(appState.selections).some(val => {
+        if (val === null) return false;
+        if (Array.isArray(val)) return val.length > 0;
+        return true;
+    });
+
+    // Show/hide restart buttons based on whether selections exist
+    if (hasSelections) {
+        elements.restartBtnQuestions.classList.remove('hidden');
+        elements.restartBtn.classList.remove('hidden');
+    } else {
+        elements.restartBtnQuestions.classList.add('hidden');
+        elements.restartBtn.classList.add('hidden');
+    }
 }
 
 // ===================================
@@ -950,6 +1026,9 @@ function handleFormChange(event) {
 
     // Update live count
     updateLiveCount();
+
+    // Update restart button visibility
+    updateRestartButtonVisibility();
 
     // Check if current question is answered (enable/disable next button)
     checkCurrentQuestionAnswered();
@@ -1552,8 +1631,20 @@ function restart() {
     };
     appState.filteredResults = [];
 
-    // Clear form
+    // Clear form - reset all radio buttons and checkboxes
     elements.questionsForm.reset();
+
+    // Manually clear all checkboxes (in case reset doesn't work)
+    const allCheckboxes = elements.questionsForm.querySelectorAll('input[type="checkbox"]');
+    allCheckboxes.forEach(checkbox => {
+        checkbox.checked = false;
+    });
+
+    // Manually clear all radio buttons
+    const allRadios = elements.questionsForm.querySelectorAll('input[type="radio"]');
+    allRadios.forEach(radio => {
+        radio.checked = false;
+    });
 
     // Reset URL
     history.pushState({}, '', window.location.pathname);
@@ -1566,6 +1657,7 @@ function restart() {
     // Update UI
     updateProgress();
     updateNavigationButtons();
+    updateLiveCount();
 
     // Show welcome
     showView('welcome');
@@ -1620,12 +1712,121 @@ function announceToScreenReader(message) {
 // Initialize App
 // ===================================
 
-// Set initial mode
-document.body.classList.add('wizard-mode');
+// Only auto-initialize if not in test environment
+if (typeof process === 'undefined' || process.env.NODE_ENV !== 'test') {
+    // Set initial mode
+    document.body.classList.add('wizard-mode');
 
-// Wait for DOM and jsyaml to be ready
-if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', init);
-} else {
-    init();
+    // Wait for DOM and jsyaml to be ready
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', init);
+    } else {
+        init();
+    }
 }
+
+// ===================================
+// Exports for Testing
+// ===================================
+
+// Export testable versions of functions that match test signatures
+export function filterProducts(products, selections) {
+    return products.filter(product => {
+        // Location
+        if (selections.location && product.availableIn) {
+            if (!product.availableIn.includes(selections.location) &&
+                !product.availableIn.includes('Global')) {
+                return false;
+            }
+        }
+
+        // Skin type
+        if (selections.skinType && selections.skinType !== 'all' && product.skinTypes) {
+            if (!product.skinTypes.includes(selections.skinType) &&
+                !product.skinTypes.includes('all')) {
+                return false;
+            }
+        }
+
+        // Fragrance free
+        if (selections.fragranceFree && selections.fragranceFree !== 'any') {
+            const fragranceFreeBool = selections.fragranceFree === 'true';
+            if (product.isFragranceFree !== fragranceFreeBool) {
+                return false;
+            }
+        }
+
+        // For kids
+        if (selections.forKids && selections.forKids !== 'any') {
+            const forKidsBool = selections.forKids === 'true';
+            if (product.forKids !== forKidsBool) {
+                return false;
+            }
+        }
+
+        // Form factor
+        if (selections.formFactor && selections.formFactor !== 'any' && product.formFactors) {
+            if (!product.formFactors.includes(selections.formFactor)) {
+                return false;
+            }
+        }
+
+        // Water resistant
+        if (selections.waterResistant && selections.waterResistant !== 'any') {
+            const waterResistantBool = selections.waterResistant === 'true';
+            if (product.waterResistant !== waterResistantBool) {
+                return false;
+            }
+        }
+
+        return true;
+    });
+}
+
+export { questionMetadata };
+export { calculateDiscriminatingPower };
+
+export function getNextQuestion(selections, currentProducts) {
+    const unansweredQuestions = Object.keys(questionMetadata).filter(
+        key => !selections[key]
+    );
+
+    if (unansweredQuestions.length === 0) return null;
+    if (currentProducts.length <= 1) return null;
+
+    let bestQuestion = null;
+    let maxPower = 0;
+
+    unansweredQuestions.forEach(question => {
+        const power = calculateDiscriminatingPower(question, currentProducts);
+        if (power > maxPower) {
+            maxPower = power;
+            bestQuestion = question;
+        }
+    });
+
+    // If max power is very low, no question provides value
+    if (maxPower < 0.01) return null;
+
+    return bestQuestion;
+}
+
+// Export with alias to avoid conflict with internal shouldShowResults
+export function shouldShowResultsTest(selections, currentProducts) {
+    // Show results if 0 or 1 products remain
+    if (currentProducts.length <= 1) return true;
+
+    // Show results if all questions answered
+    const totalQuestions = Object.keys(questionMetadata).length;
+    const answeredQuestions = Object.keys(selections).filter(key => selections[key]).length;
+    if (answeredQuestions >= totalQuestions) return true;
+
+    // Show results if no more questions provide discriminating power
+    const nextQuestion = getNextQuestion(selections, currentProducts);
+    if (!nextQuestion) return true;
+
+    return false;
+}
+
+// Re-export with expected name for tests
+export { shouldShowResultsTest as shouldShowResults };

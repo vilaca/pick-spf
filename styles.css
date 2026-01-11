@@ -453,6 +453,17 @@ main {
     color: var(--color-primary);
 }
 
+.view-header-buttons {
+    display: flex;
+    gap: var(--spacing-sm);
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.results-actions-top {
+    margin-bottom: var(--spacing-md);
+}
+
 /* Shared Selections Notification */
 .shared-notification {
     background: linear-gradient(135deg, #fff8f6 0%, #ffe8e0 100%);

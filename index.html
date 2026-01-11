@@ -72,14 +72,11 @@
 
     <!-- Preload critical resources for faster loading -->
     <link rel="preload" href="styles.css" as="style">
-    <link rel="preload" href="lib/js-yaml.min.js" as="script">
-    <link rel="preload" href="data/sunscreens.yaml" as="fetch" crossorigin>
 
     <!-- Styles -->
     <link rel="stylesheet" href="styles.css">
 
-    <!-- YAML Parser (hosted locally) -->
-    <script src="lib/js-yaml.min.js"></script>
+    <!-- Note: YAML parser and data are lazy-loaded when user starts quiz -->
 </head>
 <body>
     <!-- Loading Overlay -->
@@ -146,9 +143,12 @@
         <section id="questions-view" class="view" aria-labelledby="questions-heading">
             <div class="view-header">
                 <h2 id="questions-heading" data-i18n="questions.heading">Find Your Sunscreen</h2>
-                <button id="toggle-mode-btn" class="btn btn-secondary" data-i18n-aria="accessibility.toggleModeAria" aria-label="Toggle between wizard and view all modes">
-                    <span id="mode-text" data-i18n="questions.toggleMode">View All Answers</span>
-                </button>
+                <div class="view-header-buttons">
+                    <button id="restart-btn-questions" class="btn btn-secondary btn-small hidden" data-i18n-aria="accessibility.restartAria" aria-label="Start over" data-i18n="results.noResults.restartButton">Start Over</button>
+                    <button id="toggle-mode-btn" class="btn btn-secondary" data-i18n-aria="accessibility.toggleModeAria" aria-label="Toggle between wizard and view all modes">
+                        <span id="mode-text" data-i18n="questions.toggleMode">View All Answers</span>
+                    </button>
+                </div>
             </div>
 
             <!-- Progress Bar -->
@@ -427,6 +427,11 @@
                 <!-- Dynamically updated -->
             </div>
 
+            <!-- Action Buttons -->
+            <div class="results-actions results-actions-top">
+                <button id="restart-btn" class="btn btn-secondary hidden" data-i18n-aria="accessibility.restartAria" aria-label="Start over" data-i18n="results.noResults.restartButton">Start Over</button>
+            </div>
+
             <!-- Results Container -->
             <div id="results-container" class="results-container">
                 <!-- Results will be inserted here dynamically -->
@@ -456,11 +461,6 @@
             <div class="disclaimer">
                 <p><strong>⚠️ <span data-i18n="disclaimer.results">Disclaimer:</span></strong> <span data-i18n="disclaimer.resultsText">These are suggestions based on your preferences, not medical advice. Always read product labels, check ingredients for allergies, and consult a dermatologist if you have specific skin concerns.</span></p>
             </div>
-
-            <!-- Action Buttons -->
-            <div class="results-actions">
-                <button id="restart-btn" class="btn btn-secondary" data-i18n-aria="accessibility.restartAria" aria-label="Start over" data-i18n="results.noResults.restartButton">Start Over</button>
-            </div>
         </section>
 
     </main>
@@ -473,6 +473,6 @@
     </footer>
 
     <!-- JavaScript -->
-    <script src="script.js"></script>
+    <script type="module" src="script.js"></script>
 </body>
 </html>
