@@ -62,14 +62,30 @@ function validateURLParam(param, value) {
 // ===================================
 
 // Question metadata for dynamic ordering
-const questionMetadata = {
-    location: { elementIndex: 0, attribute: 'availableIn', isArray: true },
-    skinType: { elementIndex: 1, attribute: 'skinTypes', isArray: true },
-    fragranceFree: { elementIndex: 2, attribute: 'isFragranceFree', isArray: false },
-    forKids: { elementIndex: 3, attribute: 'forKids', isArray: false },
-    formFactor: { elementIndex: 4, attribute: 'formFactors', isArray: true },
-    waterResistant: { elementIndex: 5, attribute: 'waterResistant', isArray: false },
-    specialFeatures: { elementIndex: 6, attribute: 'specialFeatures', isArray: true }
+// Loaded lazily from data/questions-metadata.yaml when quiz starts
+let questionMetadata = {};
+
+// Mutually exclusive features configuration
+// Loaded lazily from data/questions-metadata.yaml when quiz starts
+let mutuallyExclusiveFeatures = {};
+
+// Application configuration (timings, thresholds, etc.)
+// Loaded lazily from data/questions-metadata.yaml when quiz starts
+let appConfig = {
+    timings: {
+        notificationFadeOut: 300,
+        autoAdvanceDelay: 400,
+        notificationAutoDismiss: 10000,
+        transitionBase: 300,
+        transitionSlow: 400
+    },
+    algorithm: {
+        minDiscriminatingPower: 0.01
+    },
+    sharePopup: {
+        width: 600,
+        height: 400
+    }
 };
 
 const appState = {
@@ -77,7 +93,7 @@ const appState = {
     mode: 'wizard', // 'wizard' or 'viewall'
     currentQuestionKey: null, // Current question key (e.g., 'location', 'skinType')
     questionHistory: [], // Track order of questions shown (for back button)
-    totalQuestions: 7,
+    totalQuestions: 0, // Calculated dynamically after loading question metadata
     selections: {
         location: null,
         skinType: null,
@@ -284,7 +300,7 @@ async function init() {
 
         // Hide loading overlay
         loadingOverlay.classList.add('hidden');
-        setTimeout(() => loadingOverlay.style.display = 'none', 300);
+        setTimeout(() => loadingOverlay.style.display = 'none', appConfig.timings.notificationFadeOut);
 
         // Check for URL parameters and pre-populate
         // If has params, need to load data immediately
@@ -311,9 +327,7 @@ async function init() {
         }
     } catch (error) {
         console.error('Initialization error:', error);
-        const loadingOverlay = document.getElementById('loading-overlay');
-        loadingOverlay.querySelector('.loading-text').textContent = t('loading.error');
-        loadingOverlay.querySelector('.spinner').style.display = 'none';
+        showLoadingError(t('loading.error') || 'Failed to initialize the application. Please refresh the page.');
     }
 }
 
@@ -413,6 +427,169 @@ function validateSunscreenData(data) {
     console.log(`✓ Validated ${data.sunscreens.length} sunscreens`);
 }
 
+function validateQuestionMetadata(data) {
+    if (!data || typeof data !== 'object') {
+        throw new Error('Invalid question metadata: must be an object');
+    }
+
+    if (!data.questions || typeof data.questions !== 'object') {
+        throw new Error('Invalid question metadata: must have a questions object');
+    }
+
+    const questions = data.questions;
+    const requiredQuestions = ['location', 'skinType', 'fragranceFree', 'forKids', 'formFactor', 'waterResistant', 'specialFeatures'];
+
+    // Validate each required question exists
+    requiredQuestions.forEach(questionKey => {
+        if (!questions[questionKey]) {
+            throw new Error(`Invalid question metadata: missing required question '${questionKey}'`);
+        }
+
+        const question = questions[questionKey];
+
+        // Validate required fields
+        if (typeof question.elementIndex !== 'number') {
+            throw new Error(`Invalid question metadata for '${questionKey}': elementIndex must be a number`);
+        }
+        if (typeof question.attribute !== 'string' || question.attribute.length === 0) {
+            throw new Error(`Invalid question metadata for '${questionKey}': attribute must be a non-empty string`);
+        }
+        if (typeof question.isArray !== 'boolean') {
+            throw new Error(`Invalid question metadata for '${questionKey}': isArray must be a boolean`);
+        }
+    });
+
+    // Validate mutually exclusive features if present
+    if (data.mutuallyExclusive) {
+        if (typeof data.mutuallyExclusive !== 'object') {
+            throw new Error('Invalid question metadata: mutuallyExclusive must be an object');
+        }
+
+        Object.entries(data.mutuallyExclusive).forEach(([feature, exclusions]) => {
+            if (!Array.isArray(exclusions)) {
+                throw new Error(`Invalid mutuallyExclusive for '${feature}': must be an array`);
+            }
+            exclusions.forEach(exclusion => {
+                if (typeof exclusion !== 'string') {
+                    throw new Error(`Invalid mutuallyExclusive for '${feature}': exclusions must be strings`);
+                }
+            });
+        });
+
+        console.log(`✓ Validated ${Object.keys(data.mutuallyExclusive).length} mutually exclusive feature rules`);
+    }
+
+    // Validate config if present
+    if (data.config) {
+        if (typeof data.config !== 'object') {
+            throw new Error('Invalid question metadata: config must be an object');
+        }
+
+        // Validate timings - dynamically validate all timing fields
+        if (data.config.timings) {
+            if (typeof data.config.timings !== 'object') {
+                throw new Error('Invalid config: timings must be an object');
+            }
+            Object.entries(data.config.timings).forEach(([field, value]) => {
+                if (typeof value !== 'number' || value <= 0) {
+                    throw new Error(`Invalid config: timings.${field} must be a positive number (got ${typeof value}: ${value})`);
+                }
+            });
+        }
+
+        // Validate algorithm settings
+        if (data.config.algorithm) {
+            if (typeof data.config.algorithm.minDiscriminatingPower !== 'number' ||
+                data.config.algorithm.minDiscriminatingPower < 0 ||
+                data.config.algorithm.minDiscriminatingPower > 1) {
+                throw new Error('Invalid config: algorithm.minDiscriminatingPower must be between 0 and 1');
+            }
+        }
+
+        // Validate share popup dimensions - dynamically validate all dimensions
+        if (data.config.sharePopup) {
+            if (typeof data.config.sharePopup !== 'object') {
+                throw new Error('Invalid config: sharePopup must be an object');
+            }
+            Object.entries(data.config.sharePopup).forEach(([field, value]) => {
+                if (typeof value !== 'number' || value <= 0) {
+                    throw new Error(`Invalid config: sharePopup.${field} must be a positive number (got ${typeof value}: ${value})`);
+                }
+            });
+        }
+
+        console.log(`✓ Validated config settings`);
+    }
+
+    console.log(`✓ Validated ${Object.keys(questions).length} question metadata entries`);
+}
+
+/**
+ * Inject timing values from config into CSS custom properties
+ * This creates a single source of truth (YAML) for both JS and CSS animations
+ */
+function applyCSSTimings() {
+    const root = document.documentElement;
+    const t = appConfig.timings;
+
+    // Inject timing values as CSS custom properties
+    root.style.setProperty('--timing-notification-fade', `${t.notificationFadeOut}ms`);
+    root.style.setProperty('--timing-auto-advance', `${t.autoAdvanceDelay}ms`);
+    root.style.setProperty('--timing-transition-base', `${t.transitionBase}ms`);
+    root.style.setProperty('--timing-transition-slow', `${t.transitionSlow}ms`);
+
+    console.log(`✓ Applied CSS custom properties from config`);
+}
+
+async function loadQuestionMetadata() {
+    try {
+        const response = await fetch('data/questions-metadata.yaml');
+
+        if (!response.ok) {
+            throw new Error(`Failed to load question metadata: ${response.status} ${response.statusText}`);
+        }
+
+        const yamlText = await response.text();
+        const data = jsyaml.load(yamlText);
+
+        // Validate data structure
+        validateQuestionMetadata(data);
+
+        questionMetadata = data.questions;
+        mutuallyExclusiveFeatures = data.mutuallyExclusive || {};
+
+        // Calculate total questions dynamically
+        appState.totalQuestions = Object.keys(questionMetadata).length;
+
+        // Load config settings (merge with defaults)
+        if (data.config) {
+            appConfig = {
+                timings: {
+                    ...appConfig.timings,
+                    ...data.config.timings
+                },
+                algorithm: {
+                    ...appConfig.algorithm,
+                    ...data.config.algorithm
+                },
+                sharePopup: {
+                    ...appConfig.sharePopup,
+                    ...data.config.sharePopup
+                }
+            };
+        }
+
+        // Inject timing values into CSS custom properties
+        applyCSSTimings();
+
+        console.log(`✓ Loaded question metadata and config (${appState.totalQuestions} questions)`);
+    } catch (error) {
+        console.error('Error loading question metadata:', error);
+        showLoadingError('Failed to load question metadata. Please refresh the page or try again later.');
+        throw error;
+    }
+}
+
 // Track if resources are loaded
 let quizResourcesLoaded = false;
 
@@ -426,8 +603,11 @@ async function loadQuizResources() {
         await loadScript('lib/js-yaml.min.js');
     }
 
-    // Then load sunscreen data
-    await loadSunscreenData();
+    // Then load question metadata and sunscreen data in parallel
+    await Promise.all([
+        loadQuestionMetadata(),
+        loadSunscreenData()
+    ]);
 
     quizResourcesLoaded = true;
 }
@@ -463,13 +643,7 @@ async function loadSunscreenData() {
         filterAvailableRegions();
     } catch (error) {
         console.error('Error loading sunscreen data:', error);
-        // Show user-friendly error message
-        const loadingOverlay = document.getElementById('loading-overlay');
-        if (loadingOverlay) {
-            loadingOverlay.querySelector('.loading-text').textContent =
-                'Failed to load sunscreen data. Please refresh the page or try again later.';
-            loadingOverlay.querySelector('.spinner').style.display = 'none';
-        }
+        showLoadingError('Failed to load sunscreen data. Please refresh the page or try again later.');
         throw error;
     }
 }
@@ -636,16 +810,87 @@ function showSharedSelectionsNotification() {
 
     document.getElementById('dismiss-notification-btn').addEventListener('click', () => {
         notification.classList.add('fade-out');
-        setTimeout(() => notification.remove(), 300);
+        setTimeout(() => notification.remove(), appConfig.timings.notificationFadeOut);
     });
 
     // Auto-dismiss after 10 seconds
     setTimeout(() => {
         if (document.body.contains(notification)) {
             notification.classList.add('fade-out');
-            setTimeout(() => notification.remove(), 300);
+            setTimeout(() => notification.remove(), appConfig.timings.notificationFadeOut);
         }
-    }, 10000);
+    }, appConfig.timings.notificationAutoDismiss);
+}
+
+/**
+ * Show error in loading overlay (for critical early-stage errors)
+ * @param {string} message - Error message to display
+ */
+function showLoadingError(message) {
+    const loadingOverlay = document.getElementById('loading-overlay');
+    if (loadingOverlay) {
+        const loadingText = loadingOverlay.querySelector('.loading-text');
+        const spinner = loadingOverlay.querySelector('.spinner');
+
+        if (loadingText) {
+            loadingText.textContent = message;
+        }
+        if (spinner) {
+            spinner.style.display = 'none';
+        }
+
+        // Make sure overlay is visible
+        loadingOverlay.classList.remove('hidden');
+        loadingOverlay.style.display = 'flex';
+    }
+}
+
+/**
+ * Show error notification in-app instead of using alert()
+ * @param {string} message - Error message to display
+ * @param {string} [dismissText] - Text for dismiss button (optional)
+ */
+function showErrorNotification(message, dismissText = 'Dismiss') {
+    // Remove any existing error notifications
+    const existingError = document.querySelector('.error-notification');
+    if (existingError) {
+        existingError.remove();
+    }
+
+    // Create notification element
+    const notification = document.createElement('div');
+    notification.className = 'error-notification shared-notification';
+    notification.setAttribute('role', 'alert');
+    notification.setAttribute('aria-live', 'assertive');
+    notification.innerHTML = `
+        <div class="shared-notification-content">
+            <span class="shared-icon" style="color: #d32f2f;">⚠️</span>
+            <p>${escapeHtml(message)}</p>
+            <button class="dismiss-error-btn btn-icon" aria-label="${escapeHtml(dismissText)}">✕</button>
+        </div>
+    `;
+
+    // Insert at top of current view or body
+    const targetView = document.querySelector('.view.active') || document.body;
+    if (targetView.firstChild) {
+        targetView.insertBefore(notification, targetView.firstChild);
+    } else {
+        targetView.appendChild(notification);
+    }
+
+    // Add dismiss event listener
+    notification.querySelector('.dismiss-error-btn').addEventListener('click', () => {
+        notification.classList.add('fade-out');
+        setTimeout(() => notification.remove(), appConfig.timings.notificationFadeOut);
+    });
+
+    // Auto-dismiss after 10 seconds
+    setTimeout(() => {
+        if (document.body.contains(notification)) {
+            notification.classList.add('fade-out');
+            setTimeout(() => notification.remove(), appConfig.timings.notificationFadeOut);
+        }
+    }, appConfig.timings.notificationAutoDismiss);
 }
 
 function generateShareURL() {
@@ -703,7 +948,7 @@ function setupEventListeners() {
             checkCurrentQuestionAnswered();
         } catch (error) {
             console.error('Error loading quiz resources:', error);
-            alert(t('loading.error') || 'Failed to load quiz. Please refresh and try again.');
+            showErrorNotification(t('loading.error') || 'Failed to load quiz. Please refresh and try again.');
             elements.startQuizBtn.disabled = false;
             elements.startQuizBtn.textContent = t('welcome.startButton') || 'Start Quiz';
         }
@@ -985,16 +1230,11 @@ function handleFormChange(event) {
 
     // Handle checkboxes differently (for specialFeatures)
     if (type === 'checkbox' && name === 'specialFeatures') {
-        // Define mutually exclusive features
-        const mutuallyExclusive = {
-            'oil-control': ['hydrating'],
-            'hydrating': ['oil-control']
-        };
-
         // If this checkbox was just checked (not unchecked)
-        if (event.target.checked && mutuallyExclusive[value]) {
+        // Check for mutually exclusive features (loaded from YAML)
+        if (event.target.checked && mutuallyExclusiveFeatures[value]) {
             // Uncheck incompatible features
-            mutuallyExclusive[value].forEach(incompatible => {
+            mutuallyExclusiveFeatures[value].forEach(incompatible => {
                 const incompatibleCheckbox = document.querySelector(`input[name="${name}"][value="${incompatible}"]`);
                 if (incompatibleCheckbox && incompatibleCheckbox.checked) {
                     incompatibleCheckbox.checked = false;
@@ -1073,7 +1313,7 @@ function autoAdvanceToNextQuestion() {
             // No more questions - show results
             showResults();
         }
-    }, 400); // 400ms delay for visual feedback
+    }, appConfig.timings.autoAdvanceDelay); // Delay for visual feedback
 }
 
 // ===================================
@@ -1522,14 +1762,14 @@ function shareWhatsApp() {
 function shareFacebook() {
     const url = generateShareURL();
     const facebookURL = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(url)}`;
-    window.open(facebookURL, '_blank', 'width=600,height=400');
+    window.open(facebookURL, '_blank', `width=${appConfig.sharePopup.width},height=${appConfig.sharePopup.height}`);
 }
 
 function shareTwitter() {
     const message = generateShareMessage();
     const url = generateShareURL();
     const twitterURL = `https://twitter.com/intent/tweet?text=${encodeURIComponent(message)}&url=${encodeURIComponent(url)}`;
-    window.open(twitterURL, '_blank', 'width=600,height=400');
+    window.open(twitterURL, '_blank', `width=${appConfig.sharePopup.width},height=${appConfig.sharePopup.height}`);
 }
 
 async function copyLink() {
@@ -1713,11 +1953,39 @@ if (typeof process === 'undefined' || process.env.NODE_ENV !== 'test') {
     // Set initial mode
     document.body.classList.add('wizard-mode');
 
+    // Error boundary wrapper for init
+    const safeInit = async () => {
+        try {
+            await init();
+        } catch (error) {
+            // Fatal error - even the internal error handler failed
+            console.error('Fatal error during app initialization:', error);
+
+            // Show user-friendly error message
+            const body = document.body;
+            body.innerHTML = `
+                <div style="display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: 100vh; padding: 20px; text-align: center; font-family: system-ui, -apple-system, sans-serif;">
+                    <h1 style="color: #d32f2f; margin-bottom: 16px;">Failed to Load Application</h1>
+                    <p style="color: #666; margin-bottom: 24px; max-width: 500px;">
+                        We encountered an error while loading PickSPF. This might be due to a network issue or browser compatibility problem.
+                    </p>
+                    <button onclick="window.location.reload()" style="background: #1976d2; color: white; border: none; padding: 12px 24px; border-radius: 4px; font-size: 16px; cursor: pointer;">
+                        Refresh Page
+                    </button>
+                    <details style="margin-top: 24px; text-align: left; max-width: 600px;">
+                        <summary style="cursor: pointer; color: #666;">Technical Details</summary>
+                        <pre style="background: #f5f5f5; padding: 12px; border-radius: 4px; overflow: auto; font-size: 12px; margin-top: 8px;">${error.message}\n\n${error.stack || ''}</pre>
+                    </details>
+                </div>
+            `;
+        }
+    };
+
     // Wait for DOM and jsyaml to be ready
     if (document.readyState === 'loading') {
-        document.addEventListener('DOMContentLoaded', init);
+        document.addEventListener('DOMContentLoaded', safeInit);
     } else {
-        init();
+        safeInit();
     }
 }
 
@@ -1802,7 +2070,7 @@ export function getNextQuestion(selections, currentProducts) {
     });
 
     // If max power is very low, no question provides value
-    if (maxPower < 0.01) return null;
+    if (maxPower < appConfig.algorithm.minDiscriminatingPower) return null;
 
     return bestQuestion;
 }

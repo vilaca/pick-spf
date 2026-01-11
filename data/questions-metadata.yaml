@@ -1,0 +1,72 @@
+# Question metadata for dynamic ordering
+# Each question has:
+#   - elementIndex: The index of the question in the DOM (0-based)
+#   - attribute: The sunscreen property to filter by
+#   - isArray: Whether the attribute value is an array or single value
+
+# Application configuration
+config:
+  # Animation and timing settings (in milliseconds)
+  # These values are used in both JavaScript and CSS (injected as CSS custom properties)
+  timings:
+    # JavaScript timings
+    notificationFadeOut: 300        # Time before hiding notifications/overlays
+    autoAdvanceDelay: 400           # Delay before auto-advancing to next question
+    notificationAutoDismiss: 10000  # Auto-dismiss notifications after this time
+
+    # CSS animation timings
+    transitionBase: 300             # Base transition speed for most animations
+    transitionSlow: 400             # Slower transitions for emphasis
+
+  # Algorithm thresholds
+  algorithm:
+    minDiscriminatingPower: 0.01   # Minimum power for question to be useful (0-1 scale)
+
+  # Social media share popup dimensions
+  sharePopup:
+    width: 600
+    height: 400
+
+# Mutually exclusive features
+# When one feature is selected, these features will be automatically unselected
+mutuallyExclusive:
+  oil-control:
+    - hydrating
+  hydrating:
+    - oil-control
+
+questions:
+  location:
+    elementIndex: 0
+    attribute: availableIn
+    isArray: true
+
+  skinType:
+    elementIndex: 1
+    attribute: skinTypes
+    isArray: true
+
+  fragranceFree:
+    elementIndex: 2
+    attribute: isFragranceFree
+    isArray: false
+
+  forKids:
+    elementIndex: 3
+    attribute: forKids
+    isArray: false
+
+  formFactor:
+    elementIndex: 4
+    attribute: formFactors
+    isArray: true
+
+  waterResistant:
+    elementIndex: 5
+    attribute: waterResistant
+    isArray: false
+
+  specialFeatures:
+    elementIndex: 6
+    attribute: specialFeatures
+    isArray: true

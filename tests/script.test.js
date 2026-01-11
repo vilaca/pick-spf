@@ -12,6 +12,18 @@ describe('Dynamic Questionnaire Logic', () => {
     let sampleProducts;
 
     beforeEach(() => {
+        // Mock question metadata since it's now loaded dynamically
+        // In production, this is loaded from data/questions-metadata.yaml
+        Object.assign(questionMetadata, {
+            location: { elementIndex: 0, attribute: 'availableIn', isArray: true },
+            skinType: { elementIndex: 1, attribute: 'skinTypes', isArray: true },
+            fragranceFree: { elementIndex: 2, attribute: 'isFragranceFree', isArray: false },
+            forKids: { elementIndex: 3, attribute: 'forKids', isArray: false },
+            formFactor: { elementIndex: 4, attribute: 'formFactors', isArray: true },
+            waterResistant: { elementIndex: 5, attribute: 'waterResistant', isArray: false },
+            specialFeatures: { elementIndex: 6, attribute: 'specialFeatures', isArray: true }
+        });
+
         // Sample product data for testing
         sampleProducts = [
             {

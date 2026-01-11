@@ -67,6 +67,13 @@
     --transition-fast: 0.15s cubic-bezier(0.4, 0, 0.2, 1);
     --transition-base: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     --transition-slow: 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+
+    /* Animation timings (overridden by YAML config after load) */
+    /* Fallback values - these match the defaults in script.js */
+    --timing-notification-fade: 300ms;
+    --timing-auto-advance: 400ms;
+    --timing-transition-base: 300ms;
+    --timing-transition-slow: 400ms;
 }
 
 /* Respect user's motion preferences */
@@ -231,7 +238,7 @@ main {
     display: none;
     opacity: 0;
     transform: translateY(20px);
-    transition: opacity 0.4s ease, transform 0.4s ease;
+    transition: opacity var(--timing-transition-slow) ease, transform var(--timing-transition-slow) ease;
 }
 
 .view.active {
@@ -252,7 +259,7 @@ main {
 
 /* Fade out animation for leaving views */
 .view.fade-out {
-    animation: fadeOut 0.3s ease forwards;
+    animation: fadeOut var(--timing-notification-fade) ease forwards;
 }
 
 @keyframes fadeOut {
@@ -283,7 +290,7 @@ main {
     justify-content: center;
     z-index: 9999;
     opacity: 1;
-    transition: opacity 0.3s ease;
+    transition: opacity var(--timing-notification-fade) ease;
 }
 
 .loading-overlay.hidden {
@@ -471,11 +478,11 @@ main {
     border-radius: var(--border-radius-lg);
     padding: var(--spacing-md);
     margin-bottom: var(--spacing-lg);
-    animation: slideInDown 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    animation: slideInDown var(--timing-transition-slow) cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .shared-notification.fade-out {
-    animation: fadeOut 0.3s ease forwards;
+    animation: fadeOut var(--timing-notification-fade) ease forwards;
 }
 
 @keyframes slideInDown {
@@ -624,7 +631,7 @@ main {
     color: var(--color-secondary-dark);
     line-height: 1;
     margin-bottom: var(--spacing-xs);
-    animation: countUpdate 0.4s ease;
+    animation: countUpdate var(--timing-transition-slow) ease;
     position: relative;
     z-index: 1;
 }
@@ -713,7 +720,7 @@ body.wizard-mode .question.active {
     background: linear-gradient(135deg, #FFF5F2 0%, #FFE8E0 100%);
     box-shadow: 0 6px 20px rgba(255, 107, 53, 0.25);
     transform: scale(1.02);
-    animation: selectPulse 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    animation: selectPulse var(--timing-transition-slow) cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .option:has(input:checked)::before {
