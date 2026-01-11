@@ -1114,42 +1114,54 @@ function calculateDiscriminatingPower(questionKey, currentProducts) {
  * Returns null if all questions answered or no more discriminating questions
  */
 function determineNextQuestion() {
-    // Get unanswered questions
+    // Get unanswered questions (excluding array-based optional questions like specialFeatures)
     const unansweredQuestions = Object.keys(appState.selections).filter(
         key => appState.selections[key] === null
     );
 
-    // If no unanswered questions, return null
-    if (unansweredQuestions.length === 0) {
-        return null;
+    // If we have unanswered required questions, prioritize those
+    if (unansweredQuestions.length > 0) {
+        // Get current filtered products
+        const currentProducts = filterSunscreens();
+
+        // If only 0-1 products remain, no point in asking more questions
+        if (currentProducts.length <= 1) {
+            // But still show specialFeatures if not shown yet
+            if (!appState.questionHistory.includes('specialFeatures')) {
+                return 'specialFeatures';
+            }
+            return null;
+        }
+
+        // Calculate discriminating power for each unanswered question
+        const questionScores = unansweredQuestions.map(key => ({
+            key,
+            score: calculateDiscriminatingPower(key, currentProducts)
+        }));
+
+        // Filter out questions with zero discriminating power (all products same value)
+        const discriminatingQuestions = questionScores.filter(q => q.score > 0);
+
+        // If no discriminating questions remain, show specialFeatures if not shown yet
+        if (discriminatingQuestions.length === 0) {
+            if (!appState.questionHistory.includes('specialFeatures')) {
+                return 'specialFeatures';
+            }
+            return null;
+        }
+
+        // Sort by score (highest first) and return the best question
+        discriminatingQuestions.sort((a, b) => b.score - a.score);
+
+        return discriminatingQuestions[0].key;
     }
 
-    // Get current filtered products
-    const currentProducts = filterSunscreens();
-
-    // If only 0-1 products remain, no point in asking more questions
-    if (currentProducts.length <= 1) {
-        return null;
+    // All required questions answered - show optional specialFeatures if not shown yet
+    if (!appState.questionHistory.includes('specialFeatures')) {
+        return 'specialFeatures';
     }
 
-    // Calculate discriminating power for each unanswered question
-    const questionScores = unansweredQuestions.map(key => ({
-        key,
-        score: calculateDiscriminatingPower(key, currentProducts)
-    }));
-
-    // Filter out questions with zero discriminating power (all products same value)
-    const discriminatingQuestions = questionScores.filter(q => q.score > 0);
-
-    // If no discriminating questions remain, we can show results
-    if (discriminatingQuestions.length === 0) {
-        return null;
-    }
-
-    // Sort by score (highest first) and return the best question
-    discriminatingQuestions.sort((a, b) => b.score - a.score);
-
-    return discriminatingQuestions[0].key;
+    return null;
 }
 
 /**
