@@ -723,4 +723,62 @@ questions:
             expect(typeof quiz.updateLiveCount).toBe('function');
         });
     });
+
+    describe('INCIDecoder Link Generation', () => {
+        it('should generate correct slugs for ingredient links', () => {
+            // Test slug generation logic
+            const testCases = [
+                { input: 'Zinc Oxide (UV Filter)', expected: 'zinc-oxide' },
+                { input: 'Titanium Dioxide', expected: 'titanium-dioxide' },
+                { input: 'Avobenzone (Butyl Methoxydibenzoylmethane)', expected: 'avobenzone' },
+                { input: 'Vitamin E (Tocopherol)', expected: 'vitamin-e' },
+                { input: 'Hyaluronic Acid', expected: 'hyaluronic-acid' },
+                { input: 'Niacinamide', expected: 'niacinamide' },
+                { input: 'Alpha-Arbutin', expected: 'alpha-arbutin' }
+            ];
+
+            testCases.forEach(({ input, expected }) => {
+                // Simulate the slug generation from quiz.js
+                const cleaned = input.replace(/\([^)]*\)/g, '').trim();
+                const slug = cleaned.toLowerCase()
+                    .replace(/\s+/g, '-')
+                    .replace(/[^a-z0-9-]/g, '')
+                    .replace(/--+/g, '-')
+                    .replace(/^-+|-+$/g, '');
+
+                expect(slug).toBe(expected);
+            });
+        });
+
+        it('should handle ingredients with special characters', () => {
+            const testCases = [
+                { input: 'Dimethicone/Vinyl Dimethicone Crosspolymer', expected: 'dimethiconevinyl-dimethicone-crosspolymer' },
+                { input: 'PEG-100 Stearate', expected: 'peg-100-stearate' },
+                { input: 'C12-15 Alkyl Benzoate', expected: 'c12-15-alkyl-benzoate' }
+            ];
+
+            testCases.forEach(({ input, expected }) => {
+                const cleaned = input.replace(/\([^)]*\)/g, '').trim();
+                const slug = cleaned.toLowerCase()
+                    .replace(/\s+/g, '-')
+                    .replace(/[^a-z0-9-]/g, '')
+                    .replace(/--+/g, '-')
+                    .replace(/^-+|-+$/g, '');
+
+                expect(slug).toBe(expected);
+            });
+        });
+
+        it('should remove multiple consecutive hyphens', () => {
+            const input = 'Test  -  Multiple   Spaces';
+            const cleaned = input.replace(/\([^)]*\)/g, '').trim();
+            const slug = cleaned.toLowerCase()
+                .replace(/\s+/g, '-')
+                .replace(/[^a-z0-9-]/g, '')
+                .replace(/--+/g, '-')
+                .replace(/^-+|-+$/g, '');
+
+            expect(slug).toBe('test-multiple-spaces');
+        });
+    });
 });

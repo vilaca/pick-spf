@@ -1140,9 +1140,32 @@ function renderResultCard(sunscreen) {
             .split(' - ')
             .map(ingredient => {
                 const trimmed = ingredient.trim();
-                const slug = trimmed.toLowerCase()
-                    .replace(/\s+/g, '-')
-                    .replace(/[^\w-]/g, '');
+
+                // Handle synonyms (e.g., "AQUA / WATER / EAU" or "CI 77891 / TITANIUM DIOXIDE")
+                // Use the most common/standard name (usually the English name)
+                let cleaned = trimmed;
+                if (trimmed.includes(' / ')) {
+                    const parts = trimmed.split(' / ').map(p => p.trim());
+                    // Prefer the longest non-code part (usually the English name)
+                    // Skip short codes like "CI 77891" or "AQUA" in favor of full names
+                    cleaned = parts.reduce((best, current) => {
+                        const currentNoCode = current.replace(/^(CI|C\.I\.)\s*\d+/i, '').trim();
+                        const bestNoCode = best.replace(/^(CI|C\.I\.)\s*\d+/i, '').trim();
+                        return (currentNoCode.length > bestNoCode.length) ? current : best;
+                    }, parts[0]);
+                }
+
+                // Remove parenthetical content and color codes
+                cleaned = cleaned
+                    .replace(/\([^)]*\)/g, '')                    // Remove (parentheses)
+                    .replace(/^(CI|C\.I\.)\s*\d+\s*\/?\s*/i, '') // Remove CI codes at start
+                    .trim();
+
+                const slug = cleaned.toLowerCase()
+                    .replace(/\s+/g, '-')           // spaces to hyphens
+                    .replace(/[^a-z0-9-]/g, '')     // keep only letters, numbers, hyphens
+                    .replace(/--+/g, '-')            // collapse multiple hyphens
+                    .replace(/^-+|-+$/g, '');       // trim leading/trailing hyphens
                 const escaped = escapeHTML(trimmed);
 
                 // Check if ingredient has a classification
