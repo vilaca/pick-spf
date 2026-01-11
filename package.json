@@ -7,7 +7,9 @@
   "scripts": {
     "test": "NODE_OPTIONS=--experimental-vm-modules NODE_ENV=test jest",
     "test:watch": "NODE_OPTIONS=--experimental-vm-modules NODE_ENV=test jest --watch",
-    "test:coverage": "NODE_OPTIONS=--experimental-vm-modules NODE_ENV=test jest --coverage"
+    "test:coverage": "NODE_OPTIONS=--experimental-vm-modules NODE_ENV=test jest --coverage",
+    "validate": "node validate-data.js",
+    "validate:full": "npm run validate && npm test"
   },
   "keywords": [
     "sunscreen",
@@ -19,11 +21,14 @@
   "license": "MIT",
   "devDependencies": {
     "jest": "^29.7.0",
-    "jest-environment-jsdom": "^29.7.0"
+    "jest-environment-jsdom": "^29.7.0",
+    "js-yaml": "^4.1.1"
   },
   "jest": {
     "testEnvironment": "jsdom",
-    "setupFilesAfterEnv": ["<rootDir>/tests/setup.js"],
+    "setupFilesAfterEnv": [
+      "<rootDir>/tests/setup.js"
+    ],
     "testMatch": [
       "**/tests/**/*.spec.js",
       "**/tests/**/*.test.js"
