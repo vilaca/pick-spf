@@ -746,9 +746,6 @@ function showView(viewName) {
         elements.startQuizBtn.focus();
     } else if (viewName === 'questions') {
         elements.questionsView.classList.add('active');
-        // Focus first question
-        const firstInput = elements.questions[0].querySelector('input');
-        if (firstInput) firstInput.focus();
     } else if (viewName === 'results') {
         elements.resultsView.classList.add('active');
         elements.resultsContainer.focus();
@@ -872,9 +869,6 @@ function updateQuestionDisplay() {
             q.classList.remove('active');
             if (index === metadata.elementIndex) {
                 q.classList.add('active');
-                // Focus first input in new question
-                const firstInput = q.querySelector('input');
-                if (firstInput) firstInput.focus();
             }
         });
     }
