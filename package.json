@@ -31,6 +31,7 @@
     "transform": {},
     "collectCoverageFrom": [
       "script.js",
+      "quiz.js",
       "!node_modules/**"
     ],
     "coverageThreshold": {
