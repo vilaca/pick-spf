@@ -31,7 +31,8 @@ function sanitizeURL(url) {
 ### 2. Content Security Policy (CSP)
 
 Strict CSP header prevents:
-- Inline script execution (with exceptions for necessary inline scripts)
+- Inline script execution (no inline scripts allowed)
+- Inline style attributes (all styles in external CSS)
 - Loading resources from unauthorized domains
 - Clickjacking attacks (frame-ancestors 'none')
 - Form submissions to external domains
@@ -39,8 +40,8 @@ Strict CSP header prevents:
 ```html
 <meta http-equiv="Content-Security-Policy" content="
   default-src 'self';
-  script-src 'self' 'unsafe-inline';
-  style-src 'self' 'unsafe-inline';
+  script-src 'self';
+  style-src 'self';
   img-src 'self' data:;
   connect-src 'self';
   frame-ancestors 'none';
@@ -138,25 +139,13 @@ We will respond within 48 hours and provide updates on fixes.
 
 ### Current Limitations
 
-1. **'unsafe-inline' in CSP**: Required for inline styles and scripts
-   - Future: Move all inline scripts to external files
-   - Future: Use nonces or hashes for inline content
-
-2. **Client-side only**: No server-side validation
+1. **Client-side only**: No server-side validation
    - Not a major concern as it's a static informational site
    - No user accounts or sensitive operations
 
-3. **No rate limiting**: Static site on GitHub Pages
+2. **No rate limiting**: Static site on GitHub Pages
    - GitHub Pages handles DDoS protection
    - No API to abuse
-
-### Future Enhancements
-
-- [ ] Remove 'unsafe-inline' from CSP
-- [ ] Add Subresource Integrity (SRI) hashes
-- [ ] Implement automated security testing (OWASP ZAP, etc.)
-- [ ] Add security.txt file
-- [ ] Regular dependency audits
 
 ## Compliance
 

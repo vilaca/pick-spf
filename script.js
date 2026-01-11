@@ -682,7 +682,7 @@ function toggleMode() {
         elements.modeText.textContent = t('questions.toggleModeWizard');
         elements.prevBtn.style.display = 'none';
         elements.nextBtn.style.display = 'none';
-        elements.showResultsBtn.style.display = 'inline-block';
+        elements.showResultsBtn.classList.remove('hidden');
 
         // Show all questions
         elements.questions.forEach(q => q.classList.add('active'));
@@ -829,10 +829,10 @@ function updateNavigationButtons() {
     // Check if we're at the end (should show results)
     if (shouldShowResults()) {
         elements.nextBtn.style.display = 'none';
-        elements.showResultsBtn.style.display = 'inline-block';
+        elements.showResultsBtn.classList.remove('hidden');
     } else {
         elements.nextBtn.style.display = 'inline-block';
-        elements.showResultsBtn.style.display = 'none';
+        elements.showResultsBtn.classList.add('hidden');
     }
 }
 

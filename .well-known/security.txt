@@ -1,0 +1,8 @@
+# Security Contact Information
+# https://securitytxt.org/
+
+Contact: https://github.com/vilaca/pick-spf/security/advisories/new
+Expires: 2027-01-11T00:00:00.000Z
+Preferred-Languages: en
+Canonical: https://vilaca.github.io/pick-spf/.well-known/security.txt
+Policy: https://vilaca.github.io/pick-spf/SECURITY.md

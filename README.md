@@ -212,26 +212,6 @@ Found a vulnerability? Please **do not** open a public issue.
 
 See [SECURITY.md](SECURITY.md) for our security policy and vulnerability reporting process.
 
-## 🌐 Deployment
-
-This site is deployed on **GitHub Pages** (free tier).
-
-### Deploy Your Own Copy
-
-1. Fork this repository
-2. Go to Settings → Pages
-3. Source: Deploy from branch `master` (or `main`)
-4. Save
-
-Your site will be live at `https://your-username.github.io/pick-spf/` in 1-5 minutes!
-
-### Custom Domain
-
-In repository Settings → Pages:
-1. Add your custom domain
-2. Update DNS records as instructed
-3. Enable HTTPS (recommended)
-
 ## 🧪 Testing
 
 ### Functional Tests
@@ -275,7 +255,6 @@ In repository Settings → Pages:
 
 ### Hosting
 - **GitHub Pages** - Free static site hosting
-- **Git** - Version control
 
 ### Development
 - **Mocha + Chai** - Browser-based unit tests
@@ -306,50 +285,7 @@ Modern JavaScript features used:
 - CSS custom properties
 - CSS Grid/Flexbox
 
-## 📦 Project Structure
-
-```
-pick-spf/
-├── index.html              # Main HTML file
-├── script.js               # Application logic
-├── styles.css              # Styling
-├── manifest.json           # PWA configuration
-├── robots.txt              # SEO: Search engine rules
-├── sitemap.xml             # SEO: Sitemap
-├── LICENSE                 # MIT License
-├── SECURITY.md             # Security policy
-├── data/
-│   └── sunscreens.yaml     # Product database
-├── translations/
-│   ├── en.json             # English
-│   ├── pt-PT.json          # Portuguese
-│   ├── de.json             # German
-│   ├── fr.json             # French
-│   ├── es.json             # Spanish
-│   ├── it.json             # Italian
-│   └── pl.json             # Polish
-├── lib/
-│   └── js-yaml.min.js      # YAML parser (local)
-├── images/
-│   ├── favicon.svg         # Site icon
-│   └── og-image.png        # Social sharing image
-└── tests/
-    ├── index.html          # Test runner (browser)
-    ├── script.test.js      # Test suite
-    └── README.md           # Testing docs
-```
-
 ## 🎨 Customization
-
-### Changing Colors
-Edit CSS custom properties in `styles.css`:
-```css
-:root {
-    --color-primary: #FF6B35;     /* Main brand color */
-    --color-secondary: #4ECDC4;   /* Accent color */
-    --color-bg: #FFFFFF;          /* Background */
-}
-```
 
 ### Adding Languages
 1. Create `translations/your-lang.json` (copy `en.json` as template)
@@ -362,19 +298,6 @@ Edit CSS custom properties in `styles.css`:
    };
    ```
 4. Add language selector option in `index.html`
-
-## 🏆 Performance Metrics
-
-Target Lighthouse scores:
-- **Performance**: 90+
-- **Accessibility**: 100
-- **Best Practices**: 100
-- **SEO**: 100
-
-Typical load times (measured on 4G):
-- First Contentful Paint: ~200ms
-- Time to Interactive: ~300ms
-- Total Bundle Size: ~80KB (including js-yaml)
 
 ## 📜 License
 
