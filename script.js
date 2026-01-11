@@ -85,7 +85,7 @@ const appState = {
         forKids: null,
         formFactor: null,
         waterResistant: null,
-        specialFeatures: []
+        specialFeatures: null
     },
     sunscreens: [],
     filteredResults: [],
@@ -541,7 +541,9 @@ function checkURLParameters() {
 
         // Build question history from answered questions
         Object.keys(appState.selections).forEach(key => {
-            if (appState.selections[key] !== null) {
+            const value = appState.selections[key];
+            // Consider answered if not null, or if it's an array with items
+            if (value !== null && (Array.isArray(value) ? value.length > 0 : true)) {
                 appState.questionHistory.push(key);
             }
         });
@@ -765,6 +767,13 @@ function nextQuestion() {
         inputs.forEach(input => {
             if (input.checked) answered = true;
         });
+
+        // Special handling for optional specialFeatures question
+        if (!answered && appState.currentQuestionKey === 'specialFeatures') {
+            // Mark as answered with empty array (user chose to skip)
+            appState.selections.specialFeatures = [];
+            answered = true;
+        }
 
         if (!answered) {
             return; // Button should already be disabled
@@ -1521,7 +1530,8 @@ function restart() {
         fragranceFree: null,
         forKids: null,
         formFactor: null,
-        waterResistant: null
+        waterResistant: null,
+        specialFeatures: null
     };
     appState.filteredResults = [];
 
