@@ -371,8 +371,8 @@ function validateSunscreenData(data) {
         if (typeof sunscreen.brand !== 'string' || sunscreen.brand.length === 0) {
             throw new Error(`Invalid sunscreen at index ${index}: 'brand' must be a non-empty string`);
         }
-        if (typeof sunscreen.spf !== 'number' || sunscreen.spf < 0 || sunscreen.spf > 100) {
-            throw new Error(`Invalid sunscreen at index ${index}: 'spf' must be a number between 0-100`);
+        if ((typeof sunscreen.spf !== 'number' && typeof sunscreen.spf !== 'string') || !sunscreen.spf) {
+            throw new Error(`Invalid sunscreen at index ${index}: 'spf' must be a number or string`);
         }
         if (!Array.isArray(sunscreen.skinTypes) || sunscreen.skinTypes.length === 0) {
             throw new Error(`Invalid sunscreen at index ${index}: 'skinTypes' must be a non-empty array`);
