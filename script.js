@@ -872,3 +872,15 @@ export function shouldShowResultsTest(selections, currentProducts) {
 
 // Re-export with expected name for tests
 export { shouldShowResultsTest as shouldShowResults };
+
+// Export security utilities for testing
+export { escapeHTML, sanitizeURL, validateURLParam };
+
+// Export i18n for testing
+export { t, availableLanguages, loadTranslation, changeLanguage };
+
+// Export UI functions for testing
+export { showView, toggleMode, announceToScreenReader, showErrorNotification, showLoadingError, handleKeyboard };
+
+// Export app state and config for testing
+export { appState, appConfig, elements };

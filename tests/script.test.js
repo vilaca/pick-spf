@@ -347,6 +347,136 @@ describe('Dynamic Questionnaire Logic', () => {
             const filtered = filterProducts(specialProducts, selections);
             expect(filtered).toHaveLength(1);
         });
+
+        it('should filter out products without required location', () => {
+            const selections = { location: 'Japan' };
+            const filtered = filterProducts(sampleProducts, selections);
+            expect(filtered).toHaveLength(0);
+        });
+
+        it('should handle products with special features property', () => {
+            const productsWithFeatures = [
+                {
+                    id: 1,
+                    name: 'Product 1',
+                    availableIn: ['US'],
+                    skinTypes: ['oily'],
+                    specialFeatures: ['oil-control', 'hydrating']
+                },
+                {
+                    id: 2,
+                    name: 'Product 2',
+                    availableIn: ['US'],
+                    skinTypes: ['oily'],
+                    specialFeatures: ['tinted']
+                }
+            ];
+
+            // filterProducts doesn't filter by specialFeatures (that's handled elsewhere)
+            // Just verify it doesn't break when products have this property
+            const selections = { location: 'US' };
+            const filtered = filterProducts(productsWithFeatures, selections);
+            expect(filtered).toHaveLength(2);
+        });
+
+        it('should handle products with Global availability', () => {
+            const globalProducts = [
+                {
+                    id: 1,
+                    name: 'Global Product',
+                    availableIn: ['Global'],
+                    skinTypes: ['all']
+                }
+            ];
+
+            const selections = { location: 'Antarctica' };
+            const filtered = filterProducts(globalProducts, selections);
+            expect(filtered).toHaveLength(1);
+        });
+
+        it('should handle all skin type products', () => {
+            const allSkinProducts = [
+                {
+                    id: 1,
+                    name: 'All Skin',
+                    availableIn: ['US'],
+                    skinTypes: ['all']
+                }
+            ];
+
+            const selections = { location: 'US', skinType: 'sensitive' };
+            const filtered = filterProducts(allSkinProducts, selections);
+            expect(filtered).toHaveLength(1);
+        });
+
+        it('should filter by form factor correctly', () => {
+            const selections = { formFactor: 'spray' };
+            const filtered = filterProducts(sampleProducts, selections);
+            expect(filtered.length).toBeGreaterThan(0);
+            filtered.forEach(product => {
+                expect(product.formFactors).toContain('spray');
+            });
+        });
+
+        it('should handle water resistance filtering for false', () => {
+            const selections = { waterResistant: 'false' };
+            const filtered = filterProducts(sampleProducts, selections);
+            expect(filtered.length).toBeGreaterThan(0);
+            filtered.forEach(product => {
+                expect(product.waterResistant).toBe(false);
+            });
+        });
+
+        it('should handle fragrance free filtering for false', () => {
+            const selections = { fragranceFree: 'false' };
+            const filtered = filterProducts(sampleProducts, selections);
+            expect(filtered.length).toBeGreaterThan(0);
+            filtered.forEach(product => {
+                expect(product.isFragranceFree).toBe(false);
+            });
+        });
+
+        it('should handle for kids filtering for false', () => {
+            const selections = { forKids: 'false' };
+            const filtered = filterProducts(sampleProducts, selections);
+            expect(filtered.length).toBeGreaterThan(0);
+            filtered.forEach(product => {
+                expect(product.forKids).toBe(false);
+            });
+        });
+
+        it('should handle products without special features array', () => {
+            const productsNoFeatures = [
+                {
+                    id: 1,
+                    name: 'No Features',
+                    availableIn: ['US'],
+                    skinTypes: ['oily']
+                    // No specialFeatures array
+                }
+            ];
+
+            // filterProducts doesn't filter by specialFeatures
+            // Just verify products without this property still work
+            const selections = { location: 'US' };
+            const filtered = filterProducts(productsNoFeatures, selections);
+            expect(filtered).toHaveLength(1);
+        });
+
+        it('should handle undefined product attributes', () => {
+            const productsUndefined = [
+                {
+                    id: 1,
+                    name: 'Undefined Attrs',
+                    availableIn: ['US']
+                    // Other attributes undefined
+                }
+            ];
+
+            const selections = { location: 'US' };
+            const filtered = filterProducts(productsUndefined, selections);
+            expect(filtered).toHaveLength(1);
+        });
     });
 
     describe('Question History', () => {
