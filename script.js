@@ -359,33 +359,19 @@ function checkURLParameters() {
         hasParams = true;
     }
 
-    // If any params exist, show the shared selections notification and start at questions view
+    // If any params exist, show results directly
     if (hasParams) {
         showSharedSelectionsNotification();
 
         // Build question history from answered questions
-        // Determine which questions have been answered and add them to history
         Object.keys(appState.selections).forEach(key => {
             if (appState.selections[key] !== null) {
                 appState.questionHistory.push(key);
             }
         });
 
-        // Determine the next question dynamically
-        const nextQuestion = determineNextQuestion();
-
-        if (nextQuestion) {
-            appState.currentQuestionKey = nextQuestion;
-            appState.questionHistory.push(nextQuestion);
-        }
-
         setTimeout(() => {
-            showView('questions');
-            updateQuestionDisplay();
-            updateProgress();
-            updateNavigationButtons();
-            checkCurrentQuestionAnswered();
-            updateLiveCount();
+            showResults();
         }, 500);
     }
 }
