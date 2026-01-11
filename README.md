@@ -182,6 +182,18 @@ Invalid data will show an error message with details.
 
 We welcome contributions! Here's how to help:
 
+### For Developers
+
+**📚 See [README-DEV.md](README-DEV.md)** for quick start guide and [CONTRIBUTING.md](CONTRIBUTING.md) for comprehensive developer documentation.
+
+Quick setup:
+```bash
+npm install
+npm test              # Run 318 tests
+npm run validate      # Validate YAML files
+npm run validate:full # Run all checks
+```
+
 ### Adding Products
 
 1. Fork this repository
@@ -205,6 +217,8 @@ Found a bug or have a suggestion? [Open an issue](https://github.com/vilaca/pick
 5. Commit: `git commit -m 'Add amazing feature'`
 6. Push: `git push origin feature/amazing-feature`
 7. Open a Pull Request
+
+See [CONTRIBUTING.md](CONTRIBUTING.md) for detailed guidelines on testing, validation, and code structure.
 
 ### Security Issues
 
