@@ -27,14 +27,6 @@ config:
     width: 600
     height: 400
 
-# Mutually exclusive features
-# When one feature is selected, these features will be automatically unselected
-mutuallyExclusive:
-  oil-control:
-    - hydrating
-  hydrating:
-    - oil-control
-
 questions:
   location:
     elementIndex: 0

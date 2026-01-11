@@ -119,7 +119,6 @@ sunscreens:
       - cream
     waterResistant: false  # Not mentioned
     specialFeatures:
-      - oil-control
       - anti-shine
     availableIn:
       - EU
@@ -151,7 +150,6 @@ sunscreens:
       - cream
     waterResistant: false  # Not mentioned
     specialFeatures:
-      - oil-control
       - anti-shine
       - tinted
     availableIn:
@@ -215,7 +213,6 @@ sunscreens:
       - lotion
     waterResistant: true
     specialFeatures:
-      - hydrating
       - for-atopic-skin
     availableIn:
       - EU
@@ -247,7 +244,6 @@ sunscreens:
       - lotion
     waterResistant: false  # Not mentioned
     specialFeatures:
-      - oil-control
       - anti-shine
     availableIn:
       - EU
@@ -278,7 +274,6 @@ sunscreens:
       - lotion
     waterResistant: false  # Not mentioned
     specialFeatures:
-      - oil-control
       - anti-shine
       - tinted
     availableIn:
@@ -374,7 +369,6 @@ sunscreens:
       - cream
     waterResistant: true
     specialFeatures:
-      - hydrating
       - invisible-texture
       - water-sweat-sand-resistant
       - anti-eye-stinging
@@ -405,7 +399,6 @@ sunscreens:
       - cream
     waterResistant: true
     specialFeatures:
-      - hydrating
       - invisible-texture
       - water-sweat-sand-resistant
       - anti-eye-stinging
@@ -723,7 +716,6 @@ sunscreens:
     waterResistant: false  # Not mentioned
     specialFeatures:
       - for-babies
-      - hydrating
       - barrier-protection
       - for-atopic-skin
     availableIn:
@@ -754,7 +746,6 @@ sunscreens:
     specialFeatures:
       - eco-friendly-packaging
       - anti-pollution
-      - hydrating
       - netlock-technology
       - marine-friendly
     availableIn:
