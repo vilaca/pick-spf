@@ -46,7 +46,8 @@ function validateURLParam(param, value) {
         fragrance: ['true', 'false', 'any'],
         kids: ['true', 'false', 'any'],
         form: ['cream', 'lotion', 'spray', 'stick', 'gel', 'any'],
-        water: ['true', 'false', 'any']
+        water: ['true', 'false', 'any'],
+        features: ['oil-control', 'hydrating', 'anti-aging', 'anti-dark-spots', 'tinted', 'invisible-finish', 'for-atopic-skin', 'eco-friendly-packaging', 'wet-skin-application']
     };
 
     if (allowedValues[param] && allowedValues[param].includes(value)) {
@@ -67,7 +68,8 @@ const questionMetadata = {
     fragranceFree: { elementIndex: 2, attribute: 'isFragranceFree', isArray: false },
     forKids: { elementIndex: 3, attribute: 'forKids', isArray: false },
     formFactor: { elementIndex: 4, attribute: 'formFactors', isArray: true },
-    waterResistant: { elementIndex: 5, attribute: 'waterResistant', isArray: false }
+    waterResistant: { elementIndex: 5, attribute: 'waterResistant', isArray: false },
+    specialFeatures: { elementIndex: 6, attribute: 'specialFeatures', isArray: true }
 };
 
 const appState = {
@@ -75,14 +77,15 @@ const appState = {
     mode: 'wizard', // 'wizard' or 'viewall'
     currentQuestionKey: null, // Current question key (e.g., 'location', 'skinType')
     questionHistory: [], // Track order of questions shown (for back button)
-    totalQuestions: 6,
+    totalQuestions: 7,
     selections: {
         location: null,
         skinType: null,
         fragranceFree: null,
         forKids: null,
         formFactor: null,
-        waterResistant: null
+        waterResistant: null,
+        specialFeatures: []
     },
     sunscreens: [],
     filteredResults: [],
@@ -292,8 +295,9 @@ async function init() {
         // Initialize view
         showView('welcome');
 
-        // Set initial progress
+        // Set initial progress and live count
         updateProgress();
+        updateLiveCount();
     } catch (error) {
         console.error('Initialization error:', error);
         const loadingOverlay = document.getElementById('loading-overlay');
@@ -519,6 +523,17 @@ function checkURLParameters() {
             hasParams = true;
         }
     }
+    if (params.has('features')) {
+        // Features can be comma-separated
+        const featuresParam = params.get('features');
+        const features = featuresParam.split(',').map(f => f.trim());
+        const validFeatures = features.filter(f => validateURLParam('features', f));
+        if (validFeatures.length > 0) {
+            appState.selections.specialFeatures = validFeatures;
+            selectCheckboxesByValues('specialFeatures', validFeatures);
+            hasParams = true;
+        }
+    }
 
     // If any params exist, show results directly
     if (hasParams) {
@@ -542,6 +557,15 @@ function selectRadioByValue(name, value) {
     if (radio) {
         radio.checked = true;
     }
+}
+
+function selectCheckboxesByValues(name, values) {
+    values.forEach(value => {
+        const checkbox = document.querySelector(`input[name="${name}"][value="${value}"]`);
+        if (checkbox) {
+            checkbox.checked = true;
+        }
+    });
 }
 
 function showSharedSelectionsNotification() {
@@ -590,6 +614,9 @@ function generateShareURL() {
     if (appState.selections.forKids) params.set('kids', appState.selections.forKids);
     if (appState.selections.formFactor) params.set('form', appState.selections.formFactor);
     if (appState.selections.waterResistant) params.set('water', appState.selections.waterResistant);
+    if (appState.selections.specialFeatures && appState.selections.specialFeatures.length > 0) {
+        params.set('features', appState.selections.specialFeatures.join(','));
+    }
 
     const baseURL = window.location.origin + window.location.pathname;
     return params.toString() ? `${baseURL}?${params.toString()}` : baseURL;
@@ -799,9 +826,14 @@ function checkCurrentQuestionAnswered() {
         const inputs = currentQ.querySelectorAll('input');
         let answered = false;
 
-        inputs.forEach(input => {
-            if (input.checked) answered = true;
-        });
+        // Special features question is optional (checkboxes)
+        if (appState.currentQuestionKey === 'specialFeatures') {
+            answered = true; // Always considered answered (optional)
+        } else {
+            inputs.forEach(input => {
+                if (input.checked) answered = true;
+            });
+        }
 
         // Update next button
         if (answered) {
@@ -868,9 +900,24 @@ function updateProgress() {
 function handleFormChange(event) {
     const name = event.target.name;
     const value = event.target.value;
+    const type = event.target.type;
 
-    // Update state
-    appState.selections[name] = value;
+    // Handle checkboxes differently (for specialFeatures)
+    if (type === 'checkbox' && name === 'specialFeatures') {
+        // Get all checked checkboxes with this name
+        const checkedBoxes = document.querySelectorAll(`input[name="${name}"]:checked`);
+        const values = Array.from(checkedBoxes).map(cb => cb.value);
+        appState.selections[name] = values;
+
+        // Announce to screen reader
+        announceToScreenReader(`${values.length} special features selected`);
+    } else {
+        // Regular radio button handling
+        appState.selections[name] = value;
+
+        // Announce to screen reader
+        announceToScreenReader(`Selected ${value}`);
+    }
 
     // Update progress
     updateProgress();
@@ -881,11 +928,8 @@ function handleFormChange(event) {
     // Check if current question is answered (enable/disable next button)
     checkCurrentQuestionAnswered();
 
-    // Announce to screen reader
-    announceToScreenReader(`Selected ${value}`);
-
-    // Auto-advance in wizard mode
-    if (appState.mode === 'wizard') {
+    // Auto-advance in wizard mode (only for non-checkbox questions)
+    if (appState.mode === 'wizard' && type !== 'checkbox') {
         autoAdvanceToNextQuestion();
     }
 }
@@ -980,6 +1024,19 @@ function filterSunscreens() {
         results = results.filter(s => s.waterResistant === true);
     } else if (appState.selections.waterResistant === 'false') {
         results = results.filter(s => s.waterResistant === false);
+    }
+
+    // Filter by special features (must have ALL selected features)
+    if (appState.selections.specialFeatures && appState.selections.specialFeatures.length > 0) {
+        results = results.filter(s => {
+            if (!s.specialFeatures || !Array.isArray(s.specialFeatures)) {
+                return false;
+            }
+            // Product must have ALL selected features
+            return appState.selections.specialFeatures.every(feature =>
+                s.specialFeatures.includes(feature)
+            );
+        });
     }
 
     appState.filteredResults = results;
@@ -1232,6 +1289,42 @@ function renderResultCard(sunscreen) {
     // Sanitize URL - only allow http/https
     const safeURL = sanitizeURL(sunscreen.url);
 
+    // Parse and link ingredients to INCIDecoder
+    let ingredientsHTML = '';
+    if (sunscreen.ingredients) {
+        const classifications = sunscreen.ingredientClassifications || {};
+
+        const ingredientList = sunscreen.ingredients
+            .split(' - ')
+            .map(ingredient => {
+                const trimmed = ingredient.trim();
+                const slug = trimmed.toLowerCase()
+                    .replace(/\s+/g, '-')
+                    .replace(/[^\w-]/g, '');
+                const escaped = escapeHTML(trimmed);
+
+                // Check if ingredient has a classification
+                let badge = '';
+                const classification = classifications[trimmed];
+                if (classification) {
+                    const badgeEmoji = classification === 'superstar' ? '⭐' :
+                                     classification === 'goodie' ? '✓' :
+                                     classification === 'icky' ? '⚠' : '';
+                    badge = `<span class="ingredient-badge ingredient-badge-${classification}" title="${classification}">${badgeEmoji}</span> `;
+                }
+
+                return `<a href="https://incidecoder.com/ingredients/${slug}" target="_blank" rel="noopener noreferrer" class="ingredient-link">${badge}${escaped}</a>`;
+            })
+            .join(', ');
+
+        ingredientsHTML = `
+            <details class="ingredients-section">
+                <summary>Ingredients</summary>
+                <p class="ingredients-list">${ingredientList}</p>
+            </details>
+        `;
+    }
+
     return `
         <article class="result-card" aria-label="${name} by ${brand}">
             <h3>${name}</h3>
@@ -1243,12 +1336,14 @@ function renderResultCard(sunscreen) {
                 ${sunscreen.isFragranceFree ? '<span class="detail-badge">Fragrance-Free</span>' : ''}
                 ${sunscreen.waterResistant ? '<span class="detail-badge">Water Resistant</span>' : ''}
                 ${sunscreen.forKids ? '<span class="detail-badge">For Kids</span>' : ''}
-                <span class="detail-badge">${price}</span>
+                ${price ? `<span class="detail-badge">${price}</span>` : ''}
             </div>
 
             <p><strong>Skin Types:</strong> ${skinTypesList}</p>
 
-            ${safeURL ? `<a href="${safeURL}" target="_blank" rel="noopener noreferrer">Learn More →</a>` : ''}
+            ${ingredientsHTML}
+
+            ${safeURL ? `<a href="${safeURL}" target="_blank" rel="noopener noreferrer" class="product-link">Learn More →</a>` : ''}
         </article>
     `;
 }

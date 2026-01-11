@@ -177,6 +177,48 @@
           "desc": "Sem preferência"
         }
       }
+    },
+    "question7": {
+      "legend": "Alguma característica especial? (opcional, selecione todas as que se aplicam)",
+      "note": "Deixe desmarcado se não tiver preferência específica.",
+      "options": {
+        "oilControl": {
+          "label": "Controlo de Oleosidade",
+          "desc": "Controla o excesso de oleosidade e brilho"
+        },
+        "hydrating": {
+          "label": "Hidratante",
+          "desc": "Fórmula hidratante"
+        },
+        "antiAging": {
+          "label": "Anti-Envelhecimento",
+          "desc": "Ajuda a prevenir sinais de envelhecimento"
+        },
+        "antiDarkSpots": {
+          "label": "Anti-Manchas",
+          "desc": "Ajuda a reduzir hiperpigmentação"
+        },
+        "tinted": {
+          "label": "Com Cor",
+          "desc": "Adiciona cobertura de cor"
+        },
+        "invisibleFinish": {
+          "label": "Acabamento Invisível",
+          "desc": "Sem marcas brancas"
+        },
+        "forAtopicSkin": {
+          "label": "Para Pele Atópica",
+          "desc": "Sensível, propensa a eczema"
+        },
+        "ecoFriendly": {
+          "label": "Eco-Responsável",
+          "desc": "Embalagem sustentável"
+        },
+        "wetSkin": {
+          "label": "Aplicação em Pele Molhada",
+          "desc": "Aplica em pele molhada"
+        }
+      }
     }
   },
   "navigation": {

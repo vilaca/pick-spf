@@ -23,6 +23,9 @@ sunscreens:
     formFactors:
       - lotion
     waterResistant: false  # Lightweight formulation, not explicitly mentioned
+    specialFeatures:
+      - lightweight
+      - ultra-breathable
     availableIn:
       - EU
     url: "https://www.laroche-posay.pt/anthelios/anthelios-uvair-fps-50-plus"
@@ -54,6 +57,9 @@ sunscreens:
     formFactors:
       - lotion
     waterResistant: false  # Not mentioned
+    specialFeatures:
+      - anti-dark-spots
+      - corrects-uneven-skin-tone
     availableIn:
       - EU
     url: "https://www.laroche-posay.pt/anthelios/anthelios-uvmune-400-fluido-antimanchas-fps-50-plus"
@@ -80,6 +86,9 @@ sunscreens:
     formFactors:
       - spray
     waterResistant: true
+    specialFeatures:
+      - invisible-finish
+      - for-atopic-skin
     availableIn:
       - EU
     url: "https://www.laroche-posay.pt/anthelios/anthelios-uvmune-400-dermo-pediatrics-spray-invisivel-fps-50-plus"
@@ -109,6 +118,9 @@ sunscreens:
       - gel
       - cream
     waterResistant: false  # Not mentioned
+    specialFeatures:
+      - oil-control
+      - anti-shine
     availableIn:
       - EU
     url: "https://www.laroche-posay.pt/anthelios/anthelios-uvmune-400-oil-control-gel-creme-fps-50-plus-sem-perfume"
@@ -138,6 +150,10 @@ sunscreens:
       - gel
       - cream
     waterResistant: false  # Not mentioned
+    specialFeatures:
+      - oil-control
+      - anti-shine
+      - tinted
     availableIn:
       - EU
     url: "https://www.laroche-posay.pt/anthelios/anthelios-uvmune-400-oil-control-gel-creme-fps-50-plus-com-cor"
@@ -166,6 +182,9 @@ sunscreens:
     formFactors:
       - lotion
     waterResistant: true
+    specialFeatures:
+      - invisible-finish
+      - for-atopic-skin
     availableIn:
       - EU
     url: "https://www.laroche-posay.pt/anthelios/anthelios-uvmune-400-dermo-pediatrics-fluido-invisivel-fps-50-plus"
@@ -195,6 +214,9 @@ sunscreens:
     formFactors:
       - lotion
     waterResistant: true
+    specialFeatures:
+      - hydrating
+      - for-atopic-skin
     availableIn:
       - EU
     url: "https://www.laroche-posay.pt/anthelios/anthelios-uvmune-400-dermo-pediatrics-locao-hidratante-fps-50-plus"
@@ -224,6 +246,9 @@ sunscreens:
     formFactors:
       - lotion
     waterResistant: false  # Not mentioned
+    specialFeatures:
+      - oil-control
+      - anti-shine
     availableIn:
       - EU
     url: "https://www.laroche-posay.pt/anthelios/anthelios-uvmune-400-oil-control-fluido-fps-50-plus"
@@ -252,6 +277,10 @@ sunscreens:
     formFactors:
       - lotion
     waterResistant: false  # Not mentioned
+    specialFeatures:
+      - oil-control
+      - anti-shine
+      - tinted
     availableIn:
       - EU
     url: "https://www.laroche-posay.pt/anthelios/anthelios-uvmune-400-oil-control-fluido-fps-50-plus-com-cor"
@@ -280,6 +309,11 @@ sunscreens:
     formFactors:
       - lotion
     waterResistant: true
+    specialFeatures:
+      - invisible-finish
+      - lightweight-texture
+      - water-sweat-sand-resistant
+      - anti-eye-stinging
     availableIn:
       - EU
     url: "https://www.laroche-posay.pt/anthelios/anthelios-uvmune-400-fluido-invisivel-fps-50-plus-sem-perfume"
@@ -306,6 +340,12 @@ sunscreens:
     formFactors:
       - lotion
     waterResistant: true
+    specialFeatures:
+      - invisible-finish
+      - lightweight-texture
+      - water-sweat-sand-resistant
+      - anti-eye-stinging
+      - tinted
     availableIn:
       - EU
     url: "https://www.laroche-posay.pt/anthelios/anthelios-uvmune-400-fluido-fps-50-plus-com-cor"
@@ -333,6 +373,11 @@ sunscreens:
     formFactors:
       - cream
     waterResistant: true
+    specialFeatures:
+      - hydrating
+      - invisible-texture
+      - water-sweat-sand-resistant
+      - anti-eye-stinging
     availableIn:
       - EU
     url: "https://www.laroche-posay.pt/anthelios/anthelios-uvmune-400-creme-hidratante-fps-50-plus"
@@ -359,6 +404,12 @@ sunscreens:
     formFactors:
       - cream
     waterResistant: true
+    specialFeatures:
+      - hydrating
+      - invisible-texture
+      - water-sweat-sand-resistant
+      - anti-eye-stinging
+      - tinted
     availableIn:
       - EU
     url: "https://www.laroche-posay.pt/anthelios/anthelios-uvmune-400-creme-hidratante-fps-50-plus-com-cor"
@@ -387,6 +438,10 @@ sunscreens:
       - gel
       - cream
     waterResistant: false  # Not mentioned
+    specialFeatures:
+      - anti-imperfections
+      - anti-photoaging
+      - anti-pollution
     availableIn:
       - EU
     url: "https://www.laroche-posay.pt/anthelios/anthelios-oil-correct"
@@ -418,6 +473,9 @@ sunscreens:
     formFactors:
       - cream
     waterResistant: false  # Not mentioned
+    specialFeatures:
+      - anti-aging
+      - corrects-aging-signs
     availableIn:
       - EU
     url: "https://www.laroche-posay.pt/anthelios/anthelios-age-correct-spf50"
@@ -446,6 +504,10 @@ sunscreens:
     formFactors:
       - cream
     waterResistant: false  # Not mentioned
+    specialFeatures:
+      - anti-aging
+      - corrects-aging-signs
+      - tinted
     availableIn:
       - EU
     url: "https://www.laroche-posay.pt/anthelios/anthelios-age-correct-spf50-com-cor"
@@ -474,6 +536,11 @@ sunscreens:
     formFactors:
       - spray
     waterResistant: true
+    specialFeatures:
+      - anti-shine
+      - invisible-finish
+      - fast-absorption
+      - mist-formula
     availableIn:
       - EU
     url: "https://www.laroche-posay.pt/anthelios/anthelios-bruma-fresca-anti-brilho-fps50"
@@ -501,6 +568,10 @@ sunscreens:
       - lotion
       - gel
     waterResistant: true
+    specialFeatures:
+      - wet-skin-application
+      - invisible-gel
+      - hydrophobic-film
     availableIn:
       - EU
     url: "https://www.laroche-posay.pt/anthelios/anthelios-wet-skin-lotion-fps-50-plus"
@@ -528,6 +599,11 @@ sunscreens:
     formFactors:
       - spray
     waterResistant: true
+    specialFeatures:
+      - invisible-finish
+      - fast-absorption
+      - mist-formula
+      - for-body
     availableIn:
       - EU
     url: "https://www.laroche-posay.pt/anthelios/anthelios-bruma-invisivel-spf-50-"
@@ -551,6 +627,13 @@ sunscreens:
     formFactors:
       - spray
     waterResistant: true
+    specialFeatures:
+      - invisible-finish
+      - netlock-technology
+      - marine-friendly
+      - anti-eye-stinging
+      - water-sweat-sand-resistant
+      - for-body
     availableIn:
       - EU
     url: "https://www.laroche-posay.pt/anthelios/anthelios-spray-invisivel-spf30"
@@ -576,6 +659,13 @@ sunscreens:
     formFactors:
       - spray
     waterResistant: true
+    specialFeatures:
+      - invisible-finish
+      - netlock-technology
+      - marine-friendly
+      - anti-eye-stinging
+      - water-sweat-sand-resistant
+      - for-body
     availableIn:
       - EU
     url: "https://www.laroche-posay.pt/anthelios/anthelios-invisible-spray-spf50-plus"
@@ -605,6 +695,9 @@ sunscreens:
     formFactors:
       - stick
     waterResistant: true
+    specialFeatures:
+      - for-sensitive-areas
+      - no-white-marks
     availableIn:
       - EU
     url: "https://www.laroche-posay.pt/anthelios/anthelios-stick-zonas-sensiveis-spf-50-"
@@ -628,6 +721,11 @@ sunscreens:
     formFactors:
       - lotion
     waterResistant: false  # Not mentioned
+    specialFeatures:
+      - for-babies
+      - hydrating
+      - barrier-protection
+      - for-atopic-skin
     availableIn:
       - EU
     url: "https://www.laroche-posay.pt/anthelios/anthelios-leite-bebe-dermo-pediatrics-fps50-"
@@ -653,6 +751,12 @@ sunscreens:
     formFactors:
       - lotion
     waterResistant: false  # Not mentioned
+    specialFeatures:
+      - eco-friendly-packaging
+      - anti-pollution
+      - hydrating
+      - netlock-technology
+      - marine-friendly
     availableIn:
       - EU
     url: "https://www.laroche-posay.pt/anthelios/anthelios-hydrating-lotion-spf50-eco-conscious"
@@ -680,6 +784,10 @@ sunscreens:
     formFactors:
       - spray
     waterResistant: true  # Very water resistant, sweat & sand resistant
+    specialFeatures:
+      - eco-friendly-packaging
+      - anti-eye-stinging
+      - water-sweat-sand-resistant
     availableIn:
       - EU
     url: "https://www.laroche-posay.pt/anthelios/anthelios-eco-conscious-family-spray"

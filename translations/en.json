@@ -177,6 +177,48 @@
           "desc": "No preference"
         }
       }
+    },
+    "question7": {
+      "legend": "Any special features? (optional, select all that apply)",
+      "note": "Leave unchecked if you have no specific preference.",
+      "options": {
+        "oilControl": {
+          "label": "Oil Control",
+          "desc": "Controls excess oil & shine"
+        },
+        "hydrating": {
+          "label": "Hydrating",
+          "desc": "Moisturizing formula"
+        },
+        "antiAging": {
+          "label": "Anti-Aging",
+          "desc": "Helps prevent aging signs"
+        },
+        "antiDarkSpots": {
+          "label": "Anti-Dark Spots",
+          "desc": "Helps reduce hyperpigmentation"
+        },
+        "tinted": {
+          "label": "Tinted",
+          "desc": "Adds color coverage"
+        },
+        "invisibleFinish": {
+          "label": "Invisible Finish",
+          "desc": "No white cast"
+        },
+        "forAtopicSkin": {
+          "label": "For Atopic Skin",
+          "desc": "Sensitive, eczema-prone"
+        },
+        "ecoFriendly": {
+          "label": "Eco-Friendly",
+          "desc": "Sustainable packaging"
+        },
+        "wetSkin": {
+          "label": "Wet Skin Application",
+          "desc": "Apply on wet skin"
+        }
+      }
     }
   },
   "navigation": {
