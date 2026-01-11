@@ -618,7 +618,7 @@ sunscreens:
   - id: 20
     name: "Anthelios Spray Invisível SPF 30"
     brand: "La Roche-Posay"
-    spf: 30
+    spf: "30"
     isFragranceFree: false  # Contains PARFUM / FRAGRANCE
     skinTypes:
       - all
