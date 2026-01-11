@@ -1117,7 +1117,7 @@ function renderResultCard(sunscreen) {
     // Escape all user-controlled data to prevent XSS
     const name = escapeHTML(sunscreen.name);
     const brand = escapeHTML(sunscreen.brand);
-    const spf = parseInt(sunscreen.spf, 10) || 0; // Ensure number
+    const spf = escapeHTML(sunscreen.spf || ''); // Keep as string to preserve "50+" format
     const price = escapeHTML(sunscreen.price);
 
     const formFactorsList = sunscreen.formFactors
