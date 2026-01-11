@@ -125,7 +125,7 @@ When editing `data/sunscreens.yaml`:
 
 If you discover a security vulnerability:
 1. **Do NOT** open a public GitHub issue
-2. Email: [removed]
+2. Report it via the repository's security advisory feature
 3. Include:
    - Description of the vulnerability
    - Steps to reproduce
