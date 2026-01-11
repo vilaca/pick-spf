@@ -699,6 +699,7 @@ function setupEventListeners() {
             showView('questions');
             updateQuestionDisplay();
             updateNavigationButtons();
+            updateLiveCount(); // Update count on quiz start
             checkCurrentQuestionAnswered();
         } catch (error) {
             console.error('Error loading quiz resources:', error);
@@ -1218,9 +1219,9 @@ function calculateDiscriminatingPower(questionKey, currentProducts) {
  * Returns null if all questions answered or no more discriminating questions
  */
 function determineNextQuestion() {
-    // Get unanswered questions (excluding array-based optional questions like specialFeatures)
+    // Get unanswered questions (excluding optional questions like specialFeatures)
     const unansweredQuestions = Object.keys(appState.selections).filter(
-        key => appState.selections[key] === null
+        key => key !== 'specialFeatures' && appState.selections[key] === null
     );
 
     // If we have unanswered required questions, prioritize those
