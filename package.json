@@ -1,12 +1,13 @@
 {
   "name": "sunscreen-chooser",
   "version": "1.0.0",
+  "type": "module",
   "description": "Find your perfect sunscreen based on your preferences",
   "main": "script.js",
   "scripts": {
-    "test": "jest",
-    "test:watch": "jest --watch",
-    "test:coverage": "jest --coverage"
+    "test": "NODE_OPTIONS=--experimental-vm-modules NODE_ENV=test jest",
+    "test:watch": "NODE_OPTIONS=--experimental-vm-modules NODE_ENV=test jest --watch",
+    "test:coverage": "NODE_OPTIONS=--experimental-vm-modules NODE_ENV=test jest --coverage"
   },
   "keywords": [
     "sunscreen",
@@ -26,6 +27,7 @@
       "**/tests/**/*.spec.js",
       "**/tests/**/*.test.js"
     ],
+    "transform": {},
     "collectCoverageFrom": [
       "script.js",
       "!node_modules/**"
