@@ -913,6 +913,23 @@ function handleFormChange(event) {
 
     // Handle checkboxes differently (for specialFeatures)
     if (type === 'checkbox' && name === 'specialFeatures') {
+        // Define mutually exclusive features
+        const mutuallyExclusive = {
+            'oil-control': ['hydrating'],
+            'hydrating': ['oil-control']
+        };
+
+        // If this checkbox was just checked (not unchecked)
+        if (event.target.checked && mutuallyExclusive[value]) {
+            // Uncheck incompatible features
+            mutuallyExclusive[value].forEach(incompatible => {
+                const incompatibleCheckbox = document.querySelector(`input[name="${name}"][value="${incompatible}"]`);
+                if (incompatibleCheckbox && incompatibleCheckbox.checked) {
+                    incompatibleCheckbox.checked = false;
+                }
+            });
+        }
+
         // Get all checked checkboxes with this name
         const checkedBoxes = document.querySelectorAll(`input[name="${name}"]:checked`);
         const values = Array.from(checkedBoxes).map(cb => cb.value);
