@@ -693,7 +693,7 @@ function setupEventListeners() {
 
             if (firstQuestion) {
                 appState.currentQuestionKey = firstQuestion;
-                appState.questionHistory = []; // Empty history for first question
+                appState.questionHistory = [firstQuestion]; // Track first question in history
             }
 
             showView('questions');
@@ -794,18 +794,13 @@ function toggleMode() {
 // ===================================
 
 function previousQuestion() {
-    if (appState.questionHistory.length > 0) {
-        // Pop the last question from history
+    if (appState.questionHistory.length > 1) {
+        // Pop the current question from history
         appState.questionHistory.pop();
 
         // Get the previous question (last in history)
-        if (appState.questionHistory.length > 0) {
-            const prevQuestionKey = appState.questionHistory[appState.questionHistory.length - 1];
-            appState.currentQuestionKey = prevQuestionKey;
-        } else {
-            // No more history, go to first question
-            appState.currentQuestionKey = determineNextQuestion();
-        }
+        const prevQuestionKey = appState.questionHistory[appState.questionHistory.length - 1];
+        appState.currentQuestionKey = prevQuestionKey;
 
         updateQuestionDisplay();
         updateProgress();
@@ -920,7 +915,8 @@ function checkCurrentQuestionAnswered() {
 }
 
 function updateNavigationButtons() {
-    if (appState.questionHistory.length === 0) {
+    // Hide Previous button only on the first question (history length = 1)
+    if (appState.questionHistory.length <= 1) {
         elements.prevBtn.classList.add('hidden');
     } else {
         elements.prevBtn.classList.remove('hidden');
