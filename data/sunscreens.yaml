@@ -7,307 +7,995 @@
 # Available regions: US, EU, UK, Canada, Australia, Japan, Global
 
 sunscreens:
-  # Neutrogena Ultra Sheer
+  # La Roche-Posay Anthelios UVAIR
   - id: 1
-    name: "Ultra Sheer Dry-Touch Sunscreen SPF 55"
-    brand: "Neutrogena"
-    spf: 55
-    isFragranceFree: false
+    name: "Anthelios UVAIR SPF 50+"
+    brand: "La Roche-Posay"
+    spf: 50
+    isFragranceFree: false  # Contains PARFUM / FRAGRANCE
     skinTypes:
+      - all
       - oily
       - combination
-    forKids: false
-    formFactors:
-      - lotion
-    waterResistant: true
-    price: "$"
-    availableIn:
-      - US
-      - Canada
-      - Global
-    url: "https://www.neutrogena.com"
-
-  # CeraVe Mineral
-  - id: 2
-    name: "Hydrating Mineral Sunscreen SPF 50"
-    brand: "CeraVe"
-    spf: 50
-    isFragranceFree: true
-    skinTypes:
       - dry
       - sensitive
     forKids: false
     formFactors:
       - lotion
-      - cream
-    waterResistant: false
-    price: "$"
+    waterResistant: false  # Lightweight formulation, not explicitly mentioned
     availableIn:
-      - US
-      - Canada
-      - Global
-    url: "https://www.cerave.com"
+      - EU
+    url: "https://www.laroche-posay.pt/anthelios/anthelios-uvair-fps-50-plus"
+    ingredients: "AQUA / WATER / EAU - ALCOHOL DENAT. - DIISOPROPYL SEBACATE - DICAPRYLYL CARBONATE - BIS-ETHYLHEXYLOXYPHENOL METHOXYPHENYL TRIAZINE - ETHYLHEXYL TRIAZONE - BUTYL METHOXYDIBENZOYLMETHANE - ISOPROPYL MYRISTATE - GLYCERIN - SILICA - PROPYLENE GLYCOL DICAPRYLATE/DICAPRATE - POTASSIUM CETYL PHOSPHATE - COPERNICIA CERIFERA CERA / CARNAUBA WAX / CIRE DE CARNAUBA - DIETHYLAMINO HYDROXYBENZOYL HEXYL BENZOATE - ACRYLATES/C10-30 ALKYL ACRYLATE CROSSPOLYMER - CHLORPHENESIN - CITRIC ACID - GLYCERYL STEARATE - HYDROXYACETOPHENONE - MYRISTIC ACID - NIACINAMIDE - PALMITIC ACID - PEG-100 STEARATE - PENTYLENE GLYCOL - PERLITE - SILICA SILYLATE - SODIUM HYALURONATE - STEARIC ACID - TOCOPHEROL - TRIETHANOLAMINE - TRISODIUM ETHYLENEDIAMINE DISUCCINATE - XANTHAN GUM - PARFUM / FRAGRANCE"
+    ingredientClassifications:
+      "ALCOHOL DENAT.": "icky"
+      "BIS-ETHYLHEXYLOXYPHENOL METHOXYPHENYL TRIAZINE": "goodie"
+      "BUTYL METHOXYDIBENZOYLMETHANE": "goodie"
+      "DIETHYLAMINO HYDROXYBENZOYL HEXYL BENZOATE": "goodie"
+      "ETHYLHEXYL TRIAZONE": "goodie"
+      "GLYCERIN": "superstar"
+      "NIACINAMIDE": "superstar"
+      "SODIUM HYALURONATE": "goodie"
+      "TOCOPHEROL": "goodie"
 
-  # La Roche-Posay Anthelios
-  - id: 3
-    name: "Anthelios Melt-In Milk Sunscreen SPF 60"
+  # La Roche-Posay Anthelios UVMune 400 Fluido Antimanchas
+  - id: 2
+    name: "Anthelios UVMune 400 Fluido Antimanchas SPF 50+"
     brand: "La Roche-Posay"
-    spf: 60
-    isFragranceFree: true
+    spf: 50
+    isFragranceFree: true  # No PARFUM in ingredient list
     skinTypes:
       - all
+      - oily
+      - combination
+      - dry
       - sensitive
     forKids: false
     formFactors:
       - lotion
-    waterResistant: true
-    price: "$$"
+    waterResistant: false  # Not mentioned
     availableIn:
-      - US
       - EU
-      - UK
-      - Canada
-      - Australia
-      - Global
-    url: "https://www.laroche-posay.us"
+    url: "https://www.laroche-posay.pt/anthelios/anthelios-uvmune-400-fluido-antimanchas-fps-50-plus"
+    ingredients: "AQUA / WATER / EAU - ALCOHOL DENAT. - SILICA - DIISOPROPYL ADIPATE - DIISOPROPYL SEBACATE - ETHYLHEXYL TRIAZONE - BUTYL METHOXYDIBENZOYLMETHANE - BIS-ETHYLHEXYLOXYPHENOL METHOXYPHENYL TRIAZINE - DICAPRYLYL CARBONATE - GLYCERIN - PROPANEDIOL - C12-22 ALKYL ACRYLATE/HYDROXYETHYLACRYLATE COPOLYMER - DIETHYLAMINO HYDROXYBENZOYL HEXYL BENZOATE - C12-15 ALKYL BENZOATE - METHOXYPROPYLAMINO CYCLOHEXENYLIDENE ETHOXYETHYLCYANOACETATE - PERLITE - DROMETRIZOLE TRISILOXANE - ACRYLATES/C10-30 ALKYL ACRYLATE CROSSPOLYMER - CITRIC ACID - DISODIUM PHOSPHATE - HYDROXYACETOPHENONE - HYDROXYETHYLCELLULOSE - 2-MERCAPTONICOTINOYL GLYCINE - PENTAERYTHRITYL TETRA-DI-T-BUTYL HYDROXYHYDROCINNAMATE - PENTYLENE GLYCOL - POLYSORBATE 60 - SODIUM PHOSPHATE - SODIUM THIOSULFATE - TEREPHTHALYLIDENE DICAMPHOR SULFONIC ACID - TOCOPHEROL - TRIETHANOLAMINE - TRISODIUM ETHYLENEDIAMINE DISUCCINATE"
+    ingredientClassifications:
+      "ALCOHOL DENAT.": "icky"
+      "BIS-ETHYLHEXYLOXYPHENOL METHOXYPHENYL TRIAZINE": "goodie"
+      "BUTYL METHOXYDIBENZOYLMETHANE": "goodie"
+      "DIETHYLAMINO HYDROXYBENZOYL HEXYL BENZOATE": "goodie"
+      "ETHYLHEXYL TRIAZONE": "goodie"
+      "GLYCERIN": "superstar"
+      "TOCOPHEROL": "goodie"
 
-  # Coppertone Kids
-  - id: 4
-    name: "Kids Sunscreen Spray SPF 50"
-    brand: "Coppertone"
+  # La Roche-Posay Anthelios UVMune 400 Dermo-Pediatrics Spray
+  - id: 3
+    name: "Anthelios UVMune 400 Dermo-Pediatrics Spray Invisível SPF 50+"
+    brand: "La Roche-Posay"
     spf: 50
-    isFragranceFree: false
+    isFragranceFree: true  # No PARFUM in ingredient list
     skinTypes:
       - all
+      - sensitive
     forKids: true
     formFactors:
       - spray
     waterResistant: true
-    price: "$"
     availableIn:
-      - US
-      - Canada
-    url: "https://www.coppertone.com"
+      - EU
+    url: "https://www.laroche-posay.pt/anthelios/anthelios-uvmune-400-dermo-pediatrics-spray-invisivel-fps-50-plus"
+    ingredients: "AQUA /WATER / EAU - BIS-ETHYLHEXYLOXYPHENOL METHOXYPHENYL TRIAZINE - ALCOHOL DENAT. - ETHYLHEXYL TRIAZONE - BUTYL METHOXYDIBENZOYLMETHANE - ISOPROPYL PALMITATE - DIISOPROPYL ADIPATE - DICAPRYLYL ETHER - GLYCERIN - PROPANEDIOL - ISOPROPYL MYRISTATE - C12-15 ALKYL BENZOATE - DIISOPROPYL SEBACATE - C12-22 ALKYL ACRYLATE/HYDROXYETHYLACRYLATE COPOLYMER - TOCOPHEROL - METHOXYPROPYLAMINO CYCLOHEXENYLIDENE ETHOXYETHYLCYANOACETATE - PENTYLENE GLYCOL - BUTYROSPERMUM PARKII BUTTER / SHEA BUTTER - ACRYLATES COPOLYMER - ACRYLATES/C10-30 ALKYL ACRYLATE CROSSPOLYMER - CAPRYLYL GLYCOL - CITRIC ACID - DIETHYLAMINO HYDROXYBENZOYL HEXYL BENZOATE - DROMETRIZOLE TRISILOXANE - HYDROXYACETOPHENONE - PHENYLBENZIMIDAZOLE SULFONIC ACID - SODIUM POLYACRYLATE - TRIETHANOLAMINE - TRISODIUM ETHYLENEDIAMINE DISUCCINATE"
+    ingredientClassifications:
+      "ALCOHOL DENAT.": "icky"
+      "BIS-ETHYLHEXYLOXYPHENOL METHOXYPHENYL TRIAZINE": "goodie"
+      "BUTYL METHOXYDIBENZOYLMETHANE": "goodie"
+      "BUTYROSPERMUM PARKII BUTTER / SHEA BUTTER": "goodie"
+      "DIETHYLAMINO HYDROXYBENZOYL HEXYL BENZOATE": "goodie"
+      "ETHYLHEXYL TRIAZONE": "goodie"
+      "GLYCERIN": "superstar"
+      "PHENYLBENZIMIDAZOLE SULFONIC ACID": "goodie"
+      "TOCOPHEROL": "goodie"
 
-  # EltaMD UV Clear
-  - id: 5
-    name: "UV Clear Facial Sunscreen SPF 46"
-    brand: "EltaMD"
-    spf: 46
-    isFragranceFree: true
-    skinTypes:
-      - oily
-      - combination
-      - sensitive
-    forKids: false
-    formFactors:
-      - cream
-    waterResistant: false
-    price: "$$$"
-    availableIn:
-      - US
-      - Global
-    url: "https://eltamd.com"
-
-  # Banana Boat Kids
-  - id: 6
-    name: "Kids Mineral Sunscreen Lotion SPF 50"
-    brand: "Banana Boat"
+  # La Roche-Posay Anthelios UVMune 400 Oil Control Gel-Creme
+  - id: 4
+    name: "Anthelios UVMune 400 Oil Control Gel-Creme SPF 50+"
+    brand: "La Roche-Posay"
     spf: 50
-    isFragranceFree: true
-    skinTypes:
-      - all
-      - sensitive
-    forKids: true
-    formFactors:
-      - lotion
-    waterResistant: true
-    price: "$"
-    availableIn:
-      - US
-      - Canada
-      - Australia
-    url: "https://www.bananaboat.com"
-
-  # Supergoop! Unseen
-  - id: 7
-    name: "Unseen Sunscreen SPF 40"
-    brand: "Supergoop!"
-    spf: 40
-    isFragranceFree: true
+    isFragranceFree: true  # Sem perfume
     skinTypes:
       - oily
       - combination
     forKids: false
     formFactors:
       - gel
-    waterResistant: false
-    price: "$$$"
+      - cream
+    waterResistant: false  # Not mentioned
     availableIn:
-      - US
-      - UK
-      - Canada
-      - Global
-    url: "https://supergoop.com"
+      - EU
+    url: "https://www.laroche-posay.pt/anthelios/anthelios-uvmune-400-oil-control-gel-creme-fps-50-plus-sem-perfume"
+    ingredients: "AQUA / WATER - DIISOPROPYL SEBACATE - SILICA - ALCOHOL DENAT. - ETHYLHEXYL SALICYLATE - ETHYLHEXYL TRIAZONE - BIS-ETHYLHEXYLOXYPHENOL METHOXYPHENYL TRIAZINE - DIISOPROPYL ADIPATE - PEG-8 - DIPROPYLENE GLYCOL - C12-22 ALKYL ACRYLATE/HYDROXYETHYLACRYLATE COPOLYMER - GLYCERIN - DROMETRIZOLE TRISILOXANE - ALUMINUM STARCH OCTENYLSUCCINATE - BUTYL METHOXYDIBENZOYLMETHANE - METHOXYPROPYLAMINO CYCLOHEXENYLIDENE ETHOXYETHYLCYANOACETATE - TOCOPHEROL - DIETHYLAMINO HYDROXYBENZOYL HEXYL BENZOATE - ACRYLATES COPOLYMER - ACRYLATES/C10-30 ALKYL ACRYLATE CROSSPOLYMER - BIXA ORELLANA SEED EXTRACT - CAPRYLYL GLYCOL - CITRIC ACID - HYDROXYACETOPHENONE - MALTODEXTRIN - PENTAERYTHRITYL TETRA-DI-T-BUTYL HYDROXYHYDROCINNAMATE - PENTYLENE GLYCOL - SILICA SILYLATE - SODIUM POLYACRYLATE - TEREPHTHALYLIDENE DICAMPHOR SULFONIC ACID - TRIETHANOLAMINE - TRISODIUM ETHYLENEDIAMINE DISUCCINATE - ZINC PCA"
+    ingredientClassifications:
+      "ALCOHOL DENAT.": "icky"
+      "BIS-ETHYLHEXYLOXYPHENOL METHOXYPHENYL TRIAZINE": "goodie"
+      "BUTYL METHOXYDIBENZOYLMETHANE": "goodie"
+      "DIETHYLAMINO HYDROXYBENZOYL HEXYL BENZOATE": "goodie"
+      "ETHYLHEXYL TRIAZONE": "goodie"
+      "GLYCERIN": "superstar"
+      "TOCOPHEROL": "goodie"
+      "ZINC PCA": "goodie"
 
-  # Sun Bum Original
-  - id: 8
-    name: "Original Sunscreen Spray SPF 50"
-    brand: "Sun Bum"
+  # La Roche-Posay Anthelios UVMune 400 Oil Control Gel-Creme (Tinted)
+  - id: 5
+    name: "Anthelios UVMune 400 Oil Control Gel-Creme SPF 50+ (com cor)"
+    brand: "La Roche-Posay"
     spf: 50
-    isFragranceFree: false
+    isFragranceFree: false  # Contains PARFUM / FRAGRANCE
+    skinTypes:
+      - oily
+      - combination
+      - sensitive
+    forKids: false
+    formFactors:
+      - gel
+      - cream
+    waterResistant: false  # Not mentioned
+    availableIn:
+      - EU
+    url: "https://www.laroche-posay.pt/anthelios/anthelios-uvmune-400-oil-control-gel-creme-fps-50-plus-com-cor"
+    ingredients: "AQUA / WATER - DIISOPROPYL SEBACATE - CI 77891 / TITANIUM DIOXIDE - SILICA - ALCOHOL DENAT. - ETHYLHEXYL SALICYLATE - ETHYLHEXYL TRIAZONE - BIS-ETHYLHEXYLOXYPHENOL METHOXYPHENYL TRIAZINE - DIISOPROPYL ADIPATE - PEG-8 - DIPROPYLENE GLYCOL - C12-22 ALKYL ACRYLATE/HYDROXYETHYLACRYLATE COPOLYMER - GLYCERIN - DROMETRIZOLE TRISILOXANE - ALUMINUM STARCH OCTENYLSUCCINATE - BUTYL METHOXYDIBENZOYLMETHANE - METHOXYPROPYLAMINO CYCLOHEXENYLIDENE ETHOXYETHYLCYANOACETATE - TOCOPHEROL - DIETHYLAMINO HYDROXYBENZOYL HEXYL BENZOATE - ACRYLATES COPOLYMER - ACRYLATES/C10-30 ALKYL ACRYLATE CROSSPOLYMER - BIXA ORELLANA SEED EXTRACT - CAPRYLYL GLYCOL - CI 77491 / IRON OXIDES - CI 77492 / IRON OXIDES - CI 77499 / IRON OXIDES - CITRIC ACID - HYDROXYACETOPHENONE - MALTODEXTRIN - PENTAERYTHRITYL TETRA-DI-T-BUTYL HYDROXYHYDROCINNAMATE - PENTYLENE GLYCOL - POTASSIUM CETYL PHOSPHATE - SILICA SILYLATE - SODIUM POLYACRYLATE - TEREPHTHALYLIDENE DICAMPHOR SULFONIC ACID - TRIETHANOLAMINE - TRISODIUM ETHYLENEDIAMINE DISUCCINATE - ZINC PCA - PARFUM / FRAGRANCE"
+    ingredientClassifications:
+      "ALCOHOL DENAT.": "icky"
+      "BIS-ETHYLHEXYLOXYPHENOL METHOXYPHENYL TRIAZINE": "goodie"
+      "BUTYL METHOXYDIBENZOYLMETHANE": "goodie"
+      "CI 77891 / TITANIUM DIOXIDE": "goodie"
+      "DIETHYLAMINO HYDROXYBENZOYL HEXYL BENZOATE": "goodie"
+      "ETHYLHEXYL TRIAZONE": "goodie"
+      "GLYCERIN": "superstar"
+      "TOCOPHEROL": "goodie"
+      "ZINC PCA": "goodie"
+
+  # La Roche-Posay Anthelios UVMune 400 Dermo-Pediatrics Fluido Invisível
+  - id: 6
+    name: "Anthelios UVMune 400 Dermo-Pediatrics Fluido Invisível SPF 50+"
+    brand: "La Roche-Posay"
+    spf: 50
+    isFragranceFree: true  # No PARFUM in ingredient list
     skinTypes:
       - all
+      - sensitive
+    forKids: true
+    formFactors:
+      - lotion
+    waterResistant: true
+    availableIn:
+      - EU
+    url: "https://www.laroche-posay.pt/anthelios/anthelios-uvmune-400-dermo-pediatrics-fluido-invisivel-fps-50-plus"
+    ingredients: "AQUA / WATER / EAU - BIS-ETHYLHEXYLOXYPHENOL METHOXYPHENYL TRIAZINE - ALCOHOL DENAT. - ETHYLHEXYL TRIAZONE - BUTYL METHOXYDIBENZOYLMETHANE - ISOPROPYL PALMITATE - DIISOPROPYL ADIPATE - DICAPRYLYL ETHER - GLYCERIN - PROPANEDIOL - ISOPROPYL MYRISTATE - C12-15 ALKYL BENZOATE - DIISOPROPYL SEBACATE - C12-22 ALKYL ACRYLATE/HYDROXYETHYLACRYLATE COPOLYMER - TOCOPHEROL - ETHOXYPROPYLAMINO CYCLOHEXENYLIDENE ETHOXYETHYLCYANOACETATE - PENTYLENE GLYCOL - BUTYROSPERMUM PARKII BUTTER / SHEA BUTTER - ACRYLATES/C10-30 ALKYL ACRYLATE CROSSPOLYMER - CAPRYLYL GLYCOL - CITRIC ACID - DIETHYLAMINO HYDROXYBENZOYL HEXYL BENZOATE - DROMETRIZOLE TRISILOXANE - HYDROXYACETOPHENONE - PHENYLBENZIMIDAZOLE SULFONIC ACID - SODIUM POLYACRYLATE - TRIETHANOLAMINE - TRISODIUM ETHYLENEDIAMINE DISUCCINATE"
+    ingredientClassifications:
+      "ALCOHOL DENAT.": "icky"
+      "BIS-ETHYLHEXYLOXYPHENOL METHOXYPHENYL TRIAZINE": "goodie"
+      "BUTYL METHOXYDIBENZOYLMETHANE": "goodie"
+      "BUTYROSPERMUM PARKII BUTTER / SHEA BUTTER": "goodie"
+      "DIETHYLAMINO HYDROXYBENZOYL HEXYL BENZOATE": "goodie"
+      "ETHYLHEXYL TRIAZONE": "goodie"
+      "GLYCERIN": "superstar"
+      "PHENYLBENZIMIDAZOLE SULFONIC ACID": "goodie"
+      "TOCOPHEROL": "goodie"
+
+  # La Roche-Posay Anthelios UVMune 400 Dermo-Pediatrics Loção Hidratante
+  - id: 7
+    name: "Anthelios UVMune 400 Dermo-Pediatrics Loção Hidratante SPF 50+"
+    brand: "La Roche-Posay"
+    spf: 50
+    isFragranceFree: true  # No PARFUM in ingredient list
+    skinTypes:
+      - all
+      - sensitive
+      - dry
+    forKids: true
+    formFactors:
+      - lotion
+    waterResistant: true
+    availableIn:
+      - EU
+    url: "https://www.laroche-posay.pt/anthelios/anthelios-uvmune-400-dermo-pediatrics-locao-hidratante-fps-50-plus"
+    ingredients: "ALCOHOL DENAT. - BUTYL METHOXYDIBENZOYLMETHANE - ETHYLHEXYL TRIAZONE - BIS-ETHYLHEXYLOXYPHENOL METHOXYPHENYL TRIAZINE - GLYCERIN - PROPANEDIOL - DICAPRYLYL ETHER - TRIETHANOLAMINE - PHENYLBENZIMIDAZOLE SULFONIC ACID - DIISOPROPYL ADIPATE - DIISOPROPYL SEBACATE - DIETHYLAMINO HYDROXYBENZOYL HEXYL BENZOATE - OXIDIZED STARCH ACETATE - COPERNICIA CERIFERA CERA / CARNAUBA WAX / CIRE DE CARNAUBA - METHOXYPROPYLAMINO CYCLOHEXENYLIDENE ETHOXYETHYLCYANOACETATE - PENTYLENE GLYCOL - C12-22 ALKYL ACRYLATE/HYDROXYETHYLACRYLATE COPOLYMER - ACRYLATES COPOLYMER - ACRYLATES/C10-30 ALKYL ACRYLATE CROSSPOLYMER - BUTYROSPERMUM PARKII BUTTER / SHEA BUTTER - CAPRYLYL GLYCOL - CITRIC ACID - DROMETRIZOLE TRISILOXANE - HYDROXYETHYLCELLULOSE - TEREPHTHALYLIDENE DICAMPHOR SULFONIC ACID - TOCOPHEROL - TRISODIUM ETHYLENEDIAMINE DISUCCINATE - XANTHAN GUM"
+    ingredientClassifications:
+      "ALCOHOL DENAT.": "icky"
+      "BIS-ETHYLHEXYLOXYPHENOL METHOXYPHENYL TRIAZINE": "goodie"
+      "BUTYL METHOXYDIBENZOYLMETHANE": "goodie"
+      "BUTYROSPERMUM PARKII BUTTER / SHEA BUTTER": "goodie"
+      "DIETHYLAMINO HYDROXYBENZOYL HEXYL BENZOATE": "goodie"
+      "ETHYLHEXYL TRIAZONE": "goodie"
+      "GLYCERIN": "superstar"
+      "PHENYLBENZIMIDAZOLE SULFONIC ACID": "goodie"
+      "TOCOPHEROL": "goodie"
+
+  # La Roche-Posay Anthelios UVMune 400 Oil Control Fluido
+  - id: 8
+    name: "Anthelios UVMune 400 Oil Control Fluido SPF 50+"
+    brand: "La Roche-Posay"
+    spf: 50
+    isFragranceFree: false  # Contains PARFUM / FRAGRANCE
+    skinTypes:
+      - oily
+      - combination
+      - sensitive
+    forKids: false
+    formFactors:
+      - lotion
+    waterResistant: false  # Not mentioned
+    availableIn:
+      - EU
+    url: "https://www.laroche-posay.pt/anthelios/anthelios-uvmune-400-oil-control-fluido-fps-50-plus"
+    ingredients: "AQUA / WATER - ALCOHOL DENAT. - TRIETHYL CITRATE - DIISOPROPYL SEBACATE - SILICA - BIS-ETHYLHEXYLOXYPHENOL METHOXYPHENYL TRIAZINE - ETHYLHEXYL SALICYLATE - ETHYLHEXYL TRIAZONE - BUTYL METHOXYDIBENZOYLMETHANE - GLYCERIN - PROPANEDIOL - C12-22 ALKYL ACRYLATE/HYDROXYETHYLACRYLATE COPOLYMER - C12-15 ALKYL BENZOATE - SODIUM CITRATE - METHOXYPROPYLAMINO CYCLOHEXENYLIDENE ETHOXYETHYLCYANOACETATE - PERLITE - TOCOPHEROL - CAPRYLIC/CAPRIC TRIGLYCERIDE - ACRYLATES/C10-30 ALKYL ACRYLATE CROSSPOLYMER - BIXA ORELLANA SEED EXTRACT - CAPRYLYL GLYCOL - CITRIC ACID - DIETHYLAMINO HYDROXYBENZOYL HEXYL BENZOATE - DROMETRIZOLE TRISILOXANE - HYDROXYACETOPHENONE - HYDROXYETHYLCELLULOSE - MALTODEXTRIN - PENTYLENE GLYCOL - SILICA SILYLATE - TEREPHTHALYLIDENE DICAMPHOR SULFONIC ACID - TRIETHANOLAMINE - TRISODIUM ETHYLENEDIAMINE DISUCCINATE - ZINC PCA - PARFUM / FRAGRANCE"
+    ingredientClassifications:
+      "ALCOHOL DENAT.": "icky"
+      "BIS-ETHYLHEXYLOXYPHENOL METHOXYPHENYL TRIAZINE": "goodie"
+      "BUTYL METHOXYDIBENZOYLMETHANE": "goodie"
+      "DIETHYLAMINO HYDROXYBENZOYL HEXYL BENZOATE": "goodie"
+      "ETHYLHEXYL TRIAZONE": "goodie"
+      "GLYCERIN": "superstar"
+      "TOCOPHEROL": "goodie"
+      "ZINC PCA": "goodie"
+
+  # La Roche-Posay Anthelios UVMune 400 Oil Control Fluido (Tinted)
+  - id: 9
+    name: "Anthelios UVMune 400 Oil Control Fluido SPF 50+ (com cor)"
+    brand: "La Roche-Posay"
+    spf: 50
+    isFragranceFree: false  # Contains PARFUM / FRAGRANCE
+    skinTypes:
+      - oily
+      - combination
+      - sensitive
+    forKids: false
+    formFactors:
+      - lotion
+    waterResistant: false  # Not mentioned
+    availableIn:
+      - EU
+    url: "https://www.laroche-posay.pt/anthelios/anthelios-uvmune-400-oil-control-fluido-fps-50-plus-com-cor"
+    ingredients: "AQUA / WATER - ALCOHOL DENAT. - TRIETHYL CITRATE - DIISOPROPYL SEBACATE - SILICA - BIS-ETHYLHEXYLOXYPHENOL METHOXYPHENYL TRIAZINE - ETHYLHEXYL SALICYLATE - ETHYLHEXYL TRIAZONE - BUTYL METHOXYDIBENZOYLMETHANE - GLYCERIN - PROPANEDIOL - C12-22 ALKYL ACRYLATE/HYDROXYETHYLACRYLATE COPOLYMER - C12-15 ALKYL BENZOATE - CI 77891 / TITANIUM DIOXIDE - METHOXYPROPYLAMINO CYCLOHEXENYLIDENEETHOXYETHYLCYANOACETATE - PERLITE - TOCOPHEROL - CAPRYLIC/CAPRIC TRIGLYCERIDE - ACRYLATES/C10-30 ALKYL ACRYLATE CROSSPOLYMER - BIXA ORELLANA SEED EXTRACT - CAPRYLYL GLYCOL - CI 77491 / IRON OXIDES - CI 77492 / IRON OXIDES - CI 77499 / IRON OXIDES - CITRIC ACID - DIETHYLAMINO HYDROXYBENZOYL HEXYL BENZOATE - DROMETRIZOLE TRISILOXANE - HYDROXYETHYLCELLULOSE - MALTODEXTRIN - PENTAERYTHRITYL TETRA-DI-T-BUTYL HYDROXYHYDROCINNAMATE - PENTYLENE GLYCOL - SILICA SILYLATE - SODIUM STEAROYL GLUTAMATE - TEREPHTHALYLIDENE DICAMPHOR SULFONIC ACID - TRIETHANOLAMINE - TRISODIUM ETHYLENEDIAMINE DISUCCINATE - ZINC PCA - PARFUM / FRAGRANCE"
+    ingredientClassifications:
+      "ALCOHOL DENAT.": "icky"
+      "BIS-ETHYLHEXYLOXYPHENOL METHOXYPHENYL TRIAZINE": "goodie"
+      "BUTYL METHOXYDIBENZOYLMETHANE": "goodie"
+      "CI 77891 / TITANIUM DIOXIDE": "goodie"
+      "DIETHYLAMINO HYDROXYBENZOYL HEXYL BENZOATE": "goodie"
+      "ETHYLHEXYL TRIAZONE": "goodie"
+      "GLYCERIN": "superstar"
+      "TOCOPHEROL": "goodie"
+      "ZINC PCA": "goodie"
+
+  # La Roche-Posay Anthelios UVMune 400 Fluido Invisível (sem perfume)
+  - id: 10
+    name: "Anthelios UVMune 400 Fluido Invisível SPF 50+ (sem perfume)"
+    brand: "La Roche-Posay"
+    spf: 50
+    isFragranceFree: true  # Sem perfume
+    skinTypes:
+      - all
+      - sensitive
+    forKids: false
+    formFactors:
+      - lotion
+    waterResistant: true
+    availableIn:
+      - EU
+    url: "https://www.laroche-posay.pt/anthelios/anthelios-uvmune-400-fluido-invisivel-fps-50-plus-sem-perfume"
+    ingredients: "AQUA / WATER / EAU - ALCOHOL DENAT. - TRIETHYL CITRATE - DIISOPROPYL SEBACATE - SILICA - ETHYLHEXYL SALICYLATE - BIS-ETHYLHEXYLOXYPHENOL METHOXYPHENYL TRIAZINE - ETHYLHEXYL TRIAZONE - BUTYL METHOXYDIBENZOYLMETHANE - GLYCERIN - PROPANEDIOL - C12-22 ALKYL ACRYLATE/HYDROXYETHYLACRYLATE COPOLYMER - SODIUM CITRATE - METHOXYPROPYLAMINO CYCLOHEXENYLIDENE ETHOXYETHYLCYANOACETATE - PERLITE - TOCOPHEROL - CAPRYLIC/CAPRIC TRIGLYCERIDE - ACRYLATES/C10-30 ALKYL ACRYLATE CROSSPOLYMER - CAPRYLYL GLYCOL - CITRIC ACID - DIETHYLAMINO HYDROXYBENZOYL HEXYL BENZOATE - DROMETRIZOLE TRISILOXANE - HYDROXYETHYLCELLULOSE - TEREPHTHALYLIDENE DICAMPHOR SULFONIC ACID - TRIETHANOLAMINE - TRISODIUM ETHYLENEDIAMINE DISUCCINATE"
+    ingredientClassifications:
+      "ALCOHOL DENAT.": "icky"
+      "BIS-ETHYLHEXYLOXYPHENOL METHOXYPHENYL TRIAZINE": "goodie"
+      "BUTYL METHOXYDIBENZOYLMETHANE": "goodie"
+      "DIETHYLAMINO HYDROXYBENZOYL HEXYL BENZOATE": "goodie"
+      "ETHYLHEXYL TRIAZONE": "goodie"
+      "GLYCERIN": "superstar"
+      "TOCOPHEROL": "goodie"
+
+  # La Roche-Posay Anthelios UVMune 400 Fluido Invisível (Tinted)
+  - id: 11
+    name: "Anthelios UVMune 400 Fluido Invisível SPF 50+ (com cor)"
+    brand: "La Roche-Posay"
+    spf: 50
+    isFragranceFree: false  # Contains PARFUM / FRAGRANCE
+    skinTypes:
+      - all
+      - sensitive
+    forKids: false
+    formFactors:
+      - lotion
+    waterResistant: true
+    availableIn:
+      - EU
+    url: "https://www.laroche-posay.pt/anthelios/anthelios-uvmune-400-fluido-fps-50-plus-com-cor"
+    ingredients: "AQUA / WATER / EAU - ALCOHOL DENAT. - TRIETHYL CITRATE - DIISOPROPYL SEBACATE - SILICA - ETHYLHEXYL SALICYLATE - BIS-ETHYLHEXYLOXYPHENOL METHOXYPHENYL TRIAZINE - ETHYLHEXYL TRIAZONE - BUTYL METHOXYDIBENZOYLMETHANE - GLYCERIN - PROPANEDIOL - C12-22 ALKYL ACRYLATE/HYDROXYETHYLACRYLATE COPOLYMER - CI 77891 / TITANIUM DIOXIDE - METHOXYPROPYLAMINO CYCLOHEXENYLIDENE ETHOXYETHYLCYANOACETATE - PERLITE - TOCOPHEROL - CAPRYLIC/CAPRIC TRIGLYCERIDE - ACRYLATES/C10-30 ALKYL ACRYLATE CROSSPOLYMER - CAPRYLYL GLYCOL - CI 77491 / IRON OXIDES - CI 77492 / IRON OXIDES - CI 77499 / IRON OXIDES - DIETHYLAMINO HYDROXYBENZOYL HEXYL BENZOATE - DROMETRIZOLE TRISILOXANE - HYDROXYETHYLCELLULOSE - SODIUM STEAROYL GLUTAMATE - TEREPHTHALYLIDENE DICAMPHOR SULFONIC ACID - TRIETHANOLAMINE - TRISODIUM ETHYLENEDIAMINE DISUCCINATE - PARFUM / FRAGRANCE"
+    ingredientClassifications:
+      "ALCOHOL DENAT.": "icky"
+      "BIS-ETHYLHEXYLOXYPHENOL METHOXYPHENYL TRIAZINE": "goodie"
+      "BUTYL METHOXYDIBENZOYLMETHANE": "goodie"
+      "CI 77891 / TITANIUM DIOXIDE": "goodie"
+      "DIETHYLAMINO HYDROXYBENZOYL HEXYL BENZOATE": "goodie"
+      "ETHYLHEXYL TRIAZONE": "goodie"
+      "GLYCERIN": "superstar"
+      "TOCOPHEROL": "goodie"
+
+  # La Roche-Posay Anthelios UVMune 400 Creme Hidratante
+  - id: 12
+    name: "Anthelios UVMune 400 Creme Hidratante SPF 50+"
+    brand: "La Roche-Posay"
+    spf: 50
+    isFragranceFree: false  # Contains PARFUM / FRAGRANCE
+    skinTypes:
+      - dry
+      - sensitive
+    forKids: false
+    formFactors:
+      - cream
+    waterResistant: true
+    availableIn:
+      - EU
+    url: "https://www.laroche-posay.pt/anthelios/anthelios-uvmune-400-creme-hidratante-fps-50-plus"
+    ingredients: "AQUA / WATER / EAU - DIISOPROPYL SEBACATE - ALCOHOL DENAT. - ETHYLHEXYL SALICYLATE - ETHYLHEXYL TRIAZONE - BIS-ETHYLHEXYLOXYPHENOL METHOXYPHENYL TRIAZINE - DIISOPROPYL ADIPATE - PEG-8 - DIPROPYLENE GLYCOL - C12-22 ALKYL ACRYLATE/HYDROXYETHYLACRYLATE COPOLYMER - GLYCERIN - DROMETRIZOLE TRISILOXANE - ALUMINUM STARCH OCTENYLSUCCINATE - BUTYL METHOXYDIBENZOYLMETHANE - METHOXYPROPYLAMINO CYCLOHEXENYLIDENE ETHOXYETHYLCYANOACETATE - SILICA - TOCOPHEROL - DIETHYLAMINO HYDROXYBENZOYL HEXYL BENZOATE - ACRYLATES COPOLYMER - ACRYLATES/C10-30 ALKYL ACRYLATE CROSSPOLYMER - CAPRYLYL GLYCOL - HYDROXYACETOPHENONE - PENTAERYTHRITYL TETRA-DI-T-BUTYL HYDROXYHYDROCINNAMATE - SODIUM POLYACRYLATE - TEREPHTHALYLIDENE DICAMPHOR SULFONIC ACID - TRIETHANOLAMINE - TRISODIUM ETHYLENEDIAMINE DISUCCINATE - PARFUM / FRAGRANCE"
+    ingredientClassifications:
+      "ALCOHOL DENAT.": "icky"
+      "BIS-ETHYLHEXYLOXYPHENOL METHOXYPHENYL TRIAZINE": "goodie"
+      "BUTYL METHOXYDIBENZOYLMETHANE": "goodie"
+      "DIETHYLAMINO HYDROXYBENZOYL HEXYL BENZOATE": "goodie"
+      "ETHYLHEXYL TRIAZONE": "goodie"
+      "GLYCERIN": "superstar"
+      "TOCOPHEROL": "goodie"
+
+  # La Roche-Posay Anthelios UVMune 400 Creme Hidratante (Tinted)
+  - id: 13
+    name: "Anthelios UVMune 400 Creme Hidratante SPF 50+ (com cor)"
+    brand: "La Roche-Posay"
+    spf: 50
+    isFragranceFree: false  # Contains PARFUM / FRAGRANCE
+    skinTypes:
+      - dry
+      - sensitive
+    forKids: false
+    formFactors:
+      - cream
+    waterResistant: true
+    availableIn:
+      - EU
+    url: "https://www.laroche-posay.pt/anthelios/anthelios-uvmune-400-creme-hidratante-fps-50-plus-com-cor"
+    ingredients: "AQUA / WATER / EAU - DIISOPROPYL SEBACATE - ALCOHOL DENAT. - ETHYLHEXYL SALICYLATE - ETHYLHEXYL TRIAZONE - BIS-ETHYLHEXYLOXYPHENOL METHOXYPHENYL TRIAZINE - DIISOPROPYL ADIPATE - PEG-8 - DIPROPYLENE GLYCOL - C12-22 ALKYL ACRYLATE/HYDROXYETHYLACRYLATE COPOLYMER - GLYCERIN - DROMETRIZOLE TRISILOXANE - ALUMINUM STARCH OCTENYLSUCCINATE - BUTYL METHOXYDIBENZOYLMETHANE - METHOXYPROPYLAMINO CYCLOHEXENYLIDENE ETHOXYETHYLCYANOACETATE - SILICA - TOCOPHEROL - DIETHYLAMINO HYDROXYBENZOYL HEXYL BENZOATE - CI 77891 / TITANIUM DIOXIDE - ACRYLATES COPOLYMER - ACRYLATES/C10-30 ALKYL ACRYLATE CROSSPOLYMER - CAPRYLYL GLYCOL - CI 77491 / IRON OXIDES - CI 77492 / IRON OXIDES - CI 77499 / IRON OXIDES - HYDROXYACETOPHENONE - PENTAERYTHRITYL TETRA-DI-T-BUTYL HYDROXYHYDROCINNAMATE - POTASSIUM CETYL PHOSPHATE - SODIUM POLYACRYLATE - TEREPHTHALYLIDENE DICAMPHOR SULFONIC ACID - TRIETHANOLAMINE - TRISODIUM ETHYLENEDIAMINE DISUCCINATE - PARFUM / FRAGRANCE"
+    ingredientClassifications:
+      "ALCOHOL DENAT.": "icky"
+      "BIS-ETHYLHEXYLOXYPHENOL METHOXYPHENYL TRIAZINE": "goodie"
+      "BUTYL METHOXYDIBENZOYLMETHANE": "goodie"
+      "CI 77891 / TITANIUM DIOXIDE": "goodie"
+      "DIETHYLAMINO HYDROXYBENZOYL HEXYL BENZOATE": "goodie"
+      "ETHYLHEXYL TRIAZONE": "goodie"
+      "GLYCERIN": "superstar"
+      "TOCOPHEROL": "goodie"
+
+  # La Roche-Posay Anthelios Oil Correct
+  - id: 14
+    name: "Anthelios Oil Correct SPF 50+"
+    brand: "La Roche-Posay"
+    spf: 50
+    isFragranceFree: false  # Contains PARFUM / FRAGRANCE
+    skinTypes:
+      - oily
+      - combination
+    forKids: false
+    formFactors:
+      - gel
+      - cream
+    waterResistant: false  # Not mentioned
+    availableIn:
+      - EU
+    url: "https://www.laroche-posay.pt/anthelios/anthelios-oil-correct"
+    ingredients: "AQUA / WATER / EAU - SILICA - ISOPROPYL PALMITATE - BIS-ETHYLHEXYLOXYPHENOL METHOXYPHENYL TRIAZINE - ETHYLHEXYL SALICYLATE - ETHYLHEXYL TRIAZONE - BUTYL METHOXYDIBENZOYLMETHANE - DICAPRYLYL ETHER - NIACINAMIDE - DROMETRIZOLE TRISILOXANE - PHENYLBENZIMIDAZOLE SULFONIC ACID - DIISOPROPYL ADIPATE - TRIETHANOLAMINE - GLYCERIN - ZEA MAYS STARCH / CORN STARCH - DIISOPROPYL SEBACATE - DIETHYLAMINO HYDROXYBENZOYL HEXYL BENZOATE - PENTYLENE GLYCOL - TOCOPHEROL - SODIUM STEAROYL GLUTAMATE - PERLITE - ACRYLATES/C10-30 ALKYL ACRYLATE CROSSPOLYMER - CAPRYLYL GLYCOL - CI 15510 / ORANGE 4 - CI 16035 / RED 40 - INULIN LAURYL CARBAMATE - ISOPROPYL LAUROYL SARCOSINATE - P-ANISIC ACID - SALICYLIC ACID - SILICA SILYLATE - SODIUM POLYACRYLATE - TEREPHTHALYLIDENE DICAMPHOR SULFONIC ACID - TITANIUM DIOXIDE - TRISODIUM ETHYLENEDIAMINE DISUCCINATE - TROMETHAMINE - XANTHAN GUM - ZINC PCA - PARFUM / FRAGRANCE"
+    ingredientClassifications:
+      "BIS-ETHYLHEXYLOXYPHENOL METHOXYPHENYL TRIAZINE": "goodie"
+      "BUTYL METHOXYDIBENZOYLMETHANE": "goodie"
+      "DIETHYLAMINO HYDROXYBENZOYL HEXYL BENZOATE": "goodie"
+      "ETHYLHEXYL TRIAZONE": "goodie"
+      "GLYCERIN": "superstar"
+      "NIACINAMIDE": "superstar"
+      "PHENYLBENZIMIDAZOLE SULFONIC ACID": "goodie"
+      "SALICYLIC ACID": "superstar"
+      "TITANIUM DIOXIDE": "goodie"
+      "TOCOPHEROL": "goodie"
+      "ZINC PCA": "goodie"
+
+  # La Roche-Posay Anthelios Age Correct
+  - id: 15
+    name: "Anthelios Age Correct SPF 50"
+    brand: "La Roche-Posay"
+    spf: 50
+    isFragranceFree: false  # Contains PARFUM / FRAGRANCE
+    skinTypes:
+      - all
+      - dry
+      - sensitive
+    forKids: false
+    formFactors:
+      - cream
+    waterResistant: false  # Not mentioned
+    availableIn:
+      - EU
+    url: "https://www.laroche-posay.pt/anthelios/anthelios-age-correct-spf50"
+    ingredients: "AQUA / WATER / EAU - C12-15 ALKYL BENZOATE - GLYCERIN - OCTOCRYLENE - NIACINAMIDE - BUTYL METHOXYDIBENZOYLMETHANE - DIMETHICONE - ETHYLHEXYL TRIAZONE - SILICA - ALUMINUM STARCH OCTENYLSUCCINATE - VINYL DIMETHICONE/METHICONE SILSESQUIOXANE CROSSPOLYMER - TEREPHTHALYLIDENE DICAMPHOR SULFONIC ACID - POTASSIUM CETYL PHOSPHATE - DROMETRIZOLE TRISILOXANE - PEG-100 STEARATE - STEARYL ALCOHOL - GLYCERYL STEARATE - AMMONIUM POLYACRYLOYLDIMETHYL TAURATE - CAPRYLOYL SALICYLIC ACID - CAPRYLYL GLYCOL - HYDROLYZED HYALURONIC ACID - PHENOXYETHANOL - PHENYLETHYL RESORCINOL - POLOXAMER 338 - TOCOPHEROL - TRIETHANOLAMINE - TRISODIUM ETHYLENEDIAMINE DISUCCINATE - XANTHAN GUM - PARFUM / FRAGRANCE"
+    ingredientClassifications:
+      "BUTYL METHOXYDIBENZOYLMETHANE": "goodie"
+      "CAPRYLOYL SALICYLIC ACID": "goodie"
+      "ETHYLHEXYL TRIAZONE": "goodie"
+      "GLYCERIN": "superstar"
+      "HYDROLYZED HYALURONIC ACID": "goodie"
+      "NIACINAMIDE": "superstar"
+      "PHENYLETHYL RESORCINOL": "goodie"
+      "TOCOPHEROL": "goodie"
+
+  # La Roche-Posay Anthelios Age Correct (Tinted)
+  - id: 16
+    name: "Anthelios Age Correct SPF 50 (com cor)"
+    brand: "La Roche-Posay"
+    spf: 50
+    isFragranceFree: false  # Contains PARFUM / FRAGRANCE
+    skinTypes:
+      - all
+      - dry
+      - sensitive
+    forKids: false
+    formFactors:
+      - cream
+    waterResistant: false  # Not mentioned
+    availableIn:
+      - EU
+    url: "https://www.laroche-posay.pt/anthelios/anthelios-age-correct-spf50-com-cor"
+    ingredients: "WATER - C12-15 ALKYL BENZOATE - CI 77891 / TITANIUM DIOXIDE - GLYCERIN - OCTOCRYLENE - PROPYLENE GLYCOL - NIACINAMIDE - BUTYL METHOXYDIBENZOYLMETHANE - DIMETHICONE - ETHYLHEXYL TRIAZONE - ALUMINUM STARCH OCTENYLSUCCINATE - VINYL DIMETHICONE/METHICONE SILSESQUIOXANE CROSSPOLYMER - TEREPHTHALYLIDENE DICAMPHOR SULFONIC ACID - POTASSIUM CETYL PHOSPHATE - DROMETRIZOLE TRISILOXANE - PEG-100 STEARATE - STEARYL ALCOHOL - GLYCERYL STEARATE - AMMONIUM POLYACRYLOYLDIMETHYL TAURATE - CAPRYLOYL SALICYLIC ACID - CAPRYLYL GLYCOL - CI 77491 / IRON OXIDES - CI 77492 / IRON OXIDES - CI 77499 / IRON OXIDES - DISODIUM EDTA - HYDROLYZED HYALURONIC ACID - PHENOXYETHANOL - PHENYLETHYL RESORCINOL - POLOXAMER 338 - POLY C10-30 ALKYL ACRYLATE - TOCOPHEROL - TRIETHANOLAMINE - XANTHAN GUM - PARFUM / FRAGRANCE"
+    ingredientClassifications:
+      "BUTYL METHOXYDIBENZOYLMETHANE": "goodie"
+      "CAPRYLOYL SALICYLIC ACID": "goodie"
+      "CI 77891 / TITANIUM DIOXIDE": "goodie"
+      "ETHYLHEXYL TRIAZONE": "goodie"
+      "GLYCERIN": "superstar"
+      "HYDROLYZED HYALURONIC ACID": "goodie"
+      "NIACINAMIDE": "superstar"
+      "PHENYLETHYL RESORCINOL": "goodie"
+      "TOCOPHEROL": "goodie"
+
+  # La Roche-Posay Anthelios Bruma Invisível Anti-Brilho
+  - id: 17
+    name: "Anthelios Bruma Invisível Anti-Brilho SPF 50"
+    brand: "La Roche-Posay"
+    spf: 50
+    isFragranceFree: false  # Contains PARFUM / FRAGRANCE
+    skinTypes:
+      - oily
+      - sensitive
     forKids: false
     formFactors:
       - spray
     waterResistant: true
-    price: "$$"
     availableIn:
-      - US
-      - Canada
-      - Australia
-      - Global
-    url: "https://www.sunbum.com"
+      - EU
+    url: "https://www.laroche-posay.pt/anthelios/anthelios-bruma-fresca-anti-brilho-fps50"
+    ingredients: "BUTANE - AQUA / WATER / EAU - ISOPROPYL MYRISTATE - GLYCERIN - DIISOPROPYL SEBACATE - ETHYLHEXYL SALICYLATE - BIS-ETHYLHEXYLOXYPHENOL METHOXYPHENYL TRIAZINE - BUTYL METHOXYDIBENZOYLMETHANE - C12-15 ALKYL BENZOATE - DROMETRIZOLE TRISILOXANE - DICAPRYLYL CARBONATE - STYRENE/ACRYLATES COPOLYMER - CAPRYLYL GLYCOL - CARNOSINE - DIISOPROPYL ADIPATE - DIMETHICONE - DISTEARDIMONIUM HECTORITE - ETHYLHEXYL TRIAZONE - HYDROXYACETOPHENONE - ISODODECANE - ISOSTEARYL ALCOHOL - LAURYL PEG/PPG-18/18 METHICONE - METHYL METHACRYLATE CROSSPOLYMER - NYLON-12 - P-ANISIC ACID - PARFUM / FRAGRANCE - PEG-20 - PEG-30 DIPOLYHYDROXYSTEARATE - PEG-8 LAURATE - POLY C10-30 ALKYL ACRYLATE - POLYMETHYLSILSESQUIOXANE - PROPANEDIOL - PROPYLENE CARBONATE - SILICA SILYLATE - SODIUM CHLORIDE - SODIUM DODECYLBENZENESULFONATE - TOCOPHEROL - TRISODIUM ETHYLENEDIAMINE DISUCCINATE"
+    ingredientClassifications:
+      "BIS-ETHYLHEXYLOXYPHENOL METHOXYPHENYL TRIAZINE": "goodie"
+      "BUTYL METHOXYDIBENZOYLMETHANE": "goodie"
+      "CARNOSINE": "goodie"
+      "ETHYLHEXYL TRIAZONE": "goodie"
+      "GLYCERIN": "superstar"
+      "TOCOPHEROL": "goodie"
 
-  # Eucerin Daily Hydration
-  - id: 9
-    name: "Daily Hydration Cream SPF 30"
-    brand: "Eucerin"
-    spf: 30
-    isFragranceFree: true
+  # La Roche-Posay Anthelios XL Wet Skin Gel Lotion
+  - id: 18
+    name: "Anthelios XL Wet Skin Gel Lotion SPF 50+"
+    brand: "La Roche-Posay"
+    spf: 50
+    isFragranceFree: false  # Contains PARFUM / FRAGRANCE
     skinTypes:
+      - all
       - dry
       - sensitive
     forKids: false
     formFactors:
-      - cream
-    waterResistant: false
-    price: "$"
+      - lotion
+      - gel
+    waterResistant: true
     availableIn:
-      - US
       - EU
-      - UK
-      - Canada
-      - Global
-    url: "https://www.eucerinus.com"
+    url: "https://www.laroche-posay.pt/anthelios/anthelios-wet-skin-lotion-fps-50-plus"
+    ingredients: "AQUA / WATER / EAU - ISOPROPYL PALMITATE - ALCOHOL DENAT. - BIS-ETHYLHEXYLOXYPHENOL METHOXYPHENYL TRIAZINE - DICAPRYLYL ETHER - ETHYLHEXYL TRIAZONE - BUTYL METHOXYDIBENZOYLMETHANE - DIISOPROPYL ADIPATE - DIISOPROPYL SEBACATE - GLYCERIN - PROPANEDIOL - TRIETHANOLAMINE - PHENYLBENZIMIDAZOLE SULFONIC ACID - DIMETHICONE - TOCOPHEROL - OXIDIZED STARCH ACETATE - COPERNICIA CERIFERA CERA / CARNAUBA WAX / CIRE DE CARNAUBA - ORYZA SATIVA CERA / RICE BRAN WAX - C12-22 ALKYL ACRYLATE/HYDROXYETHYLACRYLATE COPOLYMER - ACRYLATES COPOLYMER - ACRYLATES/C10-30 ALKYL ACRYLATE CROSSPOLYMER - ACRYLATES/DIMETHICONE COPOLYMER - CAPRYLYL GLYCOL - CARRAGEENAN - DIETHYLAMINO HYDROXYBENZOYL HEXYL BENZOATE - DISODIUM PHOSPHATE - DROMETRIZOLE TRISILOXANE - HYDROXYACETOPHENONE - HYDROXYETHYLCELLULOSE - POLYSORBATE 60 - SODIUM CHLORIDE - SODIUM PHOSPHATE - TEREPHTHALYLIDENE DICAMPHOR SULFONIC ACID - TRISODIUM ETHYLENEDIAMINE DISUCCINATE - XANTHAN GUM - PARFUM / FRAGRANCE"
+    ingredientClassifications:
+      "ALCOHOL DENAT.": "icky"
+      "BIS-ETHYLHEXYLOXYPHENOL METHOXYPHENYL TRIAZINE": "goodie"
+      "BUTYL METHOXYDIBENZOYLMETHANE": "goodie"
+      "DIETHYLAMINO HYDROXYBENZOYL HEXYL BENZOATE": "goodie"
+      "ETHYLHEXYL TRIAZONE": "goodie"
+      "GLYCERIN": "superstar"
+      "PHENYLBENZIMIDAZOLE SULFONIC ACID": "goodie"
+      "TOCOPHEROL": "goodie"
 
-  # Neutrogena Sport
-  - id: 10
-    name: "CoolDry Sport Sunscreen Stick SPF 50"
-    brand: "Neutrogena"
+  # La Roche-Posay Anthelios Bruma Invisível Corpo
+  - id: 19
+    name: "Anthelios Bruma Invisível SPF 50+ Corpo"
+    brand: "La Roche-Posay"
     spf: 50
-    isFragranceFree: false
+    isFragranceFree: false  # Contains PARFUM / FRAGRANCE
     skinTypes:
       - all
+      - sensitive
+    forKids: false
+    formFactors:
+      - spray
+    waterResistant: true
+    availableIn:
+      - EU
+    url: "https://www.laroche-posay.pt/anthelios/anthelios-bruma-invisivel-spf-50-"
+    ingredients: "BUTANE - AQUA / WATER / EAU - ISOPROPYL MYRISTATE - DIISOPROPYL SEBACATE - ETHYLHEXYL SALICYLATE - BIS-ETHYLHEXYLOXYPHENOL METHOXYPHENYL TRIAZINE - BUTYL METHOXYDIBENZOYLMETHANE - C12-15 ALKYL BENZOATE - DROMETRIZOLE TRISILOXANE - DICAPRYLYL CARBONATE - STYRENE/ACRYLATES COPOLYMER - DIMETHICONE - PROPANEDIOL - DIISOPROPYL ADIPATE - PEG-30 DIPOLYHYDROXYSTEARATE - NYLON-12 - METHYL METHACRYLATE CROSSPOLYMER - POLYMETHYLSILSESQUIOXANE - CAPRYLYL GLYCOL - DISTEARDIMONIUM HECTORITE - ETHYLHEXYL TRIAZONE - HYDROXYACETOPHENONE - ISODODECANE - ISOSTEARYL ALCOHOL - LAURYL PEG/PPG-18/18 METHICONE - P-ANISIC ACID - PARFUM / FRAGRANCE - PEG-20 - PEG-8 LAURATE - POLY C10-30 ALKYL ACRYLATE - PROPYLENE CARBONATE - SODIUM CHLORIDE - SODIUM DODECYLBENZENESULFONATE - TOCOPHEROL - TRISODIUM ETHYLENEDIAMINE DISUCCINATE"
+    ingredientClassifications:
+      "BIS-ETHYLHEXYLOXYPHENOL METHOXYPHENYL TRIAZINE": "goodie"
+      "BUTYL METHOXYDIBENZOYLMETHANE": "goodie"
+      "ETHYLHEXYL TRIAZONE": "goodie"
+      "TOCOPHEROL": "goodie"
+
+  # La Roche-Posay Anthelios Spray Invisível SPF 30
+  - id: 20
+    name: "Anthelios Spray Invisível SPF 30"
+    brand: "La Roche-Posay"
+    spf: 30
+    isFragranceFree: false  # Contains PARFUM / FRAGRANCE
+    skinTypes:
+      - all
+      - sensitive
+    forKids: false
+    formFactors:
+      - spray
+    waterResistant: true
+    availableIn:
+      - EU
+    url: "https://www.laroche-posay.pt/anthelios/anthelios-spray-invisivel-spf30"
+    ingredients: "AQUA / WATER / EAU - ALCOHOL DENAT. - ETHYLHEXYL TRIAZONE - ISOPROPYL PALMITATE - BIS-ETHYLHEXYLOXYPHENOL METHOXYPHENYL TRIAZINE - DIISOPROPYL ADIPATE - BUTYL METHOXYDIBENZOYLMETHANE - GLYCERIN - PROPANEDIOL - ISOPROPYL MYRISTATE - DIISOPROPYL SEBACATE - C12-22 ALKYL ACRYLATE/HYDROXYETHYLACRYLATE COPOLYMER - DICAPRYLYL ETHER - TOCOPHEROL - PENTYLENE GLYCOL - ACRYLATES/C10-30 ALKYL ACRYLATE CROSSPOLYMER - CAPRYLYL GLYCOL - CITRIC ACID - DROMETRIZOLE TRISILOXANE - HYDROXYACETOPHENONE - SODIUM POLYACRYLATE - TRIETHANOLAMINE - TRISODIUM ETHYLENEDIAMINE DISUCCINATE - PARFUM / FRAGRANCE"
+    ingredientClassifications:
+      "ALCOHOL DENAT.": "icky"
+      "BIS-ETHYLHEXYLOXYPHENOL METHOXYPHENYL TRIAZINE": "goodie"
+      "BUTYL METHOXYDIBENZOYLMETHANE": "goodie"
+      "ETHYLHEXYL TRIAZONE": "goodie"
+      "GLYCERIN": "superstar"
+      "TOCOPHEROL": "goodie"
+
+  # La Roche-Posay Anthelios Spray Invisível SPF 50+
+  - id: 21
+    name: "Anthelios Spray Invisível SPF 50+"
+    brand: "La Roche-Posay"
+    spf: 50
+    isFragranceFree: false  # Contains PARFUM / FRAGRANCE
+    skinTypes:
+      - all
+      - sensitive
+    forKids: false
+    formFactors:
+      - spray
+    waterResistant: true
+    availableIn:
+      - EU
+    url: "https://www.laroche-posay.pt/anthelios/anthelios-invisible-spray-spf50-plus"
+    ingredients: "AQUA / WATER / EAU - BIS-ETHYLHEXYLOXYPHENOL METHOXYPHENYL TRIAZINE - ALCOHOL DENAT. - ETHYLHEXYL TRIAZONE - BUTYL METHOXYDIBENZOYLMETHANE - ISOPROPYL PALMITATE - DIISOPROPYL ADIPATE - GLYCERIN - PROPANEDIOL - ISOPROPYL MYRISTATE - DIISOPROPYL SEBACATE - C12-22 ALKYL ACRYLATE/HYDROXYETHYLACRYLATE COPOLYMER - DICAPRYLYL ETHER - TOCOPHEROL - PENTYLENE GLYCOL - BUTYROSPERMUM PARKII BUTTER / SHEA BUTTER - ACRYLATES/C10-30 ALKYL ACRYLATE CROSSPOLYMER - CAPRYLYL GLYCOL - CITRIC ACID - DIETHYLAMINO HYDROXYBENZOYL HEXYL BENZOATE - DROMETRIZOLE TRISILOXANE - HYDROXYACETOPHENONE - PHENYLBENZIMIDAZOLE SULFONIC ACID - SODIUM POLYACRYLATE - TRIETHANOLAMINE - TRISODIUM ETHYLENEDIAMINE DISUCCINATE - PARFUM / FRAGRANCE"
+    ingredientClassifications:
+      "ALCOHOL DENAT.": "icky"
+      "BIS-ETHYLHEXYLOXYPHENOL METHOXYPHENYL TRIAZINE": "goodie"
+      "BUTYL METHOXYDIBENZOYLMETHANE": "goodie"
+      "BUTYROSPERMUM PARKII BUTTER / SHEA BUTTER": "goodie"
+      "DIETHYLAMINO HYDROXYBENZOYL HEXYL BENZOATE": "goodie"
+      "ETHYLHEXYL TRIAZONE": "goodie"
+      "GLYCERIN": "superstar"
+      "PHENYLBENZIMIDAZOLE SULFONIC ACID": "goodie"
+      "TOCOPHEROL": "goodie"
+
+  # La Roche-Posay Anthelios Stick para Zonas Sensíveis
+  - id: 22
+    name: "Anthelios Stick para Zonas Sensíveis SPF 50+"
+    brand: "La Roche-Posay"
+    spf: 50
+    isFragranceFree: true  # No PARFUM in ingredient list
+    skinTypes:
+      - all
+      - dry
+      - sensitive
     forKids: false
     formFactors:
       - stick
     waterResistant: true
-    price: "$"
     availableIn:
-      - US
-      - Canada
-      - Global
-    url: "https://www.neutrogena.com"
-
-  # Blue Lizard Baby
-  - id: 11
-    name: "Baby Mineral Sunscreen SPF 50+"
-    brand: "Blue Lizard"
-    spf: 50
-    isFragranceFree: true
-    skinTypes:
-      - all
-      - sensitive
-    forKids: true
-    formFactors:
-      - cream
-      - lotion
-    waterResistant: true
-    price: "$$"
-    availableIn:
-      - US
-      - Australia
-    url: "https://www.bluelizard.net"
-
-  # Aveeno Protect + Hydrate
-  - id: 12
-    name: "Protect + Hydrate Moisturizing Sunscreen SPF 50"
-    brand: "Aveeno"
-    spf: 50
-    isFragranceFree: true
-    skinTypes:
-      - dry
-      - combination
-    forKids: false
-    formFactors:
-      - lotion
-    waterResistant: true
-    price: "$"
-    availableIn:
-      - US
-      - Canada
-      - Global
-    url: "https://www.aveeno.com"
-
-  # Hawaiian Tropic Silk Hydration
-  - id: 13
-    name: "Silk Hydration Weightless Sunscreen SPF 30"
-    brand: "Hawaiian Tropic"
-    spf: 30
-    isFragranceFree: false
-    skinTypes:
-      - all
-      - dry
-    forKids: false
-    formFactors:
-      - lotion
-    waterResistant: true
-    price: "$"
-    availableIn:
-      - US
-      - Canada
       - EU
-      - Australia
-      - Global
-    url: "https://www.hawaiiantropic.com"
+    url: "https://www.laroche-posay.pt/anthelios/anthelios-stick-zonas-sensiveis-spf-50-"
+    ingredients: "RICINUS COMMUNIS OIL / CASTOR SEED OIL - ISOPROPYL PALMITATE - POLYETHYLENE - OCTOCRYLENE - ISOHEXADECANE - TITANIUM DIOXIDE [NANO] / TITANIUM DIOXIDE - OZOKERITE - BUTYL METHOXYDIBENZOYLMETHANE - DROMETRIZOLE TRISILOXANE - THEOBROMA CACAO SEED BUTTER / COCOA SEED BUTTER - BUTYROSPERMUM PARKII BUTTER / SHEA BUTTER - AQUA / WATER - DIMETHICONE - GLYCINE SOJA OIL / SOYBEAN OIL - SILICA - TOCOPHEROL"
+    ingredientClassifications:
+      "BUTYL METHOXYDIBENZOYLMETHANE": "goodie"
+      "BUTYROSPERMUM PARKII BUTTER / SHEA BUTTER": "goodie"
+      "TITANIUM DIOXIDE [NANO] / TITANIUM DIOXIDE": "goodie"
+      "TOCOPHEROL": "goodie"
 
-  # Thinkbaby Safe Sunscreen
-  - id: 14
-    name: "Safe Sunscreen SPF 50+"
-    brand: "Thinkbaby"
+  # La Roche-Posay Anthelios Leite Bebé Dermo-Pediatrics
+  - id: 23
+    name: "Anthelios Leite Bebé Dermo-Pediatrics SPF 50+"
+    brand: "La Roche-Posay"
     spf: 50
-    isFragranceFree: true
+    isFragranceFree: true  # No PARFUM in ingredient list
     skinTypes:
       - all
       - sensitive
     forKids: true
     formFactors:
-      - cream
-    waterResistant: true
-    price: "$$"
+      - lotion
+    waterResistant: false  # Not mentioned
     availableIn:
-      - US
-      - Canada
-      - Global
-    url: "https://www.thinkbaby.com"
+      - EU
+    url: "https://www.laroche-posay.pt/anthelios/anthelios-leite-bebe-dermo-pediatrics-fps50-"
+    ingredients: "AQUA / WATER - GLYCERIN - C12-15 ALKYL BENZOATE - CAPRYLIC/CAPRIC TRIGLYCERIDE - ETHYLHEXYL SALICYLATE - BIS-ETHYLHEXYLOXYPHENOL METHOXYPHENYL TRIAZINE - ALCOHOL DENAT - BUTYL METHOXYDIBENZOYLMETHANE - DROMETRIZOLE TRISILOXANE - STYRENE/ACRYLATES COPOLYMER - DIMETHICONE - ZEA MAYS STARCH / CORN STARCH - PROPYLENE GLYCOL - SYNTHETIC WAX - DIETHYLHEXYL BUTAMIDO TRIAZONE - POTASSIUM CETYL PHOSPHATE - ALUMINUM HYDROXIDE - AMMONIUM POLYACRYLDIMETHYLTAURAMIDE / AMMONIUM POLYACRYLOYLDIMETHYL TAURATE - BUTYROSPERMUM PARKII BUTTER / SHEA BUTTER - CAPRYLYL GLYCOL - DISODIUM EDTA - GLYCERYL STEARATE - HYDROXYPROPYL METHYLCELLULOSE - PALMITIC ACID - PEG-100 STEARATE - PEG-8 LAURATE - STEARIC ACID - TOCOPHEROL - TRIETHANOLAMINE"
+    ingredientClassifications:
+      "ALCOHOL DENAT": "icky"
+      "BIS-ETHYLHEXYLOXYPHENOL METHOXYPHENYL TRIAZINE": "goodie"
+      "BUTYL METHOXYDIBENZOYLMETHANE": "goodie"
+      "BUTYROSPERMUM PARKII BUTTER / SHEA BUTTER": "goodie"
+      "GLYCERIN": "superstar"
+      "TOCOPHEROL": "goodie"
 
-  # Vanicream Facial Moisturizer
-  - id: 15
-    name: "Facial Moisturizer SPF 30"
-    brand: "Vanicream"
-    spf: 30
-    isFragranceFree: true
+  # La Roche-Posay Anthelios Eco-Conscious Hydrating Lotion
+  - id: 24
+    name: "Anthelios Eco-Conscious Hydrating Lotion SPF 50+"
+    brand: "La Roche-Posay"
+    spf: 50
+    isFragranceFree: true  # No PARFUM in ingredient list
     skinTypes:
-      - dry
+      - all
       - sensitive
     forKids: false
     formFactors:
-      - cream
-    waterResistant: false
-    price: "$$"
+      - lotion
+    waterResistant: false  # Not mentioned
     availableIn:
-      - US
-      - Canada
-    url: "https://www.vanicream.com"
+      - EU
+    url: "https://www.laroche-posay.pt/anthelios/anthelios-hydrating-lotion-spf50-eco-conscious"
+    ingredients: "AQUA / WATER / EAU - ISOPROPYL PALMITATE - ALCOHOL DENAT. - ETHYLHEXYL TRIAZONE - BUTYLMETHOXYDIBENZOYLMETHANE - BIS-ETHYLHEXYLOXYPHENOLMETHOXYPHENYL TRIAZINE - GLYCERIN - PROPANEDIOL - DICAPRYLYL ETHER - TRIETHANOLAMINE - PHENYLBENZIMIDAZOLE SULFONIC ACID - TOCOPHEROL - OXIDIZED STARCH ACETATE - COPERNICIA CERIFERA CERA / CARNAUBAWAX / CIRE DE CARNAUBA - SILICA - DIETHYLAMINO HYDROXYBENZOYL HEXYL BENZOATE - PENTYLENE GLYCOL - C12-22 ALKYL ACRYLATE/HYDROXYETHYLACRYLATE COPOLYMER - ACRYLATES COPOLYMER - ACRYLATES/C10-30 ALKYL ACRYLATE CROSSPOLYMER - CAPRYLYL GLYCOL - CITRIC ACID - DROMETRIZOLE TRISILOXANE - HYDROXYETHYLCELLULOSE - TEREPHTHALYLIDENE DICAMPHOR SULFONIC ACID - TRISODIUM ETHYLENEDIAMINE DISUCCINATE - XANTHAN GUM"
+    ingredientClassifications:
+      "ALCOHOL DENAT.": "icky"
+      "BIS-ETHYLHEXYLOXYPHENOLMETHOXYPHENYL TRIAZINE": "goodie"
+      "BUTYLMETHOXYDIBENZOYLMETHANE": "goodie"
+      "DIETHYLAMINO HYDROXYBENZOYL HEXYL BENZOATE": "goodie"
+      "ETHYLHEXYL TRIAZONE": "goodie"
+      "GLYCERIN": "superstar"
+      "PHENYLBENZIMIDAZOLE SULFONIC ACID": "goodie"
+      "TOCOPHEROL": "goodie"
+
+  # La Roche-Posay Anthelios Eco-Conscious Family Spray
+  - id: 25
+    name: "Anthelios Eco-Conscious Family Spray SPF 50+"
+    brand: "La Roche-Posay"
+    spf: 50
+    isFragranceFree: true  # No PARFUM in ingredient list
+    skinTypes:
+      - all
+      - sensitive
+    forKids: true  # Specifically for families, adults and children
+    formFactors:
+      - spray
+    waterResistant: true  # Very water resistant, sweat & sand resistant
+    availableIn:
+      - EU
+    url: "https://www.laroche-posay.pt/anthelios/anthelios-eco-conscious-family-spray"
+    ingredients: "AQUA / WATER / EAU • BIS-ETHYLHEXYLOXYPHENOL METHOXYPHENYL TRIAZINE • ALCOHOL DENAT. • ETHYLHEXYL TRIAZONE • BUTYL METHOXYDIBENZOYLMETHANE • ISOPROPYL PALMITATE • DIISOPROPYL ADIPATE • GLYCERIN • PROPANEDIOL • ISOPROPYL MYRISTATE • DIISOPROPYL SEBACATE • C12-22 ALKYL ACRYLATE/HYDROXYETHYLACRYLATE COPOLYMER • DICAPRYLYL ETHER • TOCOPHEROL • PENTYLENE GLYCOL • BUTYROSPERMUM PARKII BUTTER / SHEA BUTTER • ACRYLATES/C10-30 ALKYL ACRYLATE CROSSPOLYMER • CAPRYLYL GLYCOL • CITRIC ACID • DIETHYLAMINO HYDROXYBENZOYL HEXYL BENZOATE • DROMETRIZOLE TRISILOXANE • HYDROXYACETOPHENONE • PHENYLBENZIMIDAZOLE SULFONIC ACID • SODIUM POLYACRYLATE • TRIETHANOLAMINE • TRISODIUM ETHYLENEDIAMINE DISUCCINATE •"
+    ingredientClassifications:
+      "ALCOHOL DENAT.": "icky"
+      "BIS-ETHYLHEXYLOXYPHENOL METHOXYPHENYL TRIAZINE": "goodie"
+      "BUTYL METHOXYDIBENZOYLMETHANE": "goodie"
+      "BUTYROSPERMUM PARKII BUTTER / SHEA BUTTER": "goodie"
+      "DIETHYLAMINO HYDROXYBENZOYL HEXYL BENZOATE": "goodie"
+      "ETHYLHEXYL TRIAZONE": "goodie"
+      "GLYCERIN": "superstar"
+      "PHENYLBENZIMIDAZOLE SULFONIC ACID": "goodie"
+      "TOCOPHEROL": "goodie"
+
+  # # Neutrogena Ultra Sheer
+  # - id: 1
+  #   name: "Ultra Sheer Dry-Touch Sunscreen SPF 55"
+  #   brand: "Neutrogena"
+  #   spf: 55
+  #   isFragranceFree: false
+  #   skinTypes:
+  #     - oily
+  #     - combination
+  #   forKids: false
+  #   formFactors:
+  #     - lotion
+  #   waterResistant: true
+  #   price: "$"
+  #   availableIn:
+  #     - US
+  #     - Canada
+  #     - Global
+  #   url: "https://www.neutrogena.com"
+
+  # # CeraVe Mineral
+  # - id: 2
+  #   name: "Hydrating Mineral Sunscreen SPF 50"
+  #   brand: "CeraVe"
+  #   spf: 50
+  #   isFragranceFree: true
+  #   skinTypes:
+  #     - dry
+  #     - sensitive
+  #   forKids: false
+  #   formFactors:
+  #     - lotion
+  #     - cream
+  #   waterResistant: false
+  #   price: "$"
+  #   availableIn:
+  #     - US
+  #     - Canada
+  #     - Global
+  #   url: "https://www.cerave.com"
+
+  # # La Roche-Posay Anthelios
+  # - id: 3
+  #   name: "Anthelios Melt-In Milk Sunscreen SPF 60"
+  #   brand: "La Roche-Posay"
+  #   spf: 60
+  #   isFragranceFree: true
+  #   skinTypes:
+  #     - all
+  #     - sensitive
+  #   forKids: false
+  #   formFactors:
+  #     - lotion
+  #   waterResistant: true
+  #   price: "$$"
+  #   availableIn:
+  #     - US
+  #     - EU
+  #     - UK
+  #     - Canada
+  #     - Australia
+  #     - Global
+  #   url: "https://www.laroche-posay.us"
+
+  # # Coppertone Kids
+  # - id: 4
+  #   name: "Kids Sunscreen Spray SPF 50"
+  #   brand: "Coppertone"
+  #   spf: 50
+  #   isFragranceFree: false
+  #   skinTypes:
+  #     - all
+  #   forKids: true
+  #   formFactors:
+  #     - spray
+  #   waterResistant: true
+  #   price: "$"
+  #   availableIn:
+  #     - US
+  #     - Canada
+  #   url: "https://www.coppertone.com"
+
+  # # EltaMD UV Clear
+  # - id: 5
+  #   name: "UV Clear Facial Sunscreen SPF 46"
+  #   brand: "EltaMD"
+  #   spf: 46
+  #   isFragranceFree: true
+  #   skinTypes:
+  #     - oily
+  #     - combination
+  #     - sensitive
+  #   forKids: false
+  #   formFactors:
+  #     - cream
+  #   waterResistant: false
+  #   price: "$$$"
+  #   availableIn:
+  #     - US
+  #     - Global
+  #   url: "https://eltamd.com"
+
+  # # Banana Boat Kids
+  # - id: 6
+  #   name: "Kids Mineral Sunscreen Lotion SPF 50"
+  #   brand: "Banana Boat"
+  #   spf: 50
+  #   isFragranceFree: true
+  #   skinTypes:
+  #     - all
+  #     - sensitive
+  #   forKids: true
+  #   formFactors:
+  #     - lotion
+  #   waterResistant: true
+  #   price: "$"
+  #   availableIn:
+  #     - US
+  #     - Canada
+  #     - Australia
+  #   url: "https://www.bananaboat.com"
+
+  # # Supergoop! Unseen
+  # - id: 7
+  #   name: "Unseen Sunscreen SPF 40"
+  #   brand: "Supergoop!"
+  #   spf: 40
+  #   isFragranceFree: true
+  #   skinTypes:
+  #     - oily
+  #     - combination
+  #   forKids: false
+  #   formFactors:
+  #     - gel
+  #   waterResistant: false
+  #   price: "$$$"
+  #   availableIn:
+  #     - US
+  #     - UK
+  #     - Canada
+  #     - Global
+  #   url: "https://supergoop.com"
+
+  # # Sun Bum Original
+  # - id: 8
+  #   name: "Original Sunscreen Spray SPF 50"
+  #   brand: "Sun Bum"
+  #   spf: 50
+  #   isFragranceFree: false
+  #   skinTypes:
+  #     - all
+  #   forKids: false
+  #   formFactors:
+  #     - spray
+  #   waterResistant: true
+  #   price: "$$"
+  #   availableIn:
+  #     - US
+  #     - Canada
+  #     - Australia
+  #     - Global
+  #   url: "https://www.sunbum.com"
+
+  # # Eucerin Daily Hydration
+  # - id: 9
+  #   name: "Daily Hydration Cream SPF 30"
+  #   brand: "Eucerin"
+  #   spf: 30
+  #   isFragranceFree: true
+  #   skinTypes:
+  #     - dry
+  #     - sensitive
+  #   forKids: false
+  #   formFactors:
+  #     - cream
+  #   waterResistant: false
+  #   price: "$"
+  #   availableIn:
+  #     - US
+  #     - EU
+  #     - UK
+  #     - Canada
+  #     - Global
+  #   url: "https://www.eucerinus.com"
+
+  # # Neutrogena Sport
+  # - id: 10
+  #   name: "CoolDry Sport Sunscreen Stick SPF 50"
+  #   brand: "Neutrogena"
+  #   spf: 50
+  #   isFragranceFree: false
+  #   skinTypes:
+  #     - all
+  #   forKids: false
+  #   formFactors:
+  #     - stick
+  #   waterResistant: true
+  #   price: "$"
+  #   availableIn:
+  #     - US
+  #     - Canada
+  #     - Global
+  #   url: "https://www.neutrogena.com"
+
+  # # Blue Lizard Baby
+  # - id: 11
+  #   name: "Baby Mineral Sunscreen SPF 50+"
+  #   brand: "Blue Lizard"
+  #   spf: 50
+  #   isFragranceFree: true
+  #   skinTypes:
+  #     - all
+  #     - sensitive
+  #   forKids: true
+  #   formFactors:
+  #     - cream
+  #     - lotion
+  #   waterResistant: true
+  #   price: "$$"
+  #   availableIn:
+  #     - US
+  #     - Australia
+  #   url: "https://www.bluelizard.net"
+
+  # # Aveeno Protect + Hydrate
+  # - id: 12
+  #   name: "Protect + Hydrate Moisturizing Sunscreen SPF 50"
+  #   brand: "Aveeno"
+  #   spf: 50
+  #   isFragranceFree: true
+  #   skinTypes:
+  #     - dry
+  #     - combination
+  #   forKids: false
+  #   formFactors:
+  #     - lotion
+  #   waterResistant: true
+  #   price: "$"
+  #   availableIn:
+  #     - US
+  #     - Canada
+  #     - Global
+  #   url: "https://www.aveeno.com"
+
+  # # Hawaiian Tropic Silk Hydration
+  # - id: 13
+  #   name: "Silk Hydration Weightless Sunscreen SPF 30"
+  #   brand: "Hawaiian Tropic"
+  #   spf: 30
+  #   isFragranceFree: false
+  #   skinTypes:
+  #     - all
+  #     - dry
+  #   forKids: false
+  #   formFactors:
+  #     - lotion
+  #   waterResistant: true
+  #   price: "$"
+  #   availableIn:
+  #     - US
+  #     - Canada
+  #     - EU
+  #     - Australia
+  #     - Global
+  #   url: "https://www.hawaiiantropic.com"
+
+  # # Thinkbaby Safe Sunscreen
+  # - id: 14
+  #   name: "Safe Sunscreen SPF 50+"
+  #   brand: "Thinkbaby"
+  #   spf: 50
+  #   isFragranceFree: true
+  #   skinTypes:
+  #     - all
+  #     - sensitive
+  #   forKids: true
+  #   formFactors:
+  #     - cream
+  #   waterResistant: true
+  #   price: "$$"
+  #   availableIn:
+  #     - US
+  #     - Canada
+  #     - Global
+  #   url: "https://www.thinkbaby.com"
+
+  # # Vanicream Facial Moisturizer
+  # - id: 15
+  #   name: "Facial Moisturizer SPF 30"
+  #   brand: "Vanicream"
+  #   spf: 30
+  #   isFragranceFree: true
+  #   skinTypes:
+  #     - dry
+  #     - sensitive
+  #   forKids: false
+  #   formFactors:
+  #     - cream
+  #   waterResistant: false
+  #   price: "$$"
+  #   availableIn:
+  #     - US
+  #     - Canada
+  #   url: "https://www.vanicream.com"
