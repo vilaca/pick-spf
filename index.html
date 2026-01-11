@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- SEO Meta Tags -->
+    <title>Always Use - Find Your Perfect Sunscreen</title>
+    <meta name="description" content="Answer a few questions to find the perfect sunscreen for your skin type and needs. Free, fast, and personalized recommendations.">
+    <meta name="keywords" content="sunscreen, sun protection, SPF, skin care, sunscreen finder, personalized recommendations, always use sunscreen">
+    <link rel="canonical" href="https://alwaysuse.com/">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://alwaysuse.com/">
+    <meta property="og:title" content="Always Use - Find Your Perfect Sunscreen">
+    <meta property="og:description" content="Answer a few questions to find the perfect sunscreen for your skin type and needs.">
+    <meta property="og:image" content="https://alwaysuse.com/images/og-image.png">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://alwaysuse.com/">
+    <meta property="twitter:title" content="Always Use - Find Your Perfect Sunscreen">
+    <meta property="twitter:description" content="Answer a few questions to find the perfect sunscreen for your skin type and needs.">
+    <meta property="twitter:image" content="https://alwaysuse.com/images/og-image.png">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="/images/favicon.ico">
+
+    <!-- Structured Data (JSON-LD) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "Always Use",
+      "description": "Find your perfect sunscreen based on your skin type and preferences",
+      "url": "https://alwaysuse.com/",
+      "applicationCategory": "HealthApplication",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      }
+    }
+    </script>
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="styles.css">
+
+    <!-- YAML Parser -->
+    <script src="https://cdn.jsdelivr.net/npm/js-yaml@4.1.0/dist/js-yaml.min.js"></script>
+</head>
+<body>
+    <!-- Loading Overlay -->
+    <div id="loading-overlay" class="loading-overlay">
+        <div class="spinner"></div>
+        <p class="loading-text" data-i18n="loading.text">Loading sunscreen data...</p>
+    </div>
+
+    <!-- Skip Link for Accessibility -->
+    <a href="#main-content" class="skip-link" data-i18n="accessibility.skipLink">Skip to main content</a>
+
+    <!-- Header -->
+    <header role="banner">
+        <div class="header-content">
+            <div class="header-text">
+                <h1>🌞 Always Use</h1>
+                <p class="tagline" data-i18n="header.tagline">Find your perfect sun protection</p>
+            </div>
+            <div class="language-selector">
+                <label for="language-select" class="sr-only">Select language</label>
+                <select id="language-select" aria-label="Select language">
+                    <option value="en">🇬🇧 English</option>
+                    <option value="pt-PT">🇵🇹 Português</option>
+                    <option value="de">🇩🇪 Deutsch</option>
+                    <option value="fr">🇫🇷 Français</option>
+                    <option value="es">🇪🇸 Español</option>
+                    <option value="it">🇮🇹 Italiano</option>
+                    <option value="pl">🇵🇱 Polski</option>
+                </select>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main id="main-content" role="main">
+
+        <!-- Welcome View -->
+        <section id="welcome-view" class="view active" aria-labelledby="welcome-heading">
+            <h2 id="welcome-heading" data-i18n="welcome.heading">Welcome!</h2>
+            <p data-i18n="welcome.description">Answer a few quick questions to find sunscreens that match your needs.</p>
+
+            <ul class="features-list">
+                <li>✓ <span data-i18n="welcome.features.personalized">Personalized recommendations</span></li>
+                <li>✓ <span data-i18n="welcome.features.filter">Filter by skin type, SPF, and more</span></li>
+                <li>✓ <span data-i18n="welcome.features.share">Share your results with friends</span></li>
+            </ul>
+
+            <button id="start-quiz-btn" class="btn btn-primary" data-i18n="welcome.startButton">Start Quiz</button>
+
+            <div class="info-box">
+                <p><strong>☀️ <span data-i18n="welcome.whySunscreen.title">Why sunscreen?</span></strong> <span data-i18n="welcome.whySunscreen.text">Daily sunscreen use helps prevent skin cancer, premature aging (wrinkles, age spots), sunburn, and protects against harmful UV radiation.</span></p>
+            </div>
+
+            <div class="disclaimer">
+                <p><strong>⚠️ <span data-i18n="disclaimer.important">Important:</span></strong> <span data-i18n="disclaimer.text">This tool provides general suggestions only. Always consult with a dermatologist or healthcare professional for personalized skincare advice. Test new products on a small area first.</span></p>
+            </div>
+
+            <div class="privacy-badge">
+                <p>🔒 <strong><span data-i18n="privacy.title">Your privacy matters:</span></strong> <span data-i18n="privacy.text">No cookies, no tracking, no data collection. Everything happens in your browser.</span></p>
+            </div>
+        </section>
+
+        <!-- Questions View -->
+        <section id="questions-view" class="view" aria-labelledby="questions-heading">
+            <div class="view-header">
+                <h2 id="questions-heading" data-i18n="questions.heading">Find Your Sunscreen</h2>
+                <button id="toggle-mode-btn" class="btn btn-secondary" data-i18n-aria="accessibility.toggleModeAria" aria-label="Toggle between wizard and view all modes">
+                    <span id="mode-text" data-i18n="questions.toggleMode">View All Answers</span>
+                </button>
+            </div>
+
+            <!-- Progress Bar -->
+            <div class="progress-container" role="progressbar" aria-valuemin="0" aria-valuemax="6" aria-valuenow="0">
+                <div class="progress-bar"></div>
+                <p class="progress-text"><span data-i18n="questions.progressText">Question</span> <span id="current-question">0</span> <span data-i18n="questions.of">of</span> <span id="total-questions">6</span></p>
+            </div>
+
+            <!-- Question Indicator Dots -->
+            <div id="question-dots" class="question-dots">
+                <span class="dot" data-question="1"></span>
+                <span class="dot" data-question="2"></span>
+                <span class="dot" data-question="3"></span>
+                <span class="dot" data-question="4"></span>
+                <span class="dot" data-question="5"></span>
+                <span class="dot" data-question="6"></span>
+            </div>
+
+            <!-- Live Count Preview -->
+            <div id="live-count" class="live-count" role="status" aria-live="polite">
+                <span class="count-number">15</span>
+                <span class="count-text">sunscreens available</span>
+            </div>
+
+            <!-- Questions Container -->
+            <form id="questions-form" aria-label="Sunscreen preference questionnaire">
+
+                <!-- Question 1: Location/Region -->
+                <fieldset class="question" data-question="1">
+                    <legend data-i18n="questions.question1.legend">Where will you be purchasing/using this sunscreen?</legend>
+                    <p class="question-note" data-i18n="questions.question1.note">Sunscreen formulations and availability vary by region.</p>
+                    <div class="options">
+                        <label class="option">
+                            <input type="radio" name="location" value="US" required>
+                            <span class="option-label">🇺🇸 <span data-i18n="questions.question1.options.US.label">United States</span></span>
+                            <span class="option-desc" data-i18n="questions.question1.options.US.desc">US formulations and availability</span>
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="location" value="EU">
+                            <span class="option-label">🇪🇺 <span data-i18n="questions.question1.options.EU.label">European Union</span></span>
+                            <span class="option-desc" data-i18n="questions.question1.options.EU.desc">EU approved filters and formulations</span>
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="location" value="UK">
+                            <span class="option-label">🇬🇧 <span data-i18n="questions.question1.options.UK.label">United Kingdom</span></span>
+                            <span class="option-desc" data-i18n="questions.question1.options.UK.desc">UK market availability</span>
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="location" value="Canada">
+                            <span class="option-label">🇨🇦 <span data-i18n="questions.question1.options.Canada.label">Canada</span></span>
+                            <span class="option-desc" data-i18n="questions.question1.options.Canada.desc">Health Canada approved products</span>
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="location" value="Australia">
+                            <span class="option-label">🇦🇺 <span data-i18n="questions.question1.options.Australia.label">Australia/New Zealand</span></span>
+                            <span class="option-desc" data-i18n="questions.question1.options.Australia.desc">TGA approved sunscreens</span>
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="location" value="Japan">
+                            <span class="option-label">🇯🇵 <span data-i18n="questions.question1.options.Japan.label">Japan</span></span>
+                            <span class="option-desc" data-i18n="questions.question1.options.Japan.desc">Japanese market formulations</span>
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="location" value="Global">
+                            <span class="option-label">🌍 <span data-i18n="questions.question1.options.Global.label">Other/Not Sure</span></span>
+                            <span class="option-desc" data-i18n="questions.question1.options.Global.desc">Show globally available products</span>
+                        </label>
+                    </div>
+                </fieldset>
+
+                <!-- Question 2: Skin Type -->
+                <fieldset class="question" data-question="2">
+                    <legend data-i18n="questions.question2.legend">What is your skin type?</legend>
+                    <div class="options">
+                        <label class="option">
+                            <input type="radio" name="skinType" value="oily" required>
+                            <span class="option-label" data-i18n="questions.question2.options.oily.label">Oily</span>
+                            <span class="option-desc" data-i18n="questions.question2.options.oily.desc">Shiny, prone to breakouts</span>
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="skinType" value="dry">
+                            <span class="option-label" data-i18n="questions.question2.options.dry.label">Dry</span>
+                            <span class="option-desc" data-i18n="questions.question2.options.dry.desc">Flaky, tight feeling</span>
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="skinType" value="combination">
+                            <span class="option-label" data-i18n="questions.question2.options.combination.label">Combination</span>
+                            <span class="option-desc" data-i18n="questions.question2.options.combination.desc">Oily T-zone, dry cheeks</span>
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="skinType" value="sensitive">
+                            <span class="option-label" data-i18n="questions.question2.options.sensitive.label">Sensitive</span>
+                            <span class="option-desc" data-i18n="questions.question2.options.sensitive.desc">Easily irritated, reactive</span>
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="skinType" value="all">
+                            <span class="option-label" data-i18n="questions.question2.options.all.label">Not Sure / Any</span>
+                            <span class="option-desc" data-i18n="questions.question2.options.all.desc">Works for all skin types</span>
+                        </label>
+                    </div>
+                </fieldset>
+
+                <!-- Question 3: Fragrance Free -->
+                <fieldset class="question" data-question="3">
+                    <legend data-i18n="questions.question3.legend">Do you need fragrance-free sunscreen?</legend>
+                    <div class="options">
+                        <label class="option">
+                            <input type="radio" name="fragranceFree" value="true" required>
+                            <span class="option-label" data-i18n="questions.question3.options.true.label">Yes</span>
+                            <span class="option-desc" data-i18n="questions.question3.options.true.desc">No added fragrance</span>
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="fragranceFree" value="false">
+                            <span class="option-label" data-i18n="questions.question3.options.false.label">No</span>
+                            <span class="option-desc" data-i18n="questions.question3.options.false.desc">Fragrance is okay</span>
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="fragranceFree" value="any">
+                            <span class="option-label" data-i18n="questions.question3.options.any.label">Either</span>
+                            <span class="option-desc" data-i18n="questions.question3.options.any.desc">No preference</span>
+                        </label>
+                    </div>
+                </fieldset>
+
+                <!-- Question 4: For Kids -->
+                <fieldset class="question" data-question="4">
+                    <legend data-i18n="questions.question4.legend">Who is this for?</legend>
+                    <div class="options">
+                        <label class="option">
+                            <input type="radio" name="forKids" value="true" required>
+                            <span class="option-label" data-i18n="questions.question4.options.true.label">Kids</span>
+                            <span class="option-desc" data-i18n="questions.question4.options.true.desc">Specifically formulated for children</span>
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="forKids" value="false">
+                            <span class="option-label" data-i18n="questions.question4.options.false.label">Adults</span>
+                            <span class="option-desc" data-i18n="questions.question4.options.false.desc">General or adult formulas</span>
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="forKids" value="any">
+                            <span class="option-label" data-i18n="questions.question4.options.any.label">Either</span>
+                            <span class="option-desc" data-i18n="questions.question4.options.any.desc">No preference</span>
+                        </label>
+                    </div>
+                </fieldset>
+
+                <!-- Question 5: Form Factor -->
+                <fieldset class="question" data-question="5">
+                    <legend data-i18n="questions.question5.legend">Preferred application method?</legend>
+                    <div class="options">
+                        <label class="option">
+                            <input type="radio" name="formFactor" value="cream" required>
+                            <span class="option-label" data-i18n="questions.question5.options.cream.label">Cream</span>
+                            <span class="option-desc" data-i18n="questions.question5.options.cream.desc">Thick, moisturizing</span>
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="formFactor" value="lotion">
+                            <span class="option-label" data-i18n="questions.question5.options.lotion.label">Lotion</span>
+                            <span class="option-desc" data-i18n="questions.question5.options.lotion.desc">Light, easy to spread</span>
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="formFactor" value="spray">
+                            <span class="option-label" data-i18n="questions.question5.options.spray.label">Spray</span>
+                            <span class="option-desc" data-i18n="questions.question5.options.spray.desc">Quick, convenient</span>
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="formFactor" value="stick">
+                            <span class="option-label" data-i18n="questions.question5.options.stick.label">Stick</span>
+                            <span class="option-desc" data-i18n="questions.question5.options.stick.desc">Portable, mess-free</span>
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="formFactor" value="gel">
+                            <span class="option-label" data-i18n="questions.question5.options.gel.label">Gel</span>
+                            <span class="option-desc" data-i18n="questions.question5.options.gel.desc">Lightweight, non-greasy</span>
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="formFactor" value="any">
+                            <span class="option-label" data-i18n="questions.question5.options.any.label">Any</span>
+                            <span class="option-desc" data-i18n="questions.question5.options.any.desc">No preference</span>
+                        </label>
+                    </div>
+                </fieldset>
+
+                <!-- Question 6: Water Resistant -->
+                <fieldset class="question" data-question="6">
+                    <legend data-i18n="questions.question6.legend">Do you need water resistance?</legend>
+                    <div class="options">
+                        <label class="option">
+                            <input type="radio" name="waterResistant" value="true" required>
+                            <span class="option-label" data-i18n="questions.question6.options.true.label">Yes</span>
+                            <span class="option-desc" data-i18n="questions.question6.options.true.desc">Swimming or sweating</span>
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="waterResistant" value="false">
+                            <span class="option-label" data-i18n="questions.question6.options.false.label">No</span>
+                            <span class="option-desc" data-i18n="questions.question6.options.false.desc">Everyday use</span>
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="waterResistant" value="any">
+                            <span class="option-label" data-i18n="questions.question6.options.any.label">Either</span>
+                            <span class="option-desc" data-i18n="questions.question6.options.any.desc">No preference</span>
+                        </label>
+                    </div>
+                </fieldset>
+
+            </form>
+
+            <!-- Navigation Buttons -->
+            <div class="navigation-buttons">
+                <button id="prev-btn" class="btn btn-secondary" data-i18n-aria="accessibility.previousAria" aria-label="Previous question">← <span data-i18n="navigation.previous">Previous</span></button>
+                <button id="next-btn" class="btn btn-primary" data-i18n-aria="accessibility.nextAria" aria-label="Next question"><span data-i18n="navigation.next">Next</span> →</button>
+                <button id="show-results-btn" class="btn btn-primary" style="display: none;" data-i18n="navigation.showResults">Show Results</button>
+            </div>
+        </section>
+
+        <!-- Results View -->
+        <section id="results-view" class="view" aria-labelledby="results-heading">
+            <h2 id="results-heading" data-i18n="results.heading">Your Perfect Sunscreens</h2>
+
+            <!-- Results Summary (ARIA Live Region) -->
+            <div id="results-summary" class="results-summary" role="status" aria-live="polite" aria-atomic="true">
+                <!-- Dynamically updated -->
+            </div>
+
+            <!-- Results Container -->
+            <div id="results-container" class="results-container">
+                <!-- Results will be inserted here dynamically -->
+            </div>
+
+            <!-- Share Section -->
+            <div class="share-section">
+                <h3 data-i18n="share.heading">Share Your Results</h3>
+                <p class="share-description" data-i18n="share.description">Found your perfect sunscreen? Share it with friends!</p>
+                <div class="share-buttons">
+                    <button id="share-whatsapp" class="btn btn-share btn-whatsapp" data-i18n-aria="accessibility.shareWhatsAppAria" aria-label="Share on WhatsApp">
+                        <span class="share-icon">💬</span> <span data-i18n="share.buttons.whatsapp">WhatsApp</span>
+                    </button>
+                    <button id="share-facebook" class="btn btn-share btn-facebook" data-i18n-aria="accessibility.shareFacebookAria" aria-label="Share on Facebook">
+                        <span class="share-icon">📘</span> <span data-i18n="share.buttons.facebook">Facebook</span>
+                    </button>
+                    <button id="share-twitter" class="btn btn-share btn-twitter" data-i18n-aria="accessibility.shareTwitterAria" aria-label="Share on Twitter">
+                        <span class="share-icon">🐦</span> <span data-i18n="share.buttons.twitter">Twitter</span>
+                    </button>
+                    <button id="share-copy" class="btn btn-share btn-copy" data-i18n-aria="accessibility.shareCopyAria" aria-label="Copy link to clipboard">
+                        <span class="share-icon">🔗</span> <span data-i18n="share.buttons.copy">Copy Link</span>
+                    </button>
+                </div>
+                <p id="copy-confirmation" class="copy-confirmation" role="status" aria-live="polite"></p>
+            </div>
+
+            <div class="disclaimer">
+                <p><strong>⚠️ <span data-i18n="disclaimer.results">Disclaimer:</span></strong> <span data-i18n="disclaimer.resultsText">These are suggestions based on your preferences, not medical advice. Always read product labels, check ingredients for allergies, and consult a dermatologist if you have specific skin concerns.</span></p>
+            </div>
+
+            <!-- Action Buttons -->
+            <div class="results-actions">
+                <button id="restart-btn" class="btn btn-secondary" data-i18n-aria="accessibility.restartAria" aria-label="Start over" data-i18n="results.noResults.restartButton">Start Over</button>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer role="contentinfo">
+        <p data-i18n="footer.madeWith">Made with ☀️ for better sun protection</p>
+        <p class="privacy-footer" data-i18n="privacy.footer">🔒 No cookies • No tracking • 100% private • Open source</p>
+        <p><a href="https://github.com/YOUR_USERNAME/alwaysuse" target="_blank" rel="noopener noreferrer" data-i18n="footer.github">View on GitHub</a> | <a href="LICENSE" data-i18n="footer.license">MIT License</a></p>
+    </footer>
+
+    <!-- JavaScript -->
+    <script src="script.js"></script>
+</body>
+</html>

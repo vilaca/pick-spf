@@ -1,0 +1,272 @@
+{
+  "meta": {
+    "title": "Always Use - Encontre o Seu Protetor Solar Perfeito",
+    "description": "Responda a algumas perguntas para encontrar o protetor solar perfeito para o seu tipo de pele e necessidades. Gratuito, rápido e com recomendações personalizadas.",
+    "keywords": "protetor solar, proteção solar, FPS, cuidados com a pele, localizador de protetor solar, recomendações personalizadas"
+  },
+  "header": {
+    "title": "Always Use",
+    "tagline": "Encontre a sua proteção solar perfeita"
+  },
+  "welcome": {
+    "heading": "Bem-vindo!",
+    "description": "Responda a algumas perguntas rápidas para encontrar protetores solares que correspondam às suas necessidades.",
+    "whySunscreen": {
+      "title": "Porquê protetor solar?",
+      "text": "O uso diário de protetor solar ajuda a prevenir cancro de pele, envelhecimento prematuro (rugas, manchas de idade), queimaduras solares e protege contra a radiação UV prejudicial."
+    },
+    "features": {
+      "personalized": "Recomendações personalizadas",
+      "filter": "Filtre por tipo de pele, FPS e mais",
+      "share": "Partilhe os seus resultados com amigos"
+    },
+    "startButton": "Iniciar Questionário"
+  },
+  "disclaimer": {
+    "important": "Importante:",
+    "text": "Esta ferramenta fornece apenas sugestões gerais. Consulte sempre um dermatologista ou profissional de saúde para aconselhamento personalizado sobre cuidados com a pele. Teste novos produtos numa pequena área primeiro.",
+    "results": "Aviso:",
+    "resultsText": "Estas são sugestões baseadas nas suas preferências, não constituem aconselhamento médico. Leia sempre os rótulos dos produtos, verifique os ingredientes para alergias e consulte um dermatologista se tiver preocupações específicas com a pele."
+  },
+  "privacy": {
+    "title": "A sua privacidade importa:",
+    "text": "Sem cookies, sem rastreamento, sem recolha de dados. Tudo acontece no seu navegador.",
+    "footer": "Sem cookies • Sem rastreamento • 100% anónimo • Código aberto"
+  },
+  "questions": {
+    "heading": "Encontre o Seu Protetor Solar",
+    "toggleMode": "Ver Todas as Respostas",
+    "toggleModeWizard": "Modo Assistente",
+    "progressText": "Pergunta",
+    "of": "de",
+    "question1": {
+      "legend": "Onde irá comprar/utilizar este protetor solar?",
+      "note": "As formulações e disponibilidade de protetores solares variam por região.",
+      "options": {
+        "US": {
+          "label": "Estados Unidos",
+          "desc": "Formulações e disponibilidade dos EUA"
+        },
+        "EU": {
+          "label": "União Europeia",
+          "desc": "Filtros e formulações aprovados pela UE"
+        },
+        "UK": {
+          "label": "Reino Unido",
+          "desc": "Disponibilidade no mercado do Reino Unido"
+        },
+        "Canada": {
+          "label": "Canadá",
+          "desc": "Produtos aprovados pela Health Canada"
+        },
+        "Australia": {
+          "label": "Austrália/Nova Zelândia",
+          "desc": "Protetores solares aprovados pela TGA"
+        },
+        "Japan": {
+          "label": "Japão",
+          "desc": "Formulações do mercado japonês"
+        },
+        "Global": {
+          "label": "Outro/Não Tenho Certeza",
+          "desc": "Mostrar produtos disponíveis globalmente"
+        }
+      }
+    },
+    "question2": {
+      "legend": "Qual é o seu tipo de pele?",
+      "options": {
+        "oily": {
+          "label": "Oleosa",
+          "desc": "Brilhante, propensa a borbulhas"
+        },
+        "dry": {
+          "label": "Seca",
+          "desc": "Descamada, sensação de repuxamento"
+        },
+        "combination": {
+          "label": "Mista",
+          "desc": "Zona T oleosa, bochechas secas"
+        },
+        "sensitive": {
+          "label": "Sensível",
+          "desc": "Facilmente irritada, reativa"
+        },
+        "all": {
+          "label": "Não Tenho Certeza / Qualquer",
+          "desc": "Funciona para todos os tipos de pele"
+        }
+      }
+    },
+    "question3": {
+      "legend": "Precisa de protetor solar sem perfume?",
+      "options": {
+        "true": {
+          "label": "Sim",
+          "desc": "Sem perfume adicionado"
+        },
+        "false": {
+          "label": "Não",
+          "desc": "Perfume está bem"
+        },
+        "any": {
+          "label": "Tanto Faz",
+          "desc": "Sem preferência"
+        }
+      }
+    },
+    "question4": {
+      "legend": "Para quem é?",
+      "options": {
+        "true": {
+          "label": "Crianças",
+          "desc": "Especialmente formulado para crianças"
+        },
+        "false": {
+          "label": "Adultos",
+          "desc": "Fórmulas gerais ou para adultos"
+        },
+        "any": {
+          "label": "Tanto Faz",
+          "desc": "Sem preferência"
+        }
+      }
+    },
+    "question5": {
+      "legend": "Método de aplicação preferido?",
+      "options": {
+        "cream": {
+          "label": "Creme",
+          "desc": "Espesso, hidratante"
+        },
+        "lotion": {
+          "label": "Loção",
+          "desc": "Leve, fácil de espalhar"
+        },
+        "spray": {
+          "label": "Spray",
+          "desc": "Rápido, conveniente"
+        },
+        "stick": {
+          "label": "Stick",
+          "desc": "Portátil, sem sujeira"
+        },
+        "gel": {
+          "label": "Gel",
+          "desc": "Leve, não gorduroso"
+        },
+        "any": {
+          "label": "Qualquer",
+          "desc": "Sem preferência"
+        }
+      }
+    },
+    "question6": {
+      "legend": "Precisa de resistência à água?",
+      "options": {
+        "true": {
+          "label": "Sim",
+          "desc": "Natação ou transpiração"
+        },
+        "false": {
+          "label": "Não",
+          "desc": "Uso diário"
+        },
+        "any": {
+          "label": "Tanto Faz",
+          "desc": "Sem preferência"
+        }
+      }
+    }
+  },
+  "navigation": {
+    "previous": "Anterior",
+    "next": "Seguinte",
+    "showResults": "Mostrar Resultados",
+    "pleaseSelect": "Por favor, selecione uma opção",
+    "answerAll": "Por favor, responda a todas as perguntas"
+  },
+  "results": {
+    "heading": "Os Seus Protetores Solares Perfeitos",
+    "summary": {
+      "none": "Nenhum protetor solar corresponde a todos os seus critérios. Tente ajustar as suas preferências.",
+      "one": "Encontrado <strong>1 correspondência perfeita</strong> para si!",
+      "many": "Encontradas <strong>{count} ótimas opções</strong> para si!"
+    },
+    "noResults": {
+      "icon": "😔",
+      "heading": "Nenhum protetor solar corresponde aos seus critérios",
+      "text": "Não conseguimos encontrar nenhum protetor solar que corresponda a todas as suas preferências.",
+      "suggestionsHeading": "Tente ajustar:",
+      "suggestions": {
+        "formFactor": "Tente diferentes métodos de aplicação (atualmente: {value})",
+        "fragrance": "Considere sem perfume como opcional",
+        "waterResistant": "A resistência à água pode estar a limitar as opções"
+      },
+      "adjustButton": "Ajustar Filtros",
+      "restartButton": "Recomeçar"
+    },
+    "badges": {
+      "spf": "FPS",
+      "fragranceFree": "Sem Perfume",
+      "waterResistant": "Resistente à Água",
+      "forKids": "Para Crianças",
+      "skinTypes": "Tipos de Pele:"
+    },
+    "learnMore": "Saber Mais"
+  },
+  "share": {
+    "heading": "Partilhe os Seus Resultados",
+    "description": "Encontrou o seu protetor solar perfeito? Partilhe com amigos!",
+    "buttons": {
+      "whatsapp": "WhatsApp",
+      "facebook": "Facebook",
+      "twitter": "Twitter",
+      "copy": "Copiar Link"
+    },
+    "copyConfirmation": "Link copiado para a área de transferência! ✓",
+    "copyFailed": "Falha ao copiar. Por favor, copie manualmente.",
+    "message": {
+      "withCriteria": "Encontrei {count} protetor{plural} solar adaptado{plural2} às minhas necessidades de {criteria}! 🌞",
+      "withoutCriteria": "Encontrei {count} protetor{plural} solar perfeito{plural2}! 🌞"
+    }
+  },
+  "shared": {
+    "notification": "Está a visualizar preferências de protetor solar partilhadas",
+    "startFresh": "Começar de Novo",
+    "dismiss": "Dispensar notificação"
+  },
+  "liveCount": {
+    "singular": "protetor solar corresponde",
+    "plural": "protetores solares correspondem",
+    "available": "protetores solares disponíveis"
+  },
+  "loading": {
+    "text": "A carregar dados de protetores solares...",
+    "error": "Erro ao carregar dados. Por favor, atualize a página."
+  },
+  "footer": {
+    "madeWith": "Feito com ☀️ para melhor proteção solar",
+    "github": "Ver no GitHub",
+    "license": "Licença MIT"
+  },
+  "accessibility": {
+    "skipLink": "Saltar para o conteúdo principal",
+    "toggleModeAria": "Alternar entre modos assistente e ver todas",
+    "previousAria": "Pergunta anterior",
+    "nextAria": "Próxima pergunta",
+    "restartAria": "Recomeçar",
+    "shareWhatsAppAria": "Partilhar no WhatsApp",
+    "shareFacebookAria": "Partilhar no Facebook",
+    "shareTwitterAria": "Partilhar no Twitter",
+    "shareCopyAria": "Copiar link para a área de transferência",
+    "dismissAria": "Dispensar notificação"
+  },
+  "screenReader": {
+    "selected": "Selecionado {value}",
+    "switchedMode": "Mudado para modo {mode}",
+    "backToQuestions": "Voltar às perguntas",
+    "quizRestarted": "Questionário reiniciado",
+    "foundResults": "Encontrados {count} protetores solares correspondentes"
+  }
+}

@@ -1,0 +1,272 @@
+{
+  "meta": {
+    "title": "Always Use - Trouvez votre crème solaire parfaite",
+    "description": "Répondez à quelques questions pour trouver la crème solaire parfaite pour votre type de peau et vos besoins. Gratuit, rapide et recommandations personnalisées.",
+    "keywords": "crème solaire, protection solaire, SPF, soins de la peau, recherche de crème solaire, recommandations personnalisées"
+  },
+  "header": {
+    "title": "Always Use",
+    "tagline": "Trouvez votre protection solaire parfaite"
+  },
+  "welcome": {
+    "heading": "Bienvenue !",
+    "description": "Répondez à quelques questions rapides pour trouver des crèmes solaires qui correspondent à vos besoins.",
+    "whySunscreen": {
+      "title": "Pourquoi une crème solaire ?",
+      "text": "L'utilisation quotidienne de crème solaire aide à prévenir le cancer de la peau, le vieillissement prématuré (rides, taches de vieillesse), les coups de soleil et protège contre les rayons UV nocifs."
+    },
+    "features": {
+      "personalized": "Recommandations personnalisées",
+      "filter": "Filtrer par type de peau, SPF et plus",
+      "share": "Partagez vos résultats avec vos amis"
+    },
+    "startButton": "Commencer le quiz"
+  },
+  "disclaimer": {
+    "important": "Important :",
+    "text": "Cet outil ne fournit que des suggestions générales. Consultez toujours un dermatologue ou un professionnel de santé pour des conseils personnalisés sur les soins de la peau. Testez les nouveaux produits sur une petite zone d'abord.",
+    "results": "Avertissement :",
+    "resultsText": "Ce sont des suggestions basées sur vos préférences, pas des conseils médicaux. Lisez toujours les étiquettes des produits, vérifiez les ingrédients pour les allergies et consultez un dermatologue si vous avez des préoccupations cutanées spécifiques."
+  },
+  "privacy": {
+    "title": "Votre vie privée compte :",
+    "text": "Pas de cookies, pas de suivi, pas de collecte de données. Tout se passe dans votre navigateur.",
+    "footer": "Pas de cookies • Pas de suivi • 100% anonyme • Open source"
+  },
+  "questions": {
+    "heading": "Trouvez votre crème solaire",
+    "toggleMode": "Voir toutes les réponses",
+    "toggleModeWizard": "Mode assistant",
+    "progressText": "Question",
+    "of": "sur",
+    "question1": {
+      "legend": "Où allez-vous acheter/utiliser cette crème solaire ?",
+      "note": "Les formulations et la disponibilité des crèmes solaires varient selon les régions.",
+      "options": {
+        "US": {
+          "label": "États-Unis",
+          "desc": "Formulations et disponibilité aux États-Unis"
+        },
+        "EU": {
+          "label": "Union européenne",
+          "desc": "Filtres et formulations approuvés par l'UE"
+        },
+        "UK": {
+          "label": "Royaume-Uni",
+          "desc": "Disponibilité sur le marché britannique"
+        },
+        "Canada": {
+          "label": "Canada",
+          "desc": "Produits approuvés par Santé Canada"
+        },
+        "Australia": {
+          "label": "Australie/Nouvelle-Zélande",
+          "desc": "Crèmes solaires approuvées par la TGA"
+        },
+        "Japan": {
+          "label": "Japon",
+          "desc": "Formulations du marché japonais"
+        },
+        "Global": {
+          "label": "Autre/Pas sûr",
+          "desc": "Afficher les produits disponibles dans le monde"
+        }
+      }
+    },
+    "question2": {
+      "legend": "Quel est votre type de peau ?",
+      "options": {
+        "oily": {
+          "label": "Grasse",
+          "desc": "Brillante, sujette aux éruptions"
+        },
+        "dry": {
+          "label": "Sèche",
+          "desc": "Desquamée, sensation de tiraillement"
+        },
+        "combination": {
+          "label": "Mixte",
+          "desc": "Zone T grasse, joues sèches"
+        },
+        "sensitive": {
+          "label": "Sensible",
+          "desc": "Facilement irritée, réactive"
+        },
+        "all": {
+          "label": "Pas sûr / Tous",
+          "desc": "Convient à tous les types de peau"
+        }
+      }
+    },
+    "question3": {
+      "legend": "Avez-vous besoin d'une crème solaire sans parfum ?",
+      "options": {
+        "true": {
+          "label": "Oui",
+          "desc": "Sans parfum ajouté"
+        },
+        "false": {
+          "label": "Non",
+          "desc": "Le parfum convient"
+        },
+        "any": {
+          "label": "Peu importe",
+          "desc": "Aucune préférence"
+        }
+      }
+    },
+    "question4": {
+      "legend": "Pour qui est-ce ?",
+      "options": {
+        "true": {
+          "label": "Enfants",
+          "desc": "Spécialement formulé pour les enfants"
+        },
+        "false": {
+          "label": "Adultes",
+          "desc": "Formules générales ou pour adultes"
+        },
+        "any": {
+          "label": "Peu importe",
+          "desc": "Aucune préférence"
+        }
+      }
+    },
+    "question5": {
+      "legend": "Méthode d'application préférée ?",
+      "options": {
+        "cream": {
+          "label": "Crème",
+          "desc": "Épaisse, hydratante"
+        },
+        "lotion": {
+          "label": "Lotion",
+          "desc": "Légère, facile à étaler"
+        },
+        "spray": {
+          "label": "Spray",
+          "desc": "Rapide, pratique"
+        },
+        "stick": {
+          "label": "Stick",
+          "desc": "Portable, sans traces"
+        },
+        "gel": {
+          "label": "Gel",
+          "desc": "Léger, non gras"
+        },
+        "any": {
+          "label": "Tous",
+          "desc": "Aucune préférence"
+        }
+      }
+    },
+    "question6": {
+      "legend": "Avez-vous besoin d'une résistance à l'eau ?",
+      "options": {
+        "true": {
+          "label": "Oui",
+          "desc": "Natation ou transpiration"
+        },
+        "false": {
+          "label": "Non",
+          "desc": "Usage quotidien"
+        },
+        "any": {
+          "label": "Peu importe",
+          "desc": "Aucune préférence"
+        }
+      }
+    }
+  },
+  "navigation": {
+    "previous": "Précédent",
+    "next": "Suivant",
+    "showResults": "Afficher les résultats",
+    "pleaseSelect": "Veuillez sélectionner une option",
+    "answerAll": "Veuillez répondre à toutes les questions"
+  },
+  "results": {
+    "heading": "Vos crèmes solaires parfaites",
+    "summary": {
+      "none": "Aucune crème solaire ne correspond à tous vos critères. Essayez d'ajuster vos préférences.",
+      "one": "<strong>1 correspondance parfaite</strong> trouvée pour vous !",
+      "many": "<strong>{count} excellentes options</strong> trouvées pour vous !"
+    },
+    "noResults": {
+      "icon": "😔",
+      "heading": "Aucune crème solaire ne correspond à vos critères",
+      "text": "Nous n'avons trouvé aucune crème solaire correspondant à toutes vos préférences.",
+      "suggestionsHeading": "Essayez d'ajuster :",
+      "suggestions": {
+        "formFactor": "Essayez différentes méthodes d'application (actuellement : {value})",
+        "fragrance": "Considérez sans parfum comme optionnel",
+        "waterResistant": "La résistance à l'eau pourrait limiter les options"
+      },
+      "adjustButton": "Ajuster les filtres",
+      "restartButton": "Recommencer"
+    },
+    "badges": {
+      "spf": "SPF",
+      "fragranceFree": "Sans parfum",
+      "waterResistant": "Résistant à l'eau",
+      "forKids": "Pour enfants",
+      "skinTypes": "Types de peau :"
+    },
+    "learnMore": "En savoir plus"
+  },
+  "share": {
+    "heading": "Partagez vos résultats",
+    "description": "Vous avez trouvé votre crème solaire parfaite ? Partagez-la avec vos amis !",
+    "buttons": {
+      "whatsapp": "WhatsApp",
+      "facebook": "Facebook",
+      "twitter": "Twitter",
+      "copy": "Copier le lien"
+    },
+    "copyConfirmation": "Lien copié dans le presse-papiers ! ✓",
+    "copyFailed": "Échec de la copie. Veuillez copier manuellement.",
+    "message": {
+      "withCriteria": "J'ai trouvé {count} crème{plural} solaire{plural} adaptée{plural} à mes besoins de {criteria} ! 🌞",
+      "withoutCriteria": "J'ai trouvé {count} crème{plural} solaire{plural} parfaite{plural} ! 🌞"
+    }
+  },
+  "shared": {
+    "notification": "Vous consultez des préférences de crème solaire partagées",
+    "startFresh": "Recommencer",
+    "dismiss": "Fermer la notification"
+  },
+  "liveCount": {
+    "singular": "crème solaire correspond",
+    "plural": "crèmes solaires correspondent",
+    "available": "crèmes solaires disponibles"
+  },
+  "loading": {
+    "text": "Chargement des données de crèmes solaires...",
+    "error": "Erreur de chargement des données. Veuillez actualiser la page."
+  },
+  "footer": {
+    "madeWith": "Fait avec ☀️ pour une meilleure protection solaire",
+    "github": "Voir sur GitHub",
+    "license": "Licence MIT"
+  },
+  "accessibility": {
+    "skipLink": "Aller au contenu principal",
+    "toggleModeAria": "Basculer entre les modes assistant et tout afficher",
+    "previousAria": "Question précédente",
+    "nextAria": "Question suivante",
+    "restartAria": "Recommencer",
+    "shareWhatsAppAria": "Partager sur WhatsApp",
+    "shareFacebookAria": "Partager sur Facebook",
+    "shareTwitterAria": "Partager sur Twitter",
+    "shareCopyAria": "Copier le lien dans le presse-papiers",
+    "dismissAria": "Fermer la notification"
+  },
+  "screenReader": {
+    "selected": "{value} sélectionné",
+    "switchedMode": "Basculé en mode {mode}",
+    "backToQuestions": "Retour aux questions",
+    "quizRestarted": "Quiz redémarré",
+    "foundResults": "{count} crèmes solaires correspondantes trouvées"
+  }
+}

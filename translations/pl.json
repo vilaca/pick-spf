@@ -1,0 +1,272 @@
+{
+  "meta": {
+    "title": "Always Use - Znajdź idealny filtr przeciwsłoneczny",
+    "description": "Odpowiedz na kilka pytań, aby znaleźć idealny filtr przeciwsłoneczny dla Twojego typu skóry i potrzeb. Bezpłatny, szybki i spersonalizowane rekomendacje.",
+    "keywords": "filtr przeciwsłoneczny, ochrona przeciwsłoneczna, SPF, pielęgnacja skóry, wyszukiwarka filtrów, spersonalizowane rekomendacje"
+  },
+  "header": {
+    "title": "Always Use",
+    "tagline": "Znajdź idealną ochronę przeciwsłoneczną"
+  },
+  "welcome": {
+    "heading": "Witaj!",
+    "description": "Odpowiedz na kilka szybkich pytań, aby znaleźć filtry przeciwsłoneczne dopasowane do Twoich potrzeb.",
+    "whySunscreen": {
+      "title": "Dlaczego filtr przeciwsłoneczny?",
+      "text": "Codzienne stosowanie filtra przeciwsłonecznego pomaga zapobiegać rakowi skóry, przedwczesnemu starzeniu się (zmarszczki, plamy starcze), oparzeniom słonecznym i chroni przed szkodliwym promieniowaniem UV."
+    },
+    "features": {
+      "personalized": "Spersonalizowane rekomendacje",
+      "filter": "Filtruj według typu skóry, SPF i więcej",
+      "share": "Udostępnij wyniki znajomym"
+    },
+    "startButton": "Rozpocznij quiz"
+  },
+  "disclaimer": {
+    "important": "Ważne:",
+    "text": "To narzędzie dostarcza tylko ogólnych sugestii. Zawsze skonsultuj się z dermatologiem lub specjalistą ds. zdrowia w celu uzyskania spersonalizowanych porad dotyczących pielęgnacji skóry. Najpierw przetestuj nowe produkty na małym obszarze.",
+    "results": "Zastrzeżenie:",
+    "resultsText": "To są sugestie oparte na Twoich preferencjach, a nie porady medyczne. Zawsze czytaj etykiety produktów, sprawdzaj składniki pod kątem alergii i skonsultuj się z dermatologiem, jeśli masz konkretne problemy ze skórą."
+  },
+  "privacy": {
+    "title": "Twoja prywatność się liczy:",
+    "text": "Bez ciasteczek, bez śledzenia, bez zbierania danych. Wszystko dzieje się w Twojej przeglądarce.",
+    "footer": "Bez ciasteczek • Bez śledzenia • 100% anonimowe • Open source"
+  },
+  "questions": {
+    "heading": "Znajdź swój filtr przeciwsłoneczny",
+    "toggleMode": "Zobacz wszystkie odpowiedzi",
+    "toggleModeWizard": "Tryb asystenta",
+    "progressText": "Pytanie",
+    "of": "z",
+    "question1": {
+      "legend": "Gdzie będziesz kupować/używać tego filtra przeciwsłonecznego?",
+      "note": "Formuły i dostępność filtrów przeciwsłonecznych różnią się w zależności od regionu.",
+      "options": {
+        "US": {
+          "label": "Stany Zjednoczone",
+          "desc": "Formuły i dostępność w USA"
+        },
+        "EU": {
+          "label": "Unia Europejska",
+          "desc": "Filtry i formuły zatwierdzone przez UE"
+        },
+        "UK": {
+          "label": "Wielka Brytania",
+          "desc": "Dostępność na rynku brytyjskim"
+        },
+        "Canada": {
+          "label": "Kanada",
+          "desc": "Produkty zatwierdzone przez Health Canada"
+        },
+        "Australia": {
+          "label": "Australia/Nowa Zelandia",
+          "desc": "Filtry przeciwsłoneczne zatwierdzone przez TGA"
+        },
+        "Japan": {
+          "label": "Japonia",
+          "desc": "Formuły rynku japońskiego"
+        },
+        "Global": {
+          "label": "Inne/Nie jestem pewien",
+          "desc": "Pokaż produkty dostępne globalnie"
+        }
+      }
+    },
+    "question2": {
+      "legend": "Jaki jest Twój typ skóry?",
+      "options": {
+        "oily": {
+          "label": "Tłusta",
+          "desc": "Błyszcząca, podatna na wypryski"
+        },
+        "dry": {
+          "label": "Sucha",
+          "desc": "Łuszcząca się, uczucie ściągnięcia"
+        },
+        "combination": {
+          "label": "Mieszana",
+          "desc": "Tłusta strefa T, suche policzki"
+        },
+        "sensitive": {
+          "label": "Wrażliwa",
+          "desc": "Łatwo drażniona, reaktywna"
+        },
+        "all": {
+          "label": "Nie jestem pewien / Dowolny",
+          "desc": "Działa dla wszystkich typów skóry"
+        }
+      }
+    },
+    "question3": {
+      "legend": "Czy potrzebujesz filtra bez zapachu?",
+      "options": {
+        "true": {
+          "label": "Tak",
+          "desc": "Bez dodanego zapachu"
+        },
+        "false": {
+          "label": "Nie",
+          "desc": "Zapach jest w porządku"
+        },
+        "any": {
+          "label": "Obojętne",
+          "desc": "Bez preferencji"
+        }
+      }
+    },
+    "question4": {
+      "legend": "Dla kogo?",
+      "options": {
+        "true": {
+          "label": "Dzieci",
+          "desc": "Specjalnie sformułowany dla dzieci"
+        },
+        "false": {
+          "label": "Dorośli",
+          "desc": "Formuły ogólne lub dla dorosłych"
+        },
+        "any": {
+          "label": "Obojętne",
+          "desc": "Bez preferencji"
+        }
+      }
+    },
+    "question5": {
+      "legend": "Preferowana metoda aplikacji?",
+      "options": {
+        "cream": {
+          "label": "Krem",
+          "desc": "Gęsty, nawilżający"
+        },
+        "lotion": {
+          "label": "Balsam",
+          "desc": "Lekki, łatwy do rozprowadzenia"
+        },
+        "spray": {
+          "label": "Spray",
+          "desc": "Szybki, wygodny"
+        },
+        "stick": {
+          "label": "Sztyfr",
+          "desc": "Przenośny, bez brudzenia"
+        },
+        "gel": {
+          "label": "Żel",
+          "desc": "Lekki, nie tłusty"
+        },
+        "any": {
+          "label": "Dowolny",
+          "desc": "Bez preferencji"
+        }
+      }
+    },
+    "question6": {
+      "legend": "Czy potrzebujesz wodoodporności?",
+      "options": {
+        "true": {
+          "label": "Tak",
+          "desc": "Pływanie lub pocenie się"
+        },
+        "false": {
+          "label": "Nie",
+          "desc": "Codzienny użytek"
+        },
+        "any": {
+          "label": "Obojętne",
+          "desc": "Bez preferencji"
+        }
+      }
+    }
+  },
+  "navigation": {
+    "previous": "Poprzednie",
+    "next": "Następne",
+    "showResults": "Pokaż wyniki",
+    "pleaseSelect": "Proszę wybrać opcję",
+    "answerAll": "Proszę odpowiedzieć na wszystkie pytania"
+  },
+  "results": {
+    "heading": "Twoje idealne filtry przeciwsłoneczne",
+    "summary": {
+      "none": "Żadne filtry przeciwsłoneczne nie pasują do wszystkich Twoich kryteriów. Spróbuj dostosować swoje preferencje.",
+      "one": "Znaleziono <strong>1 idealne dopasowanie</strong> dla Ciebie!",
+      "many": "Znaleziono <strong>{count} świetnych opcji</strong> dla Ciebie!"
+    },
+    "noResults": {
+      "icon": "😔",
+      "heading": "Żadne filtry przeciwsłoneczne nie pasują do Twoich kryteriów",
+      "text": "Nie mogliśmy znaleźć żadnych filtrów przeciwsłonecznych pasujących do wszystkich Twoich preferencji.",
+      "suggestionsHeading": "Spróbuj dostosować:",
+      "suggestions": {
+        "formFactor": "Spróbuj różnych metod aplikacji (obecnie: {value})",
+        "fragrance": "Rozważ bez zapachu jako opcjonalne",
+        "waterResistant": "Wodoodporność może ograniczać opcje"
+      },
+      "adjustButton": "Dostosuj filtry",
+      "restartButton": "Zacznij od nowa"
+    },
+    "badges": {
+      "spf": "SPF",
+      "fragranceFree": "Bez zapachu",
+      "waterResistant": "Wodoodporny",
+      "forKids": "Dla dzieci",
+      "skinTypes": "Typy skóry:"
+    },
+    "learnMore": "Dowiedz się więcej"
+  },
+  "share": {
+    "heading": "Udostępnij swoje wyniki",
+    "description": "Znalazłeś idealny filtr przeciwsłoneczny? Udostępnij go znajomym!",
+    "buttons": {
+      "whatsapp": "WhatsApp",
+      "facebook": "Facebook",
+      "twitter": "Twitter",
+      "copy": "Kopiuj link"
+    },
+    "copyConfirmation": "Link skopiowany do schowka! ✓",
+    "copyFailed": "Nie udało się skopiować. Proszę skopiować ręcznie.",
+    "message": {
+      "withCriteria": "Znalazłem {count} filtr przeciwsłoneczny dostosowany do moich potrzeb {criteria}! 🌞",
+      "withoutCriteria": "Znalazłem {count} idealny filtr przeciwsłoneczny! 🌞"
+    }
+  },
+  "shared": {
+    "notification": "Przeglądasz udostępnione preferencje filtrów przeciwsłonecznych",
+    "startFresh": "Zacznij od nowa",
+    "dismiss": "Zamknij powiadomienie"
+  },
+  "liveCount": {
+    "singular": "filtr przeciwsłoneczny pasuje",
+    "plural": "filtry przeciwsłoneczne pasują",
+    "available": "filtry przeciwsłoneczne dostępne"
+  },
+  "loading": {
+    "text": "Ładowanie danych filtrów przeciwsłonecznych...",
+    "error": "Błąd ładowania danych. Proszę odśwież stronę."
+  },
+  "footer": {
+    "madeWith": "Stworzone z ☀️ dla lepszej ochrony przeciwsłonecznej",
+    "github": "Zobacz na GitHub",
+    "license": "Licencja MIT"
+  },
+  "accessibility": {
+    "skipLink": "Przejdź do głównej treści",
+    "toggleModeAria": "Przełącz między trybem asystenta a widokiem wszystkich",
+    "previousAria": "Poprzednie pytanie",
+    "nextAria": "Następne pytanie",
+    "restartAria": "Zacznij od nowa",
+    "shareWhatsAppAria": "Udostępnij na WhatsApp",
+    "shareFacebookAria": "Udostępnij na Facebook",
+    "shareTwitterAria": "Udostępnij na Twitter",
+    "shareCopyAria": "Skopiuj link do schowka",
+    "dismissAria": "Zamknij powiadomienie"
+  },
+  "screenReader": {
+    "selected": "{value} wybrane",
+    "switchedMode": "Przełączono na tryb {mode}",
+    "backToQuestions": "Powrót do pytań",
+    "quizRestarted": "Quiz zrestartowany",
+    "foundResults": "Znaleziono {count} pasujących filtrów przeciwsłonecznych"
+  }
+}

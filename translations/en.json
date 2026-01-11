@@ -1,0 +1,272 @@
+{
+  "meta": {
+    "title": "Always Use - Find Your Perfect Sunscreen",
+    "description": "Answer a few questions to find the perfect sunscreen for your skin type and needs. Free, fast, and personalized recommendations.",
+    "keywords": "sunscreen, sun protection, SPF, skin care, sunscreen finder, personalized recommendations, always use sunscreen"
+  },
+  "header": {
+    "title": "Always Use",
+    "tagline": "Find your perfect sun protection"
+  },
+  "welcome": {
+    "heading": "Welcome!",
+    "description": "Answer a few quick questions to find sunscreens that match your needs.",
+    "whySunscreen": {
+      "title": "Why sunscreen?",
+      "text": "Daily sunscreen use helps prevent skin cancer, premature aging (wrinkles, age spots), sunburn, and protects against harmful UV radiation."
+    },
+    "features": {
+      "personalized": "Personalized recommendations",
+      "filter": "Filter by skin type, SPF, and more",
+      "share": "Share your results with friends"
+    },
+    "startButton": "Start Quiz"
+  },
+  "disclaimer": {
+    "important": "Important:",
+    "text": "This tool provides general suggestions only. Always consult with a dermatologist or healthcare professional for personalized skincare advice. Test new products on a small area first.",
+    "results": "Disclaimer:",
+    "resultsText": "These are suggestions based on your preferences, not medical advice. Always read product labels, check ingredients for allergies, and consult a dermatologist if you have specific skin concerns."
+  },
+  "privacy": {
+    "title": "Your privacy matters:",
+    "text": "No cookies, no tracking, no data collection. Everything happens in your browser.",
+    "footer": "No cookies • No tracking • 100% anonymous • Open source"
+  },
+  "questions": {
+    "heading": "Find Your Sunscreen",
+    "toggleMode": "View All Answers",
+    "toggleModeWizard": "Wizard Mode",
+    "progressText": "Question",
+    "of": "of",
+    "question1": {
+      "legend": "Where will you be purchasing/using this sunscreen?",
+      "note": "Sunscreen formulations and availability vary by region.",
+      "options": {
+        "US": {
+          "label": "United States",
+          "desc": "US formulations and availability"
+        },
+        "EU": {
+          "label": "European Union",
+          "desc": "EU approved filters and formulations"
+        },
+        "UK": {
+          "label": "United Kingdom",
+          "desc": "UK market availability"
+        },
+        "Canada": {
+          "label": "Canada",
+          "desc": "Health Canada approved products"
+        },
+        "Australia": {
+          "label": "Australia/New Zealand",
+          "desc": "TGA approved sunscreens"
+        },
+        "Japan": {
+          "label": "Japan",
+          "desc": "Japanese market formulations"
+        },
+        "Global": {
+          "label": "Other/Not Sure",
+          "desc": "Show globally available products"
+        }
+      }
+    },
+    "question2": {
+      "legend": "What is your skin type?",
+      "options": {
+        "oily": {
+          "label": "Oily",
+          "desc": "Shiny, prone to breakouts"
+        },
+        "dry": {
+          "label": "Dry",
+          "desc": "Flaky, tight feeling"
+        },
+        "combination": {
+          "label": "Combination",
+          "desc": "Oily T-zone, dry cheeks"
+        },
+        "sensitive": {
+          "label": "Sensitive",
+          "desc": "Easily irritated, reactive"
+        },
+        "all": {
+          "label": "Not Sure / Any",
+          "desc": "Works for all skin types"
+        }
+      }
+    },
+    "question3": {
+      "legend": "Do you need fragrance-free sunscreen?",
+      "options": {
+        "true": {
+          "label": "Yes",
+          "desc": "No added fragrance"
+        },
+        "false": {
+          "label": "No",
+          "desc": "Fragrance is okay"
+        },
+        "any": {
+          "label": "Either",
+          "desc": "No preference"
+        }
+      }
+    },
+    "question4": {
+      "legend": "Who is this for?",
+      "options": {
+        "true": {
+          "label": "Kids",
+          "desc": "Specifically formulated for children"
+        },
+        "false": {
+          "label": "Adults",
+          "desc": "General or adult formulas"
+        },
+        "any": {
+          "label": "Either",
+          "desc": "No preference"
+        }
+      }
+    },
+    "question5": {
+      "legend": "Preferred application method?",
+      "options": {
+        "cream": {
+          "label": "Cream",
+          "desc": "Thick, moisturizing"
+        },
+        "lotion": {
+          "label": "Lotion",
+          "desc": "Light, easy to spread"
+        },
+        "spray": {
+          "label": "Spray",
+          "desc": "Quick, convenient"
+        },
+        "stick": {
+          "label": "Stick",
+          "desc": "Portable, mess-free"
+        },
+        "gel": {
+          "label": "Gel",
+          "desc": "Lightweight, non-greasy"
+        },
+        "any": {
+          "label": "Any",
+          "desc": "No preference"
+        }
+      }
+    },
+    "question6": {
+      "legend": "Do you need water resistance?",
+      "options": {
+        "true": {
+          "label": "Yes",
+          "desc": "Swimming or sweating"
+        },
+        "false": {
+          "label": "No",
+          "desc": "Everyday use"
+        },
+        "any": {
+          "label": "Either",
+          "desc": "No preference"
+        }
+      }
+    }
+  },
+  "navigation": {
+    "previous": "Previous",
+    "next": "Next",
+    "showResults": "Show Results",
+    "pleaseSelect": "Please select an option",
+    "answerAll": "Please answer all questions"
+  },
+  "results": {
+    "heading": "Your Perfect Sunscreens",
+    "summary": {
+      "none": "No sunscreens match all your criteria. Try adjusting your preferences.",
+      "one": "Found <strong>1 perfect match</strong> for you!",
+      "many": "Found <strong>{count} great options</strong> for you!"
+    },
+    "noResults": {
+      "icon": "😔",
+      "heading": "No sunscreens match your criteria",
+      "text": "We couldn't find any sunscreens matching all your preferences.",
+      "suggestionsHeading": "Try adjusting:",
+      "suggestions": {
+        "formFactor": "Try different form factors (currently: {value})",
+        "fragrance": "Consider fragrance-free optional",
+        "waterResistant": "Water resistance might be limiting options"
+      },
+      "adjustButton": "Adjust Filters",
+      "restartButton": "Start Over"
+    },
+    "badges": {
+      "spf": "SPF",
+      "fragranceFree": "Fragrance-Free",
+      "waterResistant": "Water Resistant",
+      "forKids": "For Kids",
+      "skinTypes": "Skin Types:"
+    },
+    "learnMore": "Learn More"
+  },
+  "share": {
+    "heading": "Share Your Results",
+    "description": "Found your perfect sunscreen? Share it with friends!",
+    "buttons": {
+      "whatsapp": "WhatsApp",
+      "facebook": "Facebook",
+      "twitter": "Twitter",
+      "copy": "Copy Link"
+    },
+    "copyConfirmation": "Link copied to clipboard! ✓",
+    "copyFailed": "Failed to copy. Please copy manually.",
+    "message": {
+      "withCriteria": "I found {count} sunscreen{plural} tailored for my {criteria} needs! 🌞",
+      "withoutCriteria": "I found {count} perfect sunscreen{plural}! 🌞"
+    }
+  },
+  "shared": {
+    "notification": "You're viewing shared sunscreen preferences",
+    "startFresh": "Start Fresh",
+    "dismiss": "Dismiss notification"
+  },
+  "liveCount": {
+    "singular": "sunscreen matches",
+    "plural": "sunscreens match",
+    "available": "sunscreens available"
+  },
+  "loading": {
+    "text": "Loading sunscreen data...",
+    "error": "Error loading data. Please refresh the page."
+  },
+  "footer": {
+    "madeWith": "Made with ☀️ for better sun protection",
+    "github": "View on GitHub",
+    "license": "MIT License"
+  },
+  "accessibility": {
+    "skipLink": "Skip to main content",
+    "toggleModeAria": "Toggle between wizard and view all modes",
+    "previousAria": "Previous question",
+    "nextAria": "Next question",
+    "restartAria": "Start over",
+    "shareWhatsAppAria": "Share on WhatsApp",
+    "shareFacebookAria": "Share on Facebook",
+    "shareTwitterAria": "Share on Twitter",
+    "shareCopyAria": "Copy link to clipboard",
+    "dismissAria": "Dismiss notification"
+  },
+  "screenReader": {
+    "selected": "Selected {value}",
+    "switchedMode": "Switched to {mode} mode",
+    "backToQuestions": "Back to questions",
+    "quizRestarted": "Quiz restarted",
+    "foundResults": "Found {count} matching sunscreens"
+  }
+}

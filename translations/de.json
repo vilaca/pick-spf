@@ -1,0 +1,272 @@
+{
+  "meta": {
+    "title": "Always Use - Finden Sie Ihren perfekten Sonnenschutz",
+    "description": "Beantworten Sie ein paar Fragen, um den perfekten Sonnenschutz für Ihren Hauttyp und Ihre Bedürfnisse zu finden. Kostenlos, schnell und personalisierte Empfehlungen.",
+    "keywords": "Sonnenschutz, Sonnencreme, LSF, Hautpflege, Sonnenschutz-Finder, personalisierte Empfehlungen"
+  },
+  "header": {
+    "title": "Always Use",
+    "tagline": "Finden Sie Ihren perfekten Sonnenschutz"
+  },
+  "welcome": {
+    "heading": "Willkommen!",
+    "description": "Beantworten Sie ein paar kurze Fragen, um Sonnenschutzmittel zu finden, die Ihren Bedürfnissen entsprechen.",
+    "whySunscreen": {
+      "title": "Warum Sonnenschutz?",
+      "text": "Die tägliche Anwendung von Sonnenschutz hilft, Hautkrebs, vorzeitige Hautalterung (Falten, Altersflecken), Sonnenbrand zu verhindern und schützt vor schädlicher UV-Strahlung."
+    },
+    "features": {
+      "personalized": "Personalisierte Empfehlungen",
+      "filter": "Filtern nach Hauttyp, LSF und mehr",
+      "share": "Teilen Sie Ihre Ergebnisse mit Freunden"
+    },
+    "startButton": "Quiz starten"
+  },
+  "disclaimer": {
+    "important": "Wichtig:",
+    "text": "Dieses Tool bietet nur allgemeine Vorschläge. Konsultieren Sie immer einen Dermatologen oder medizinischen Fachmann für personalisierte Hautpflegeberatung. Testen Sie neue Produkte zuerst an einer kleinen Stelle.",
+    "results": "Haftungsausschluss:",
+    "resultsText": "Dies sind Vorschläge basierend auf Ihren Präferenzen, keine medizinische Beratung. Lesen Sie immer Produktetiketten, prüfen Sie Inhaltsstoffe auf Allergien und konsultieren Sie einen Dermatologen bei spezifischen Hautproblemen."
+  },
+  "privacy": {
+    "title": "Ihre Privatsphäre ist wichtig:",
+    "text": "Keine Cookies, kein Tracking, keine Datenerfassung. Alles läuft in Ihrem Browser.",
+    "footer": "Keine Cookies • Kein Tracking • 100% anonym • Open Source"
+  },
+  "questions": {
+    "heading": "Finden Sie Ihren Sonnenschutz",
+    "toggleMode": "Alle Antworten anzeigen",
+    "toggleModeWizard": "Assistenten-Modus",
+    "progressText": "Frage",
+    "of": "von",
+    "question1": {
+      "legend": "Wo werden Sie diesen Sonnenschutz kaufen/verwenden?",
+      "note": "Sonnenschutzformulierungen und Verfügbarkeit variieren je nach Region.",
+      "options": {
+        "US": {
+          "label": "Vereinigte Staaten",
+          "desc": "US-Formulierungen und Verfügbarkeit"
+        },
+        "EU": {
+          "label": "Europäische Union",
+          "desc": "EU-zugelassene Filter und Formulierungen"
+        },
+        "UK": {
+          "label": "Vereinigtes Königreich",
+          "desc": "Verfügbarkeit im UK-Markt"
+        },
+        "Canada": {
+          "label": "Kanada",
+          "desc": "Von Health Canada zugelassene Produkte"
+        },
+        "Australia": {
+          "label": "Australien/Neuseeland",
+          "desc": "TGA-zugelassene Sonnenschutzmittel"
+        },
+        "Japan": {
+          "label": "Japan",
+          "desc": "Japanische Marktformulierungen"
+        },
+        "Global": {
+          "label": "Andere/Nicht sicher",
+          "desc": "Weltweit verfügbare Produkte anzeigen"
+        }
+      }
+    },
+    "question2": {
+      "legend": "Was ist Ihr Hauttyp?",
+      "options": {
+        "oily": {
+          "label": "Ölig",
+          "desc": "Glänzend, neigt zu Ausbrüchen"
+        },
+        "dry": {
+          "label": "Trocken",
+          "desc": "Schuppig, Spannungsgefühl"
+        },
+        "combination": {
+          "label": "Mischhaut",
+          "desc": "Ölige T-Zone, trockene Wangen"
+        },
+        "sensitive": {
+          "label": "Empfindlich",
+          "desc": "Leicht gereizt, reaktiv"
+        },
+        "all": {
+          "label": "Nicht sicher / Alle",
+          "desc": "Für alle Hauttypen geeignet"
+        }
+      }
+    },
+    "question3": {
+      "legend": "Benötigen Sie parfümfreien Sonnenschutz?",
+      "options": {
+        "true": {
+          "label": "Ja",
+          "desc": "Kein zugesetztes Parfüm"
+        },
+        "false": {
+          "label": "Nein",
+          "desc": "Parfüm ist in Ordnung"
+        },
+        "any": {
+          "label": "Egal",
+          "desc": "Keine Präferenz"
+        }
+      }
+    },
+    "question4": {
+      "legend": "Für wen ist es?",
+      "options": {
+        "true": {
+          "label": "Kinder",
+          "desc": "Speziell für Kinder formuliert"
+        },
+        "false": {
+          "label": "Erwachsene",
+          "desc": "Allgemeine oder Erwachsenenformeln"
+        },
+        "any": {
+          "label": "Egal",
+          "desc": "Keine Präferenz"
+        }
+      }
+    },
+    "question5": {
+      "legend": "Bevorzugte Anwendungsmethode?",
+      "options": {
+        "cream": {
+          "label": "Creme",
+          "desc": "Dick, feuchtigkeitsspendend"
+        },
+        "lotion": {
+          "label": "Lotion",
+          "desc": "Leicht, einfach zu verteilen"
+        },
+        "spray": {
+          "label": "Spray",
+          "desc": "Schnell, bequem"
+        },
+        "stick": {
+          "label": "Stick",
+          "desc": "Tragbar, saubere Anwendung"
+        },
+        "gel": {
+          "label": "Gel",
+          "desc": "Leicht, nicht fettend"
+        },
+        "any": {
+          "label": "Alle",
+          "desc": "Keine Präferenz"
+        }
+      }
+    },
+    "question6": {
+      "legend": "Benötigen Sie Wasserbeständigkeit?",
+      "options": {
+        "true": {
+          "label": "Ja",
+          "desc": "Schwimmen oder Schwitzen"
+        },
+        "false": {
+          "label": "Nein",
+          "desc": "Täglicher Gebrauch"
+        },
+        "any": {
+          "label": "Egal",
+          "desc": "Keine Präferenz"
+        }
+      }
+    }
+  },
+  "navigation": {
+    "previous": "Zurück",
+    "next": "Weiter",
+    "showResults": "Ergebnisse anzeigen",
+    "pleaseSelect": "Bitte wählen Sie eine Option",
+    "answerAll": "Bitte beantworten Sie alle Fragen"
+  },
+  "results": {
+    "heading": "Ihre perfekten Sonnenschutzmittel",
+    "summary": {
+      "none": "Keine Sonnenschutzmittel entsprechen allen Ihren Kriterien. Versuchen Sie, Ihre Präferenzen anzupassen.",
+      "one": "<strong>1 perfekte Übereinstimmung</strong> für Sie gefunden!",
+      "many": "<strong>{count} großartige Optionen</strong> für Sie gefunden!"
+    },
+    "noResults": {
+      "icon": "😔",
+      "heading": "Keine Sonnenschutzmittel entsprechen Ihren Kriterien",
+      "text": "Wir konnten keine Sonnenschutzmittel finden, die allen Ihren Präferenzen entsprechen.",
+      "suggestionsHeading": "Versuchen Sie anzupassen:",
+      "suggestions": {
+        "formFactor": "Versuchen Sie verschiedene Anwendungsformen (aktuell: {value})",
+        "fragrance": "Erwägen Sie parfümfrei als optional",
+        "waterResistant": "Wasserbeständigkeit könnte die Optionen einschränken"
+      },
+      "adjustButton": "Filter anpassen",
+      "restartButton": "Neu starten"
+    },
+    "badges": {
+      "spf": "LSF",
+      "fragranceFree": "Parfümfrei",
+      "waterResistant": "Wasserbeständig",
+      "forKids": "Für Kinder",
+      "skinTypes": "Hauttypen:"
+    },
+    "learnMore": "Mehr erfahren"
+  },
+  "share": {
+    "heading": "Teilen Sie Ihre Ergebnisse",
+    "description": "Haben Sie Ihren perfekten Sonnenschutz gefunden? Teilen Sie ihn mit Freunden!",
+    "buttons": {
+      "whatsapp": "WhatsApp",
+      "facebook": "Facebook",
+      "twitter": "Twitter",
+      "copy": "Link kopieren"
+    },
+    "copyConfirmation": "Link in die Zwischenablage kopiert! ✓",
+    "copyFailed": "Kopieren fehlgeschlagen. Bitte manuell kopieren.",
+    "message": {
+      "withCriteria": "Ich habe {count} Sonnenschutzmittel für meine {criteria} Bedürfnisse gefunden! 🌞",
+      "withoutCriteria": "Ich habe {count} perfekte Sonnenschutzmittel gefunden! 🌞"
+    }
+  },
+  "shared": {
+    "notification": "Sie sehen geteilte Sonnenschutz-Präferenzen",
+    "startFresh": "Neu beginnen",
+    "dismiss": "Benachrichtigung schließen"
+  },
+  "liveCount": {
+    "singular": "Sonnenschutzmittel passt",
+    "plural": "Sonnenschutzmittel passen",
+    "available": "Sonnenschutzmittel verfügbar"
+  },
+  "loading": {
+    "text": "Sonnenschutzdaten werden geladen...",
+    "error": "Fehler beim Laden der Daten. Bitte aktualisieren Sie die Seite."
+  },
+  "footer": {
+    "madeWith": "Mit ☀️ für besseren Sonnenschutz gemacht",
+    "github": "Auf GitHub ansehen",
+    "license": "MIT-Lizenz"
+  },
+  "accessibility": {
+    "skipLink": "Zum Hauptinhalt springen",
+    "toggleModeAria": "Zwischen Assistenten- und Alle-Anzeigen-Modus wechseln",
+    "previousAria": "Vorherige Frage",
+    "nextAria": "Nächste Frage",
+    "restartAria": "Neu starten",
+    "shareWhatsAppAria": "Auf WhatsApp teilen",
+    "shareFacebookAria": "Auf Facebook teilen",
+    "shareTwitterAria": "Auf Twitter teilen",
+    "shareCopyAria": "Link in Zwischenablage kopieren",
+    "dismissAria": "Benachrichtigung schließen"
+  },
+  "screenReader": {
+    "selected": "{value} ausgewählt",
+    "switchedMode": "Zu {mode}-Modus gewechselt",
+    "backToQuestions": "Zurück zu den Fragen",
+    "quizRestarted": "Quiz neu gestartet",
+    "foundResults": "{count} passende Sonnenschutzmittel gefunden"
+  }
+}
