@@ -11,7 +11,6 @@ let showView;
 let elements;
 let appState;
 let questionMetadata;
-let t;
 let updateRestartButtonVisibility;
 
 /**
@@ -25,7 +24,6 @@ export function initResults(deps) {
     elements = deps.elements;
     appState = deps.appState;
     questionMetadata = deps.questionMetadata;
-    t = deps.t;
     updateRestartButtonVisibility = deps.updateRestartButtonVisibility;
 }
 

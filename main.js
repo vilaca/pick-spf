@@ -34,7 +34,7 @@ function sanitizeURL(url) {
         if (parsed.protocol === 'http:' || parsed.protocol === 'https:') {
             return url;
         }
-    } catch (e) {
+    } catch {
         console.warn('Invalid URL:', url);
     }
     return '';
@@ -438,13 +438,19 @@ function showLoadingError(message) {
  * Async arrow functions in event listeners can cause issues on iOS browsers
  */
 async function handleStartQuiz() {
+    console.log('handleStartQuiz called - button clicked');
+
     // Disable button to prevent double-click
     elements.startQuizBtn.disabled = true;
     elements.startQuizBtn.textContent = t('loading.text') || 'Loading...';
 
+    console.log('Button disabled, loading text set');
+
     try {
         // Load quiz module dynamically
+        console.log('About to load quiz module...');
         await loadQuizModule();
+        console.log('Quiz module loaded');
 
         // Debug: Check data loaded
         console.log(`Quiz resources loaded. Total sunscreens: ${appState.sunscreens.length}`);
@@ -458,13 +464,18 @@ async function handleStartQuiz() {
             appState.questionHistory = [firstQuestion]; // Track first question in history
         }
 
+        console.log('About to show questions view');
         showView('questions');
         quizModule.updateQuestionDisplay();
         quizModule.updateNavigationButtons();
         quizModule.updateLiveCount(); // Update count on quiz start
         quizModule.checkCurrentQuestionAnswered();
+        console.log('Quiz started successfully');
     } catch (error) {
         console.error('Error loading quiz:', error);
+        console.error('Error stack:', error.stack);
+        console.error('Error name:', error.name);
+        console.error('Error message:', error.message);
         showErrorNotification(t('loading.error') || 'Failed to load quiz. Please refresh and try again.');
         elements.startQuizBtn.disabled = false;
         elements.startQuizBtn.textContent = t('welcome.startButton') || 'Start Quiz';

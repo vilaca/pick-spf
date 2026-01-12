@@ -205,7 +205,7 @@ export function updateQuestionDisplay() {
         // Update option availability for current question
         // This disables options that would result in 0 products
         setTimeout(() => {
-            const availableCount = updateOptionAvailability(appState, questionMetadata, t);
+            updateOptionAvailability(appState, questionMetadata, t);
 
             // Always check if current question is answered
             checkCurrentQuestionAnswered();
@@ -213,7 +213,7 @@ export function updateQuestionDisplay() {
             // Check if we should auto-skip this question (only one available option)
             // This happens after a slight delay so user can see what was auto-selected
             setTimeout(() => {
-                checkAndAutoSkip(appState, questionMetadata, t);
+                checkAndAutoSkip(appState, questionMetadata);
             }, 300);
         }, 0);
     } else {

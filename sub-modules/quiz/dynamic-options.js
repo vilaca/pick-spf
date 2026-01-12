@@ -95,10 +95,9 @@ export function updateOptionAvailability(appState, questionMetadata, t) {
  *
  * @param {Object} appState - Application state
  * @param {Object} questionMetadata - Question metadata
- * @param {Function} t - Translation function
  * @returns {boolean} True if question was auto-selected
  */
-export function checkAndAutoSkip(appState, questionMetadata, t) {
+export function checkAndAutoSkip(appState, questionMetadata) {
     const currentKey = appState.currentQuestionKey;
     if (!currentKey) return false;
 
