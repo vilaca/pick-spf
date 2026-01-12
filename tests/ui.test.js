@@ -42,7 +42,6 @@ describe('UI Functions and Event Handlers', () => {
 
                 <!-- Buttons -->
                 <button id="start-quiz-btn">Start Quiz</button>
-                <button id="toggle-mode-btn">Toggle Mode</button>
                 <button id="prev-btn">Previous</button>
                 <button id="next-btn">Next</button>
                 <button id="show-results-btn" class="hidden">Show Results</button>
@@ -111,9 +110,9 @@ describe('UI Functions and Event Handlers', () => {
                     ok: true,
                     json: () => Promise.resolve({
                         welcome: { title: 'Find Your Perfect Sunscreen', startButton: 'Start Quiz' },
-                        questions: { toggleMode: 'View All Questions', toggleModeWizard: 'Wizard Mode' },
+                        questions: {},
                         loading: { text: 'Loading...', error: 'Failed to load' },
-                        screenReader: { switchedMode: 'Switched to {mode} mode' },
+                        screenReader: {},
                         meta: { title: 'Sunscreen Chooser', description: 'Find your sunscreen', keywords: 'spf' }
                     })
                 });
@@ -130,7 +129,6 @@ describe('UI Functions and Event Handlers', () => {
         elements.questionsView = document.getElementById('questions-view');
         elements.resultsView = document.getElementById('results-view');
         elements.startQuizBtn = document.getElementById('start-quiz-btn');
-        elements.toggleModeBtn = document.getElementById('toggle-mode-btn');
         elements.prevBtn = document.getElementById('prev-btn');
         elements.nextBtn = document.getElementById('next-btn');
         elements.showResultsBtn = document.getElementById('show-results-btn');

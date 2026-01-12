@@ -257,7 +257,6 @@ const elements = {
 
     // Buttons
     startQuizBtn: document.getElementById('start-quiz-btn'),
-    toggleModeBtn: document.getElementById('toggle-mode-btn'),
     prevBtn: document.getElementById('prev-btn'),
     nextBtn: document.getElementById('next-btn'),
     showResultsBtn: document.getElementById('show-results-btn'),
