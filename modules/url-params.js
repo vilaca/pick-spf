@@ -5,8 +5,6 @@
 let appState;
 let appConfig;
 let validateURLParam;
-let showView;
-let announceToScreenReader;
 
 /**
  * Initialize URL params module with dependencies
@@ -15,8 +13,6 @@ export function initURLParams(deps) {
     appState = deps.appState;
     appConfig = deps.appConfig;
     validateURLParam = deps.validateURLParam;
-    showView = deps.showView;
-    announceToScreenReader = deps.announceToScreenReader;
 }
 
 /**
