@@ -712,12 +712,12 @@ main {
     background: var(--color-bg-alt);
 }
 
-/* Wizard mode: only show one question */
-body.wizard-mode .question {
+/* Show only active question (wizard behavior) */
+.question {
     display: none;
 }
 
-body.wizard-mode .question.active {
+.question.active {
     display: block;
 }
 
@@ -1499,7 +1499,6 @@ footer a:focus {
     footer,
     .navigation-buttons,
     .share-section,
-    #toggle-mode-btn,
     #restart-btn {
         display: none;
     }

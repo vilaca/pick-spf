@@ -81,31 +81,36 @@ export function filterSunscreens(appState) {
 export function testFilterSunscreens(appState, testSelections) {
     let filtered = [...appState.sunscreens];
 
-    // Location
-    if (testSelections.location) {
+    // Location (must match filterSunscreens logic exactly)
+    if (testSelections.location && testSelections.location !== 'Global') {
         filtered = filtered.filter(s =>
-            s.availableIn && s.availableIn.includes(testSelections.location)
-        );
-    }
-
-    // Skin Type
-    if (testSelections.skinType) {
-        filtered = filtered.filter(s =>
-            s.skinTypes && (
-                s.skinTypes.includes('all') ||
-                s.skinTypes.includes(testSelections.skinType)
+            s.availableIn && (
+                s.availableIn.includes(testSelections.location) ||
+                s.availableIn.includes('Global')
             )
         );
     }
 
-    // Fragrance Free
-    if (testSelections.fragranceFree === 'true') {
-        filtered = filtered.filter(s => s.isFragranceFree === true);
+    // Skin Type (must match filterSunscreens logic exactly)
+    if (testSelections.skinType && testSelections.skinType !== 'all') {
+        filtered = filtered.filter(s =>
+            s.skinTypes.includes(testSelections.skinType) ||
+            s.skinTypes.includes('all')
+        );
     }
 
-    // For Kids
+    // Fragrance Free (handle both true and false)
+    if (testSelections.fragranceFree === 'true') {
+        filtered = filtered.filter(s => s.isFragranceFree === true);
+    } else if (testSelections.fragranceFree === 'false') {
+        filtered = filtered.filter(s => s.isFragranceFree === false);
+    }
+
+    // For Kids (handle both true and false)
     if (testSelections.forKids === 'true') {
         filtered = filtered.filter(s => s.forKids === true);
+    } else if (testSelections.forKids === 'false') {
+        filtered = filtered.filter(s => s.forKids === false);
     }
 
     // Form Factor
@@ -115,9 +120,11 @@ export function testFilterSunscreens(appState, testSelections) {
         );
     }
 
-    // Water Resistant
+    // Water Resistant (handle both true and false)
     if (testSelections.waterResistant === 'true') {
         filtered = filtered.filter(s => s.waterResistant === true);
+    } else if (testSelections.waterResistant === 'false') {
+        filtered = filtered.filter(s => s.waterResistant === false);
     }
 
     // Special Features (all selected features must be present)

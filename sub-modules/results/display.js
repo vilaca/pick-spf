@@ -266,28 +266,22 @@ function goBackToQuestions(questionKey = null) {
     // For now, we'll expose it via quiz.js
     showView('questions');
 
-    // Make sure we're in the right mode and question
-    if (appState.mode === 'viewall') {
-        // Stay in view all mode
-        elements.questions.forEach(q => q.classList.add('active'));
+    // Go to specified question or determine next unanswered question
+    if (questionKey && questionMetadata[questionKey]) {
+        appState.currentQuestionKey = questionKey;
+        // Don't add to history since we're going back
     } else {
-        // Go to specified question or determine next unanswered question
-        if (questionKey && questionMetadata[questionKey]) {
-            appState.currentQuestionKey = questionKey;
-            // Don't add to history since we're going back
-        } else {
-            // This needs to be called from quiz.js
-            if (window.quizDetermineNextQuestion) {
-                const nextQuestion = window.quizDetermineNextQuestion();
-                if (nextQuestion) {
-                    appState.currentQuestionKey = nextQuestion;
-                }
+        // This needs to be called from quiz.js
+        if (window.quizDetermineNextQuestion) {
+            const nextQuestion = window.quizDetermineNextQuestion();
+            if (nextQuestion) {
+                appState.currentQuestionKey = nextQuestion;
             }
         }
-        // These need to be called from quiz.js
-        if (window.quizUpdateQuestionDisplay) window.quizUpdateQuestionDisplay();
-        if (window.quizUpdateNavigationButtons) window.quizUpdateNavigationButtons();
     }
+    // These need to be called from quiz.js
+    if (window.quizUpdateQuestionDisplay) window.quizUpdateQuestionDisplay();
+    if (window.quizUpdateNavigationButtons) window.quizUpdateNavigationButtons();
 
     announceToScreenReader('Back to questions');
 }

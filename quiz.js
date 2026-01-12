@@ -267,8 +267,8 @@ export function handleFormChange(event) {
     // Check if current question is answered (enable/disable next button)
     checkCurrentQuestionAnswered();
 
-    // Auto-advance in wizard mode (only for non-checkbox questions)
-    if (appState.mode === 'wizard' && type !== 'checkbox') {
+    // Auto-advance (only for non-checkbox questions)
+    if (type !== 'checkbox') {
         autoAdvanceToNextQuestion();
     }
 }
@@ -334,13 +334,6 @@ export function restart() {
 
     // Reset URL
     history.pushState({}, '', window.location.pathname);
-
-    // Reset mode to wizard
-    if (appState.mode === 'viewall') {
-        appState.mode = 'wizard';
-        document.body.classList.add('wizard-mode');
-        elements.modeText.textContent = t('questions.toggleMode');
-    }
 
     // Update UI
     updateProgress();

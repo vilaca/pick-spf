@@ -174,11 +174,6 @@ describe('Translation System Integration', () => {
             expect(result).toBe('Answer a few questions');
         });
 
-        it('should replace single placeholder', () => {
-            const result = t('screenReader.switchedMode', { mode: 'wizard' });
-            expect(result).toBe('Switched to wizard mode');
-        });
-
         it('should replace multiple placeholders', () => {
             const result = t('validation.minLength', { min: 5 });
             expect(result).toBe('Minimum length is 5 characters');
@@ -202,16 +197,6 @@ describe('Translation System Integration', () => {
         it('should return key when partially missing path', () => {
             const result = t('welcome.nonexistent');
             expect(result).toBe('welcome.nonexistent');
-        });
-
-        it('should leave placeholder intact when replacement missing', () => {
-            const result = t('screenReader.switchedMode', { wrongKey: 'value' });
-            expect(result).toBe('Switched to {mode} mode');
-        });
-
-        it('should handle empty string as placeholder value', () => {
-            const result = t('screenReader.switchedMode', { mode: '' });
-            expect(result).toBe('Switched to  mode');
         });
 
         it('should handle string with multiple same placeholders', () => {
@@ -246,12 +231,6 @@ describe('Translation System Integration', () => {
             const result = t('welcome.title.');
             // Should not find because of trailing dot
             expect(result).toBe('welcome.title.');
-        });
-
-        it('should handle replacements with special characters', () => {
-            const result = t('screenReader.switchedMode', { mode: '<script>alert(1)</script>' });
-            // Note: t() doesn't escape, that should be done when rendering to HTML
-            expect(result).toContain('<script>');
         });
 
         it('should handle very long keys', () => {

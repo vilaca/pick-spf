@@ -97,7 +97,6 @@ let appConfig = {
 
 const appState = {
     currentView: 'welcome',
-    mode: 'wizard', // 'wizard' or 'viewall'
     currentQuestionKey: null, // Current question key (e.g., 'location', 'skinType')
     questionHistory: [], // Track order of questions shown (for back button)
     totalQuestions: 0, // Calculated dynamically after loading question metadata
@@ -288,9 +287,6 @@ const elements = {
     resultsSummary: document.getElementById('results-summary'),
     resultsContainer: document.getElementById('results-container'),
 
-    // Mode text
-    modeText: document.getElementById('mode-text'),
-
     // Language selector
     languageSelect: document.getElementById('language-select')
 };
@@ -478,9 +474,6 @@ function setupEventListeners() {
         }
     });
 
-    // Toggle mode
-    elements.toggleModeBtn.addEventListener('click', toggleMode);
-
     // Navigation - delegate to quiz module
     elements.prevBtn.addEventListener('click', () => {
         if (quizModule) quizModule.previousQuestion();
@@ -595,46 +588,13 @@ function showView(viewName) {
 }
 
 // ===================================
-// Mode Switching (Wizard / View All)
-// ===================================
-
-function toggleMode() {
-    if (appState.mode === 'wizard') {
-        appState.mode = 'viewall';
-        document.body.classList.remove('wizard-mode');
-        elements.modeText.textContent = t('questions.toggleModeWizard');
-        elements.prevBtn.classList.add('hidden');
-        elements.nextBtn.classList.add('hidden');
-        elements.showResultsBtn.classList.remove('hidden');
-
-        // Show all questions
-        elements.questions.forEach(q => q.classList.add('active'));
-    } else {
-        appState.mode = 'wizard';
-        document.body.classList.add('wizard-mode');
-        elements.modeText.textContent = t('questions.toggleMode');
-        if (quizModule) {
-            quizModule.updateNavigationButtons();
-            quizModule.updateQuestionDisplay();
-        }
-    }
-
-    // Update button states for new mode
-    if (quizModule) {
-        quizModule.checkCurrentQuestionAnswered();
-    }
-
-    announceToScreenReader(t('screenReader.switchedMode', { mode: appState.mode }));
-}
-
-// ===================================
 // Keyboard Navigation
 // ===================================
 
 function handleKeyboard(event) {
     // Escape key: go back or restart
     if (event.key === 'Escape') {
-        if (appState.currentView === 'questions' && appState.questionHistory.length > 0 && appState.mode === 'wizard') {
+        if (appState.currentView === 'questions' && appState.questionHistory.length > 0) {
             if (quizModule) quizModule.previousQuestion();
         } else if (appState.currentView === 'results') {
             if (quizModule) quizModule.restart();
@@ -676,9 +636,6 @@ function announceToScreenReader(message) {
 
 // Only auto-initialize if not in test environment
 if (typeof process === 'undefined' || process.env.NODE_ENV !== 'test') {
-    // Set initial mode
-    document.body.classList.add('wizard-mode');
-
     // Error boundary wrapper for init
     const safeInit = async () => {
         try {
@@ -883,7 +840,7 @@ export { escapeHTML, sanitizeURL, validateURLParam };
 export { t, availableLanguages, loadTranslation, changeLanguage };
 
 // Export UI functions for testing
-export { showView, toggleMode, announceToScreenReader, showErrorNotification, showLoadingError, handleKeyboard };
+export { showView, announceToScreenReader, showErrorNotification, showLoadingError, handleKeyboard };
 
 // Export app state and config for testing
 export { appState, appConfig, elements };

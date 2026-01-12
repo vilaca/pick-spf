@@ -85,12 +85,9 @@ export function updateRestartButtonVisibility() {
     }
 }
 
-/**
- * Check if current question is answered and update next button state
- */
 export function checkCurrentQuestionAnswered() {
-    // In wizard mode, check current question
-    if (appState.mode === 'wizard' && appState.currentQuestionKey) {
+    // Check current question
+    if (appState.currentQuestionKey) {
         const metadata = questionMetadata[appState.currentQuestionKey];
         const currentQ = elements.questions[metadata.elementIndex];
         const inputs = currentQ.querySelectorAll('input');

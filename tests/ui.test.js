@@ -218,39 +218,6 @@ describe('UI Functions and Event Handlers', () => {
         });
     });
 
-    describe('toggleMode', () => {
-        it('should switch from wizard to viewall mode', () => {
-            const { toggleMode, appState } = script;
-            // Note: appState.mode is managed by the toggleMode function
-
-            const initialMode = appState.mode;
-            toggleMode();
-
-            // Mode should change
-            expect(appState.mode).not.toBe(initialMode);
-        });
-
-        it('should toggle between modes', () => {
-            const { toggleMode, appState } = script;
-            const mode1 = appState.mode;
-            toggleMode();
-            const mode2 = appState.mode;
-            toggleMode();
-            const mode3 = appState.mode;
-
-            // Modes should alternate
-            expect(mode1).not.toBe(mode2);
-            expect(mode2).not.toBe(mode3);
-            expect(mode1).toBe(mode3);
-        });
-
-        it('should execute without errors', () => {
-            const { toggleMode } = script;
-            expect(() => toggleMode()).not.toThrow();
-            expect(() => toggleMode()).not.toThrow();
-        });
-    });
-
     describe('announceToScreenReader', () => {
         it('should be a function', () => {
             const { announceToScreenReader } = script;
@@ -539,17 +506,6 @@ describe('UI Functions and Event Handlers', () => {
         it('should handle showView with non-existent view', () => {
             const { showView } = script;
             expect(() => showView('nonexistent')).not.toThrow();
-        });
-
-        it('should handle multiple rapid mode toggles', () => {
-            const { toggleMode, appState } = script;
-            appState.mode = 'wizard';
-
-            toggleMode();
-            toggleMode();
-            toggleMode();
-
-            expect(appState.mode).toBe('viewall');
         });
 
         it('should handle announceToScreenReader with special characters', () => {

@@ -273,12 +273,6 @@ describe('Initialization Functions', () => {
             expect(elements.startQuizBtn.tagName).toBe('BUTTON');
         });
 
-        it('should have toggle mode button', () => {
-            const { elements } = script;
-
-            expect(elements.toggleModeBtn).toBeTruthy();
-        });
-
         it('should have navigation buttons', () => {
             const { elements } = script;
 
@@ -331,7 +325,6 @@ describe('Initialization Functions', () => {
 
             expect(appState).toBeDefined();
             expect(appState.currentView).toBeDefined();
-            expect(appState.mode).toBeDefined();
         });
 
         it('should have sunscreens array in state', () => {
@@ -423,7 +416,6 @@ describe('Initialization Functions', () => {
 
             appState.currentView = 'questions';
             appState.questionHistory = ['location'];
-            appState.mode = 'wizard';
 
             const event = new dom.window.KeyboardEvent('keydown', { key: 'Escape' });
 
@@ -450,28 +442,6 @@ describe('Initialization Functions', () => {
             Object.defineProperty(event, 'target', { value: button, writable: false });
 
             expect(() => handleKeyboard(event)).not.toThrow();
-        });
-    });
-
-    describe('Toggle Mode Edge Cases', () => {
-        it('should handle toggle when quizModule is not loaded', () => {
-            const { toggleMode } = script;
-
-            // quizModule should be null initially
-            expect(() => toggleMode()).not.toThrow();
-        });
-
-        it('should switch modes multiple times', () => {
-            const { toggleMode, appState } = script;
-
-            const modes = [];
-            for (let i = 0; i < 5; i++) {
-                toggleMode();
-                modes.push(appState.mode);
-            }
-
-            // Should alternate between wizard and viewall
-            expect(modes.length).toBe(5);
         });
     });
 });
