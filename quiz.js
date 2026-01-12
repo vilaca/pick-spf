@@ -14,6 +14,7 @@ import { initShare, shareWhatsApp, shareFacebook, shareTwitter, copyLink } from 
 import { initUIUpdates, updateProgress, updateNavigationButtons, updateRestartButtonVisibility, checkCurrentQuestionAnswered, updateLiveCount } from './sub-modules/ui-updates.js';
 import { initDataLoader, loadQuizResources } from './sub-modules/data-loader.js';
 import { initURLParams, checkURLParameters } from './sub-modules/url-params.js';
+import { updateOptionAvailability, checkAndAutoSkip } from './sub-modules/quiz/dynamic-options.js';
 
 // ===================================
 // Shared state (passed from main script)
@@ -201,14 +202,23 @@ export function updateQuestionDisplay() {
             }
         });
 
-        // Update special features availability if showing that question
-        if (appState.currentQuestionKey === 'specialFeatures') {
-            // Use setTimeout to ensure DOM is ready
-            setTimeout(() => updateSpecialFeaturesAvailability(appState), 0);
-        }
-    }
+        // Update option availability for current question
+        // This disables options that would result in 0 products
+        setTimeout(() => {
+            const availableCount = updateOptionAvailability(appState, questionMetadata, t);
 
-    checkCurrentQuestionAnswered();
+            // Always check if current question is answered
+            checkCurrentQuestionAnswered();
+
+            // Check if we should auto-skip this question (only one available option)
+            // This happens after a slight delay so user can see what was auto-selected
+            setTimeout(() => {
+                checkAndAutoSkip(appState, questionMetadata, t);
+            }, 300);
+        }, 0);
+    } else {
+        checkCurrentQuestionAnswered();
+    }
 }
 
 // Export for UI updates module

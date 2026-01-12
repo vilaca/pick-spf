@@ -226,7 +226,8 @@
     "next": "Next",
     "showResults": "Show Results",
     "pleaseSelect": "Please select an option",
-    "answerAll": "Please answer all questions"
+    "answerAll": "Please answer all questions",
+    "noProductsAvailable": "No products available with this combination"
   },
   "results": {
     "heading": "Your Perfect Sunscreens",
