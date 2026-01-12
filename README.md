@@ -304,7 +304,7 @@ Modern JavaScript features used:
 ### Adding Languages
 1. Create `translations/your-lang.json` (copy `en.json` as template)
 2. Translate all strings
-3. Update `availableLanguages` in `script.js`:
+3. Update `availableLanguages` in `main.js`:
    ```javascript
    const availableLanguages = {
        'en': 'English',

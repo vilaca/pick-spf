@@ -124,7 +124,7 @@ describe('Initialization Functions', () => {
         };
 
         // Import the script module
-        script = await import('../script.js');
+        script = await import('../main.js');
 
         // Reinitialize elements
         const { elements } = script;

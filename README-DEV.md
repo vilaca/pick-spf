@@ -56,7 +56,7 @@ npm run validate:full     # Validate + run tests
 ## Test Coverage
 
 - **318 tests** across 8 suites
-- **~47% coverage** overall (60% script.js, 40% quiz.js)
+- **~47% coverage** overall (60% main.js, 40% quiz.js)
 - Target: 80% coverage
 
 ## File Structure
@@ -65,7 +65,7 @@ npm run validate:full     # Validate + run tests
 .
 ├── index.html                    # Main HTML
 ├── style.css                     # All styles
-├── script.js                     # Main app (29KB)
+├── main.js                     # Main app (29KB)
 ├── quiz.js                       # Quiz module (50KB, lazy loaded)
 ├── validate-data.js              # Data validation script
 ├── data/
@@ -177,7 +177,7 @@ Fix: Reset start button state on quiz restart
 
 ## Key Functions
 
-### script.js
+### main.js
 ```javascript
 filterProducts(products, selections)
 calculateDiscriminatingPower(questionId, products)

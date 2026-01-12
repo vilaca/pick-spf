@@ -10,8 +10,8 @@ global.document = dom.window.document;
 global.window = dom.window;
 global.navigator = dom.window.navigator;
 
-// Import actual production functions from script.js
-import { escapeHTML, sanitizeURL, validateURLParam } from '../script.js';
+// Import actual production functions from "../main.js"
+import { escapeHTML, sanitizeURL, validateURLParam } from "../main.js";
 
 describe('Security Utilities', () => {
     describe('escapeHTML', () => {

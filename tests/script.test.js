@@ -6,7 +6,7 @@ import {
     getNextQuestion,
     shouldShowResults,
     questionMetadata
-} from '../script.js';
+} from "../main.js";
 
 describe('Dynamic Questionnaire Logic', () => {
     let sampleProducts;

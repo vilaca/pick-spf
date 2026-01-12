@@ -372,13 +372,13 @@ Questions are dynamically ordered by **discriminating power** (how well they fil
 
 - **`index.html`** - Single page application structure
 - **`style.css`** - All styles (no CSS frameworks)
-- **`script.js`** (29KB) - Main app initialization, UI management, filtering logic
+- **`main.js`** (29KB) - Main app initialization, UI management, filtering logic
 - **`quiz.js`** (50KB) - Quiz module loaded lazily, handles question flow and results
 - **`validate-data.js`** - Data validation script (not loaded in browser)
 
 ### Key Functions
 
-#### script.js
+#### main.js
 
 ```javascript
 // Filtering and scoring
@@ -426,7 +426,7 @@ generateIngredientSlug(ingredient)  // Used for INCIDecoder links
 ### State Management
 
 ```javascript
-// Shared state (script.js)
+// Shared state (main.js)
 export const appState = {
     language: 'en',
     currentView: 'welcome',
@@ -498,7 +498,7 @@ All 133 unique ingredients validated with 8 expected synonym warnings.
 ### Coverage Goals
 
 - **Target**: 80% coverage (statements, branches, functions, lines)
-- **Current**: ~47% overall (60% script.js, 40% quiz.js)
+- **Current**: ~47% overall (60% main.js, 40% quiz.js)
 - **Focus**: Cover critical paths and edge cases
 
 ### What to Test
@@ -599,7 +599,7 @@ This is a **static site** - no build process required!
 ```
 index.html
 style.css
-script.js
+main.js
 quiz.js
 data/
 ├── questions-metadata.yaml

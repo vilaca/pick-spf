@@ -40,7 +40,7 @@ describe('Additional Edge Cases and Coverage', () => {
             return Promise.resolve({ ok: false });
         };
 
-        script = await import('../script.js');
+        script = await import('../main.js');
     });
 
     describe('Translation Edge Cases', () => {

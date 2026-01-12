@@ -122,7 +122,7 @@ describe('UI Functions and Event Handlers', () => {
         };
 
         // Dynamically import the script module
-        script = await import('../script.js');
+        script = await import('../main.js');
 
         // Reinitialize elements to point to our test DOM
         const { elements } = script;

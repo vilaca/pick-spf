@@ -75,7 +75,7 @@ global.fetch = (url) => {
 };
 
 // Import after setting up mocks
-import { loadTranslation, changeLanguage, t, availableLanguages } from '../script.js';
+import { loadTranslation, changeLanguage, t, availableLanguages } from "../main.js";
 
 describe('Translation System Integration', () => {
     describe('loadTranslation', () => {

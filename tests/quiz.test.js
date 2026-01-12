@@ -388,20 +388,20 @@ questions:
                 }
             ];
 
-            expect(() => quiz.checkURLParameters()).not.toThrow();
+            expect(() => quiz.checkURLParametersAndShowResults()).not.toThrow();
         });
 
         it('should validate URL parameters', () => {
             // URL has invalid parameter values
             global.window.location.search = '?location=INVALID';
 
-            expect(() => quiz.checkURLParameters()).not.toThrow();
+            expect(() => quiz.checkURLParametersAndShowResults()).not.toThrow();
         });
 
         it('should handle empty URL', () => {
             global.window.location.search = '';
 
-            expect(() => quiz.checkURLParameters()).not.toThrow();
+            expect(() => quiz.checkURLParametersAndShowResults()).not.toThrow();
         });
     });
 
@@ -519,7 +519,7 @@ questions:
 
         it('should filter by location', () => {
             mockDeps.appState.selections = { location: 'US' };
-            quiz.filterSunscreens();
+            quiz.filterSunscreens(mockDeps.appState);
 
             expect(mockDeps.appState.filteredResults.length).toBe(1);
             expect(mockDeps.appState.filteredResults[0].id).toBe(1);
@@ -530,14 +530,14 @@ questions:
                 location: 'US',
                 skinType: 'oily'
             };
-            quiz.filterSunscreens();
+            quiz.filterSunscreens(mockDeps.appState);
 
             expect(mockDeps.appState.filteredResults.length).toBe(1);
         });
 
         it('should return all products with no selections', () => {
             mockDeps.appState.selections = {};
-            quiz.filterSunscreens();
+            quiz.filterSunscreens(mockDeps.appState);
 
             expect(mockDeps.appState.filteredResults.length).toBe(2);
         });
@@ -550,18 +550,18 @@ questions:
                 { id: 2, skinTypes: ['dry'] }
             ];
 
-            const power = quiz.calculateDiscriminatingPower('skinType', products);
+            const power = quiz.calculateDiscriminatingPower('skinType', products, mockDeps.questionMetadata);
             expect(typeof power).toBe('number');
             expect(power).toBeGreaterThanOrEqual(0);
         });
 
         it('should return 0 for empty products', () => {
-            const power = quiz.calculateDiscriminatingPower('skinType', []);
+            const power = quiz.calculateDiscriminatingPower('skinType', [], mockDeps.questionMetadata);
             expect(power).toBe(0);
         });
 
         it('should return 0 for invalid question', () => {
-            const power = quiz.calculateDiscriminatingPower('invalid', [{ id: 1 }]);
+            const power = quiz.calculateDiscriminatingPower('invalid', [], mockDeps.questionMetadata, [{ id: 1 }]);
             expect(power).toBe(0);
         });
     });
@@ -581,13 +581,13 @@ questions:
         });
 
         it('should return next question key', () => {
-            const nextQuestion = quiz.determineNextQuestion();
+            const nextQuestion = quiz.determineNextQuestion(mockDeps.appState, mockDeps.questionMetadata);
             expect(typeof nextQuestion).toBe('string');
         });
 
         it('should skip answered questions', () => {
             mockDeps.appState.selections = { location: 'US' };
-            const nextQuestion = quiz.determineNextQuestion();
+            const nextQuestion = quiz.determineNextQuestion(mockDeps.appState, mockDeps.questionMetadata);
 
             expect(nextQuestion).not.toBe('location');
         });
@@ -602,7 +602,7 @@ questions:
                 skinType: { elementIndex: 1 }
             };
 
-            const nextQuestion = quiz.determineNextQuestion();
+            const nextQuestion = quiz.determineNextQuestion(mockDeps.appState, mockDeps.questionMetadata);
             expect(nextQuestion === null || typeof nextQuestion === 'string').toBe(true);
         });
     });

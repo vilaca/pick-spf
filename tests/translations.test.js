@@ -15,8 +15,8 @@ global.localStorage = {
     clear: () => {}
 };
 
-// Import actual production functions from script.js
-import { t, availableLanguages } from '../script.js';
+// Import actual production functions from "../main.js"
+import { t, availableLanguages } from "../main.js";
 
 describe('Translation System', () => {
     // Mock translations for testing

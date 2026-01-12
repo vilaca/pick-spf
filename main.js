@@ -414,15 +414,18 @@ async function initializeLanguage() {
 function showLoadingError(message) {
     const loadingOverlay = document.getElementById('loading-overlay');
     if (loadingOverlay) {
-        const loadingText = loadingOverlay.querySelector('.loading-text');
-        const spinner = loadingOverlay.querySelector('.spinner');
-
-        if (loadingText) {
-            loadingText.textContent = message;
-        }
-        if (spinner) {
-            spinner.style.display = 'none';
-        }
+        // Clear existing content
+        loadingOverlay.innerHTML = `
+            <div class="error-box">
+                <div class="error-content">
+                    <span class="error-icon">⚠️</span>
+                    <span class="error-message">${escapeHTML(message)}</span>
+                </div>
+                <button class="error-close-btn" onclick="location.reload()" aria-label="Reload page">
+                    Reload
+                </button>
+            </div>
+        `;
 
         // Make sure overlay is visible
         loadingOverlay.classList.remove('hidden');
@@ -454,7 +457,7 @@ function setupEventListeners() {
             console.log(`Quiz resources loaded. Total sunscreens: ${appState.sunscreens.length}`);
 
             // Determine first question dynamically
-            const firstQuestion = quizModule.determineNextQuestion();
+            const firstQuestion = quizModule.determineNextQuestion(appState, questionMetadata);
             console.log(`First question determined: ${firstQuestion}`);
 
             if (firstQuestion) {
