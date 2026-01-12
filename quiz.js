@@ -1039,6 +1039,9 @@ export function showResults() {
     // Show results view
     showView('results');
 
+    // Show restart button
+    updateRestartButtonVisibility();
+
     // Announce to screen reader
     announceToScreenReader(`Found ${results.length} matching sunscreens`);
 }
