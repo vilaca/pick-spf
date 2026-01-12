@@ -10,8 +10,8 @@
     "test:coverage": "NODE_OPTIONS=--experimental-vm-modules NODE_ENV=test jest --coverage",
     "validate": "node validate-data.js",
     "validate:full": "npm run validate && npm test",
-    "lint": "eslint *.js modules/**/*.js",
-    "lint:fix": "eslint *.js modules/**/*.js --fix"
+    "lint": "eslint --no-warn-ignored *.js modules/**/*.js",
+    "lint:fix": "eslint --no-warn-ignored *.js modules/**/*.js --fix"
   },
   "browserslist": [
     "> 0.5%",
