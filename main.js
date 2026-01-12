@@ -359,16 +359,42 @@ async function init() {
             .some(param => urlParams.has(param));
 
         if (hasQuizParams) {
-            // Load quiz module and handle URL parameters
-            await loadQuizModule();
-            quizModule.checkURLParameters();
+            console.log('URL parameters detected, loading quiz...');
+            try {
+                // Load quiz module and handle URL parameters
+                await loadQuizModule();
+                console.log('Quiz module loaded, processing URL parameters...');
+
+                // Use the proper function that passes showResults callback
+                quizModule.checkURLParametersAndShowResults();
+
+                // Don't show welcome view - URL params will show results
+                console.log('URL parameters processed successfully');
+            } catch (error) {
+                console.error('Error processing URL parameters:', error);
+                console.error('Falling back to welcome screen');
+                // Clear invalid selections
+                appState.selections = {
+                    location: null,
+                    skinType: null,
+                    fragranceFree: null,
+                    forKids: null,
+                    formFactor: null,
+                    waterResistant: null,
+                    specialFeatures: null
+                };
+                // Clear bad URL params from address bar
+                history.replaceState({}, '', window.location.pathname);
+                // Show welcome view as fallback
+                showView('welcome');
+            }
+        } else {
+            // No URL params - show normal welcome view
+            showView('welcome');
         }
 
         // Setup event listeners
         setupEventListeners();
-
-        // Initialize view
-        showView('welcome');
     } catch (error) {
         console.error('Initialization error:', error);
         showLoadingError(t('loading.error') || 'Failed to initialize the application. Please refresh the page.');
