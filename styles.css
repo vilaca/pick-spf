@@ -516,10 +516,6 @@ main {
     flex-wrap: wrap;
 }
 
-.results-actions-top {
-    margin-bottom: var(--spacing-md);
-}
-
 /* Shared Selections Notification */
 .shared-notification {
     background: linear-gradient(135deg, #fff8f6 0%, #ffe8e0 100%);
@@ -1375,6 +1371,22 @@ main {
 /* Results Actions */
 .results-actions {
     text-align: center;
+}
+
+.results-actions-bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: var(--spacing-lg);
+    gap: var(--spacing-md);
+}
+
+.results-actions-bottom button:first-child {
+    margin-right: auto;
+}
+
+.results-actions-bottom button:last-child {
+    margin-left: auto;
 }
 
 /* ===================================

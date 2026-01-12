@@ -390,6 +390,28 @@ export function restart() {
     announceToScreenReader('Quiz restarted');
 }
 
+/**
+ * Go back to questions from results page
+ */
+export function backToQuestionsFromResults() {
+    // Get the last question from history
+    if (appState.questionHistory.length > 0) {
+        appState.currentQuestionKey = appState.questionHistory[appState.questionHistory.length - 1];
+    }
+
+    // Show questions view
+    showView('questions');
+
+    // Update display
+    updateQuestionDisplay();
+    updateProgress();
+    updateNavigationButtons();
+    updateLiveCount();
+    checkCurrentQuestionAnswered();
+
+    announceToScreenReader('Back to questions');
+}
+
 // ===================================
 // Export for results module and tests
 // ===================================

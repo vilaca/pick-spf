@@ -231,6 +231,7 @@
   },
   "results": {
     "heading": "Your Perfect Sunscreens",
+    "backToQuestions": "Back to Questions",
     "summary": {
       "none": "No sunscreens match all your criteria. Try adjusting your preferences.",
       "one": "Found <strong>1 perfect match</strong> for you!",
@@ -299,6 +300,7 @@
     "previousAria": "Previous question",
     "nextAria": "Next question",
     "restartAria": "Start over",
+    "backToQuestionsAria": "Go back to questions",
     "shareWhatsAppAria": "Share on WhatsApp",
     "shareFacebookAria": "Share on Facebook",
     "shareTwitterAria": "Share on Twitter",

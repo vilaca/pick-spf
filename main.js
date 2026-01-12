@@ -262,6 +262,7 @@ const elements = {
     showResultsBtn: document.getElementById('show-results-btn'),
     restartBtn: document.getElementById('restart-btn'),
     restartBtnQuestions: document.getElementById('restart-btn-questions'),
+    backToQuestionsBtn: document.getElementById('back-to-questions-btn'),
 
     // Share buttons
     shareWhatsApp: document.getElementById('share-whatsapp'),
@@ -509,6 +510,11 @@ function setupEventListeners() {
     });
     elements.showResultsBtn.addEventListener('click', () => {
         if (quizModule) quizModule.showResults();
+    });
+
+    // Back to questions from results
+    elements.backToQuestionsBtn.addEventListener('click', () => {
+        if (quizModule) quizModule.backToQuestionsFromResults();
     });
 
     // Restart - delegate to quiz module
