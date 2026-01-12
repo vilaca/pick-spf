@@ -606,6 +606,12 @@ export function updateQuestionDisplay() {
                 q.classList.add('active');
             }
         });
+
+        // Update special features availability if showing that question
+        if (appState.currentQuestionKey === 'specialFeatures') {
+            // Use setTimeout to ensure DOM is ready
+            setTimeout(() => updateSpecialFeaturesAvailability(), 0);
+        }
     }
 
     checkCurrentQuestionAnswered();
@@ -709,6 +715,119 @@ export function updateProgress() {
 }
 
 // ===================================
+// Special Features Dynamic Disabling
+// ===================================
+
+/**
+ * Update which special features should be disabled based on current selections
+ * Disables features that would result in 0 products
+ */
+export function updateSpecialFeaturesAvailability() {
+    // Only run if we're on the special features question
+    if (appState.currentQuestionKey !== 'specialFeatures') return;
+
+    const specialFeatureCheckboxes = document.querySelectorAll('input[name="specialFeatures"]');
+    if (!specialFeatureCheckboxes.length) return;
+
+    // Get current selections (without special features)
+    const currentSelections = { ...appState.selections };
+    const currentSpecialFeatures = currentSelections.specialFeatures || [];
+
+    specialFeatureCheckboxes.forEach(checkbox => {
+        const featureValue = checkbox.value;
+        const label = checkbox.closest('.option');
+        if (!label) return;
+
+        // Skip if this feature is already selected
+        if (currentSpecialFeatures.includes(featureValue)) {
+            label.classList.remove('option-disabled');
+            label.removeAttribute('data-tooltip');
+            return;
+        }
+
+        // Test if adding this feature would give 0 results
+        const testSelections = { ...currentSelections };
+        const testFeatures = [...currentSpecialFeatures, featureValue];
+        testSelections.specialFeatures = testFeatures;
+
+        // Use the test filter function
+        const testResults = testFilterSunscreens(testSelections);
+
+        if (testResults.length === 0) {
+            // Would result in 0 products - disable it
+            label.classList.add('option-disabled');
+            label.setAttribute('data-tooltip', 'No products available with this combination');
+            checkbox.disabled = true;
+        } else {
+            // Would give results - enable it
+            label.classList.remove('option-disabled');
+            label.removeAttribute('data-tooltip');
+            checkbox.disabled = false;
+        }
+    });
+}
+
+/**
+ * Helper to filter sunscreens with custom selections (for testing)
+ */
+function testFilterSunscreens(testSelections = appState.selections) {
+    let filtered = [...appState.sunscreens];
+
+    // Location
+    if (testSelections.location) {
+        filtered = filtered.filter(s =>
+            s.availableIn && s.availableIn.includes(testSelections.location)
+        );
+    }
+
+    // Skin Type
+    if (testSelections.skinType) {
+        filtered = filtered.filter(s =>
+            s.skinTypes && (
+                s.skinTypes.includes('all') ||
+                s.skinTypes.includes(testSelections.skinType)
+            )
+        );
+    }
+
+    // Fragrance Free
+    if (testSelections.fragranceFree === 'true') {
+        filtered = filtered.filter(s => s.isFragranceFree === true);
+    }
+
+    // For Kids
+    if (testSelections.forKids === 'true') {
+        filtered = filtered.filter(s => s.forKids === true);
+    }
+
+    // Form Factor
+    if (testSelections.formFactor && testSelections.formFactor !== 'any') {
+        filtered = filtered.filter(s =>
+            s.formFactors && s.formFactors.includes(testSelections.formFactor)
+        );
+    }
+
+    // Water Resistant
+    if (testSelections.waterResistant === 'true') {
+        filtered = filtered.filter(s => s.waterResistant === true);
+    }
+
+    // Special Features (all selected features must be present)
+    if (testSelections.specialFeatures && testSelections.specialFeatures.length > 0) {
+        filtered = filtered.filter(s => {
+            if (!s.specialFeatures || !Array.isArray(s.specialFeatures)) {
+                return false;
+            }
+            return testSelections.specialFeatures.every(feature =>
+                s.specialFeatures.includes(feature)
+            );
+        });
+    }
+
+    return filtered;
+}
+
+// ===================================
 // Form Handling
 // ===================================
 
@@ -735,6 +854,9 @@ export function handleFormChange(event) {
         const checkedBoxes = document.querySelectorAll(`input[name="${name}"]:checked`);
         const values = Array.from(checkedBoxes).map(cb => cb.value);
         appState.selections[name] = values;
+
+        // Update which features are available after this selection change
+        updateSpecialFeaturesAvailability();
 
         // Announce to screen reader
         announceToScreenReader(`${values.length} special features selected`);
