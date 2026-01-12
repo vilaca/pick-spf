@@ -139,7 +139,7 @@ export function previousQuestion() {
 }
 
 export function nextQuestion() {
-    // Button should be disabled if not answered, but double-check
+    // Auto-select "no preference" if user hasn't made a choice
     if (appState.currentQuestionKey) {
         const metadata = questionMetadata[appState.currentQuestionKey];
         const currentQ = elements.questions[metadata.elementIndex];
@@ -150,15 +150,43 @@ export function nextQuestion() {
             if (input.checked) answered = true;
         });
 
-        // Special handling for optional specialFeatures question
-        if (!answered && appState.currentQuestionKey === 'specialFeatures') {
-            // Mark as answered with empty array (user chose to skip)
-            appState.selections.specialFeatures = [];
-            answered = true;
+        // If not answered, auto-select the "no preference" option
+        if (!answered) {
+            // Define "no preference" values for each question
+            const noPreferenceValues = {
+                location: 'Global',
+                skinType: 'all',
+                fragranceFree: 'any',
+                forKids: 'any',
+                formFactor: 'any',
+                waterResistant: 'any',
+                specialFeatures: []
+            };
+
+            const noPreferenceValue = noPreferenceValues[appState.currentQuestionKey];
+
+            if (noPreferenceValue !== undefined) {
+                // Auto-select the no preference option
+                if (appState.currentQuestionKey === 'specialFeatures') {
+                    // For checkboxes, just set empty array
+                    appState.selections.specialFeatures = [];
+                    answered = true;
+                } else {
+                    // For radio buttons, find and check the input
+                    const noPreferenceInput = currentQ.querySelector(`input[value="${noPreferenceValue}"]`);
+                    if (noPreferenceInput) {
+                        noPreferenceInput.checked = true;
+                        // Trigger change event to update selections
+                        noPreferenceInput.dispatchEvent(new Event('change', { bubbles: true }));
+                        answered = true;
+                    }
+                }
+            }
         }
 
+        // If still not answered (auto-select failed), don't proceed
         if (!answered) {
-            return; // Button should already be disabled
+            return;
         }
     }
 

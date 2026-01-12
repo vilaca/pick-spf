@@ -86,31 +86,9 @@ export function updateRestartButtonVisibility() {
 }
 
 export function checkCurrentQuestionAnswered() {
-    // Check current question
-    if (appState.currentQuestionKey) {
-        const metadata = questionMetadata[appState.currentQuestionKey];
-        const currentQ = elements.questions[metadata.elementIndex];
-        const inputs = currentQ.querySelectorAll('input');
-        let answered = false;
-
-        // Special features question is optional (checkboxes)
-        if (appState.currentQuestionKey === 'specialFeatures') {
-            answered = true; // Always considered answered (optional)
-        } else {
-            inputs.forEach(input => {
-                if (input.checked) answered = true;
-            });
-        }
-
-        // Update next button
-        if (answered) {
-            elements.nextBtn.disabled = false;
-            elements.nextBtn.removeAttribute('data-tooltip');
-        } else {
-            elements.nextBtn.disabled = true;
-            elements.nextBtn.setAttribute('data-tooltip', t('navigation.pleaseSelect'));
-        }
-    }
+    // Next button is always enabled - will auto-select "no preference" if nothing chosen
+    elements.nextBtn.disabled = false;
+    elements.nextBtn.removeAttribute('data-tooltip');
 
     // Check if we should show results for "Show Results" button
     if (shouldShowResults(appState, questionMetadata)) {

@@ -478,7 +478,7 @@ async function handleStartQuiz() {
         quizModule.updateQuestionDisplay();
         quizModule.updateNavigationButtons();
         quizModule.updateLiveCount(); // Update count on quiz start
-        quizModule.checkCurrentQuestionAnswered();
+        quizModule.checkCurrentQuestionAnswered(); // This enables the Next button
     } catch (error) {
         console.error('Error loading quiz:', error);
         showErrorNotification(t('loading.error') || 'Failed to load quiz. Please refresh and try again.');
