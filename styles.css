@@ -1028,7 +1028,7 @@ body.wizard-mode .question.active {
 }
 
 .result-card:hover::before {
-    transform: scaleX(1);
+    transform: scaleX(0);
 }
 
 .result-card::after {
