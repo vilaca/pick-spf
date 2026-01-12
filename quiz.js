@@ -1305,7 +1305,7 @@ function renderResultCard(sunscreen) {
 
                 return `<a href="https://incidecoder.com/ingredients/${slug}" target="_blank" rel="noopener noreferrer" class="ingredient-link">${badge}${escaped}</a>`;
             })
-            .join(', ');
+            .join('<br>');
 
         ingredientsHTML = `
             <details class="ingredients-section">
