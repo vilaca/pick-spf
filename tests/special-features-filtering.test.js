@@ -88,7 +88,7 @@ describe('Special Features Dynamic Disabling', () => {
     });
 
     it('should disable feature that results in 0 products', async () => {
-        const { testFilterSunscreens } = await import('../sub-modules/quiz/filters.js');
+        const { testFilterSunscreens } = await import('../modules/quiz/filters.js');
 
         // With current selections (EU, oily, fragrance-free, lotion), only Product A matches
         // Test that features which would result in 0 products are correctly identified
@@ -117,7 +117,7 @@ describe('Special Features Dynamic Disabling', () => {
     });
 
     it('should respect Global location in filtering', async () => {
-        const { testFilterSunscreens } = await import('../sub-modules/quiz/filters.js');
+        const { testFilterSunscreens } = await import('../modules/quiz/filters.js');
 
         appState.selections.location = 'US';
         appState.selections.skinType = 'all';
@@ -135,7 +135,7 @@ describe('Special Features Dynamic Disabling', () => {
     });
 
     it('should handle false values for boolean filters', async () => {
-        const { testFilterSunscreens } = await import('../sub-modules/quiz/filters.js');
+        const { testFilterSunscreens } = await import('../modules/quiz/filters.js');
 
         appState.selections.fragranceFree = 'false'; // Explicitly NOT fragrance-free
         appState.selections.skinType = 'all';
@@ -160,7 +160,7 @@ describe('Special Features Dynamic Disabling', () => {
     });
 
     it('should not filter out already selected features', async () => {
-        const { testFilterSunscreens } = await import('../sub-modules/quiz/filters.js');
+        const { testFilterSunscreens } = await import('../modules/quiz/filters.js');
 
         // Select a feature that would normally be filtered out
         appState.selections.specialFeatures = ['eco-friendly-packaging'];
@@ -178,7 +178,7 @@ describe('Special Features Dynamic Disabling', () => {
     });
 
     it('should filter correctly with multiple selection combinations', async () => {
-        const { testFilterSunscreens } = await import('../sub-modules/quiz/filters.js');
+        const { testFilterSunscreens } = await import('../modules/quiz/filters.js');
 
         // Test that testFilterSunscreens matches filterSunscreens behavior
         const selections1 = {
@@ -209,7 +209,7 @@ describe('Special Features Dynamic Disabling', () => {
     });
 
     it('should handle combinations that result in zero products', async () => {
-        const { testFilterSunscreens } = await import('../sub-modules/quiz/filters.js');
+        const { testFilterSunscreens } = await import('../modules/quiz/filters.js');
 
         // Impossible combination: EU location + water resistant + kids
         const selections = {

@@ -6,15 +6,15 @@
 // reduce initial page load time.
 
 // Import modules
-import { filterSunscreens } from './sub-modules/quiz/filters.js';
-import { updateSpecialFeaturesAvailability } from './sub-modules/quiz/special-features.js';
-import { determineNextQuestion, shouldShowResults } from './sub-modules/quiz/navigation.js';
-import { initResults, showResults, generateShareURL } from './sub-modules/results/display.js';
-import { initShare, shareWhatsApp, shareFacebook, shareTwitter, copyLink } from './sub-modules/results/share.js';
-import { initUIUpdates, updateProgress, updateNavigationButtons, updateRestartButtonVisibility, checkCurrentQuestionAnswered, updateLiveCount } from './sub-modules/ui-updates.js';
-import { initDataLoader, loadQuizResources } from './sub-modules/data-loader.js';
-import { initURLParams, checkURLParameters } from './sub-modules/url-params.js';
-import { updateOptionAvailability, checkAndAutoSkip } from './sub-modules/quiz/dynamic-options.js';
+import { filterSunscreens } from './modules/quiz/filters.js';
+import { updateSpecialFeaturesAvailability } from './modules/quiz/special-features.js';
+import { determineNextQuestion, shouldShowResults } from './modules/quiz/navigation.js';
+import { initResults, showResults, generateShareURL } from './modules/results/display.js';
+import { initShare, shareWhatsApp, shareFacebook, shareTwitter, copyLink } from './modules/results/share.js';
+import { initUIUpdates, updateProgress, updateNavigationButtons, updateRestartButtonVisibility, checkCurrentQuestionAnswered, updateLiveCount } from './modules/ui-updates.js';
+import { initDataLoader, loadQuizResources } from './modules/data-loader.js';
+import { initURLParams, checkURLParameters } from './modules/url-params.js';
+import { updateOptionAvailability, checkAndAutoSkip } from './modules/quiz/dynamic-options.js';
 
 // ===================================
 // Shared state (passed from main script)
@@ -366,4 +366,4 @@ export function restart() {
 // Export for results module and tests
 // ===================================
 export { filterSunscreens, updateLiveCount, showResults, determineNextQuestion };
-export { calculateDiscriminatingPower } from './sub-modules/quiz/navigation.js';
+export { calculateDiscriminatingPower } from './modules/quiz/navigation.js';

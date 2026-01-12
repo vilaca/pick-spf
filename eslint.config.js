@@ -4,7 +4,7 @@ import compat from 'eslint-plugin-compat';
 export default [
     // Apply to all JavaScript files
     {
-        files: ['*.js', 'sub-modules/**/*.js'],
+        files: ['*.js', 'modules/**/*.js'],
         languageOptions: {
             ecmaVersion: 2022,
             sourceType: 'module',
