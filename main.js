@@ -433,6 +433,44 @@ function showLoadingError(message) {
 // Event Listeners
 // ===================================
 
+/**
+ * Start quiz handler - separated from event listener for better mobile compatibility
+ * Async arrow functions in event listeners can cause issues on iOS browsers
+ */
+async function handleStartQuiz() {
+    // Disable button to prevent double-click
+    elements.startQuizBtn.disabled = true;
+    elements.startQuizBtn.textContent = t('loading.text') || 'Loading...';
+
+    try {
+        // Load quiz module dynamically
+        await loadQuizModule();
+
+        // Debug: Check data loaded
+        console.log(`Quiz resources loaded. Total sunscreens: ${appState.sunscreens.length}`);
+
+        // Determine first question dynamically
+        const firstQuestion = quizModule.determineNextQuestion(appState, questionMetadata);
+        console.log(`First question determined: ${firstQuestion}`);
+
+        if (firstQuestion) {
+            appState.currentQuestionKey = firstQuestion;
+            appState.questionHistory = [firstQuestion]; // Track first question in history
+        }
+
+        showView('questions');
+        quizModule.updateQuestionDisplay();
+        quizModule.updateNavigationButtons();
+        quizModule.updateLiveCount(); // Update count on quiz start
+        quizModule.checkCurrentQuestionAnswered();
+    } catch (error) {
+        console.error('Error loading quiz:', error);
+        showErrorNotification(t('loading.error') || 'Failed to load quiz. Please refresh and try again.');
+        elements.startQuizBtn.disabled = false;
+        elements.startQuizBtn.textContent = t('welcome.startButton') || 'Start Quiz';
+    }
+}
+
 function setupEventListeners() {
     // Language selector
     elements.languageSelect.addEventListener('change', (e) => {
@@ -440,38 +478,10 @@ function setupEventListeners() {
     });
 
     // Start quiz - lazy load quiz module
-    elements.startQuizBtn.addEventListener('click', async () => {
-        // Disable button to prevent double-click
-        elements.startQuizBtn.disabled = true;
-        elements.startQuizBtn.textContent = t('loading.text') || 'Loading...';
-
-        try {
-            // Load quiz module dynamically
-            await loadQuizModule();
-
-            // Debug: Check data loaded
-            console.log(`Quiz resources loaded. Total sunscreens: ${appState.sunscreens.length}`);
-
-            // Determine first question dynamically
-            const firstQuestion = quizModule.determineNextQuestion(appState, questionMetadata);
-            console.log(`First question determined: ${firstQuestion}`);
-
-            if (firstQuestion) {
-                appState.currentQuestionKey = firstQuestion;
-                appState.questionHistory = [firstQuestion]; // Track first question in history
-            }
-
-            showView('questions');
-            quizModule.updateQuestionDisplay();
-            quizModule.updateNavigationButtons();
-            quizModule.updateLiveCount(); // Update count on quiz start
-            quizModule.checkCurrentQuestionAnswered();
-        } catch (error) {
-            console.error('Error loading quiz:', error);
-            showErrorNotification(t('loading.error') || 'Failed to load quiz. Please refresh and try again.');
-            elements.startQuizBtn.disabled = false;
-            elements.startQuizBtn.textContent = t('welcome.startButton') || 'Start Quiz';
-        }
+    // Use synchronous handler that calls async function for better mobile browser compatibility
+    elements.startQuizBtn.addEventListener('click', function(e) {
+        e.preventDefault();
+        handleStartQuiz();
     });
 
     // Navigation - delegate to quiz module
