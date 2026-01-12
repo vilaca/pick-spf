@@ -28,8 +28,6 @@ export function checkURLParameters(showResults) {
         const params = new URLSearchParams(window.location.search);
         let hasParams = false;
 
-        console.log('Checking URL parameters:', window.location.search);
-
         // Validate and sanitize URL parameters
         if (params.has('location')) {
             const value = validateURLParam('location', params.get('location'));
@@ -37,7 +35,6 @@ export function checkURLParameters(showResults) {
                 appState.selections.location = value;
                 selectRadioByValue('location', value);
                 hasParams = true;
-                console.log('Set location:', value);
             }
         }
         if (params.has('skin')) {
@@ -46,7 +43,6 @@ export function checkURLParameters(showResults) {
                 appState.selections.skinType = value;
                 selectRadioByValue('skinType', value);
                 hasParams = true;
-                console.log('Set skinType:', value);
             }
         }
         if (params.has('fragrance')) {
@@ -55,7 +51,6 @@ export function checkURLParameters(showResults) {
                 appState.selections.fragranceFree = value;
                 selectRadioByValue('fragranceFree', value);
                 hasParams = true;
-                console.log('Set fragranceFree:', value);
             }
         }
         if (params.has('kids')) {
@@ -64,7 +59,6 @@ export function checkURLParameters(showResults) {
                 appState.selections.forKids = value;
                 selectRadioByValue('forKids', value);
                 hasParams = true;
-                console.log('Set forKids:', value);
             }
         }
         if (params.has('form')) {
@@ -73,7 +67,6 @@ export function checkURLParameters(showResults) {
                 appState.selections.formFactor = value;
                 selectRadioByValue('formFactor', value);
                 hasParams = true;
-                console.log('Set formFactor:', value);
             }
         }
         if (params.has('water')) {
@@ -82,7 +75,6 @@ export function checkURLParameters(showResults) {
                 appState.selections.waterResistant = value;
                 selectRadioByValue('waterResistant', value);
                 hasParams = true;
-                console.log('Set waterResistant:', value);
             }
         }
         if (params.has('features')) {
@@ -94,13 +86,11 @@ export function checkURLParameters(showResults) {
                 appState.selections.specialFeatures = validFeatures;
                 selectCheckboxesByValues('specialFeatures', validFeatures);
                 hasParams = true;
-                console.log('Set specialFeatures:', validFeatures);
             }
         }
 
         // If any params exist, show results directly
         if (hasParams) {
-            console.log('Valid URL parameters found, showing results...');
             showSharedSelectionsNotification();
 
             // Build question history from answered questions
@@ -120,12 +110,9 @@ export function checkURLParameters(showResults) {
                     throw resultError; // Re-throw to be caught by outer try-catch
                 }
             }, 500);
-        } else {
-            console.log('No valid URL parameters found');
         }
     } catch (error) {
         console.error('Error processing URL parameters:', error);
-        console.error('Error details:', error.message, error.stack);
         // Re-throw to let calling code handle it
         throw new Error(`Failed to process URL parameters: ${error.message}`);
     }

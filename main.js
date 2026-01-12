@@ -359,20 +359,15 @@ async function init() {
             .some(param => urlParams.has(param));
 
         if (hasQuizParams) {
-            console.log('URL parameters detected, loading quiz...');
             try {
                 // Load quiz module and handle URL parameters
                 await loadQuizModule();
-                console.log('Quiz module loaded, processing URL parameters...');
 
                 // Use the proper function that passes showResults callback
                 quizModule.checkURLParametersAndShowResults();
-
                 // Don't show welcome view - URL params will show results
-                console.log('URL parameters processed successfully');
             } catch (error) {
                 console.error('Error processing URL parameters:', error);
-                console.error('Falling back to welcome screen');
                 // Clear invalid selections
                 appState.selections = {
                     location: null,
@@ -464,44 +459,29 @@ function showLoadingError(message) {
  * Async arrow functions in event listeners can cause issues on iOS browsers
  */
 async function handleStartQuiz() {
-    console.log('handleStartQuiz called - button clicked');
-
     // Disable button to prevent double-click
     elements.startQuizBtn.disabled = true;
     elements.startQuizBtn.textContent = t('loading.text') || 'Loading...';
 
-    console.log('Button disabled, loading text set');
-
     try {
         // Load quiz module dynamically
-        console.log('About to load quiz module...');
         await loadQuizModule();
-        console.log('Quiz module loaded');
-
-        // Debug: Check data loaded
-        console.log(`Quiz resources loaded. Total sunscreens: ${appState.sunscreens.length}`);
 
         // Determine first question dynamically
         const firstQuestion = quizModule.determineNextQuestion(appState, questionMetadata);
-        console.log(`First question determined: ${firstQuestion}`);
 
         if (firstQuestion) {
             appState.currentQuestionKey = firstQuestion;
             appState.questionHistory = [firstQuestion]; // Track first question in history
         }
 
-        console.log('About to show questions view');
         showView('questions');
         quizModule.updateQuestionDisplay();
         quizModule.updateNavigationButtons();
         quizModule.updateLiveCount(); // Update count on quiz start
         quizModule.checkCurrentQuestionAnswered();
-        console.log('Quiz started successfully');
     } catch (error) {
         console.error('Error loading quiz:', error);
-        console.error('Error stack:', error.stack);
-        console.error('Error name:', error.name);
-        console.error('Error message:', error.message);
         showErrorNotification(t('loading.error') || 'Failed to load quiz. Please refresh and try again.');
         elements.startQuizBtn.disabled = false;
         elements.startQuizBtn.textContent = t('welcome.startButton') || 'Start Quiz';
