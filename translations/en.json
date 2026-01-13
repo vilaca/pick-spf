@@ -225,6 +225,14 @@
         "hyaluronicAcid": {
           "label": "Hyaluronic Acid",
           "desc": "Hydrating ingredient"
+        },
+        "melasyl": {
+          "label": "MELASYL™",
+          "desc": "Advanced dark spot corrector"
+        },
+        "pheResorcinol": {
+          "label": "PHE‑RESORCINOL",
+          "desc": "Reduces dark spots & evens skin tone"
         }
       }
     }
