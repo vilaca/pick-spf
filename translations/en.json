@@ -217,6 +217,14 @@
         "wetSkin": {
           "label": "Wet Skin Application",
           "desc": "Apply on wet skin"
+        },
+        "mexoryl400": {
+          "label": "Mexoryl 400",
+          "desc": "Advanced UV filter (Amiloxate)"
+        },
+        "hyaluronicAcid": {
+          "label": "Hyaluronic Acid",
+          "desc": "Hydrating ingredient"
         }
       }
     }
